@@ -35,12 +35,6 @@ export const main = (bot: Telegraf) => {
 
     process.once("SIGINT", () => bot.stop("SIGINT"));
     process.once("SIGTERM", () => bot.stop("SIGTERM"));
-    process.on("unhandledRejection", (reason, promise) => {
-      console.error("Unhandled Rejection at:", promise, "reason:", reason);
-    });
-    process.on("uncaughtException", (reason, promise) => {
-      console.error("Unhandled Rejection at:", promise, "reason:", reason);
-    });
 
     cron.schedule("*/30 * * * * *", () => {
       processScheduledMessages(db, bot).catch((error) => {
