@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: apexflix
+    runtime: node
+    plan: starter
+    autoDeploy: true
+    buildCommand: bun install && bun run build
+    startCommand: bun migrate && bun dist/src/index.js
+    buildFilter:
+      paths:
+        - servers/api/*.json
+        - servers/api/**/*.ts
+    envVars:
+      - fromGroup: trevonis/bot
+      - key: DATABASE_URL
+        fromDatabase:
+          name: apexflix
+          property: connectionString
+databases:
+  - name: trevonis
+    user: admin
+    plan: basic-256mb
