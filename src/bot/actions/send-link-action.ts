@@ -16,29 +16,17 @@ export default function sendLinkAction(bot: Telegraf) {
         schedule: moment().add(2, "minutes").toDate(),
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
           .replace("%code%", cleanText(getEnv("CODE")))
-          .replace(
-            "%admin%",
-            cleanText(format("@%", context.botInfo.username))
-          ),
+          .replace("%admin%", cleanText(getEnv("ADMIN"))),
       }),
       context.replyWithMarkdownV2(
-        readFileSync("locale/en/webinar/flow-3.md", "utf-8")
+        readFileSync("locale/en/webinar/flow-2.md", "utf-8")
           .replace(
             "%name%",
             cleanText(
               format("%%", context.from.first_name, context.from.last_name)
             )
           )
-          .replace(
-            "%product_name%",
-            cleanText(
-              format(
-                "%%",
-                context.botInfo.first_name,
-                context.botInfo.last_name
-              )
-            )
-          )
+          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME")))
       ),
       context.deleteMessage(),
     ])

@@ -39,10 +39,21 @@ export default function onStartAction(bot: Telegraf) {
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
                 return context.replyWithMarkdownV2(
-                  readFileSync("locale/en/start-message.md", "utf-8").replace(
-                    "%project_name%",
-                    cleanText(getEnv("PROJECT_NAME"))
-                  )
+                  readFileSync("locale/en/start-message.md", "utf-8")
+                    .replace(
+                      "%name%",
+                      cleanText(
+                        format(
+                          "%%",
+                          context.from.first_name,
+                          context.from.last_name
+                        )
+                      )
+                    )
+                    .replace(
+                      "%product_name%",
+                      cleanText(format("%%", getEnv("PRODUCT_NAME")))
+                    )
                 );
               return context.reply(getEnv("CHANNEL_INVITE_LINK"));
             }

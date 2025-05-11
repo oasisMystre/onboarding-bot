@@ -1,13 +1,13 @@
 import { readFileSync } from "fs";
-import { Markup, type Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
+import { Context, Markup, type Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { cleanText, format } from "../../utils/format";
 
 export default function onJoinAction(bot: Telegraf) {
-  bot.on(message("new_chat_members"), async (context) =>
-    Promise.all([
+  const onJoin = async (context: Context) => {
+    return Promise.all([
       context.telegram.sendMessage(
         context.user.id,
         readFileSync("locale/en/joined-group.md", "utf-8").replace(
@@ -20,16 +20,7 @@ export default function onJoinAction(bot: Telegraf) {
         context.user.id,
         readFileSync("locale/en/welcome-message.md", "utf-8")
           .replace("%project_name%", cleanText(getEnv("PROJECT_NAME")))
-          .replace(
-            "%product_name%",
-            cleanText(
-              format(
-                "%%",
-                context.botInfo.first_name,
-                context.botInfo.last_name
-              )
-            )
-          ),
+          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         {
           parse_mode: "MarkdownV2",
           reply_markup: Markup.inlineKeyboard([
@@ -37,6 +28,12 @@ export default function onJoinAction(bot: Telegraf) {
           ]).reply_markup,
         }
       ),
-    ])
-  );
+    ]);
+  };
+
+  bot.on("chat_member", (context) => {
+    if (context.chatMember.new_chat_member) return onJoin(context);
+  });
+
+  bot.on(message("new_chat_members"), onJoin);
 }

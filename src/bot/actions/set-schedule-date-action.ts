@@ -32,7 +32,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace(
               "%admin%",
-              cleanText(format("@%", context.botInfo.username))
+              cleanText(getEnv('ADMIN'))
             ),
         }),
         createMessages(db, {

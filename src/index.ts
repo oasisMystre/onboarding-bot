@@ -1,10 +1,13 @@
 import "dotenv/config";
+import cron from "node-cron";
 import { Telegraf } from "telegraf";
 import fastify, { type FastifyInstance } from "fastify";
 
 import { getEnv } from "./env";
+import { db } from "./instances";
 import registerBot from "./bot";
 import { format } from "./utils/format";
+import { processScheduledMessages, loopMessages } from "./jobs";
 
 export const main = (bot: Telegraf) => {
   async function main(server: FastifyInstance, bot: Telegraf) {
@@ -37,6 +40,18 @@ export const main = (bot: Telegraf) => {
     });
     process.on("uncaughtException", (reason, promise) => {
       console.error("Unhandled Rejection at:", promise, "reason:", reason);
+    });
+
+    cron.schedule("*/30 * * * * *", () => {
+      processScheduledMessages(db, bot).catch((error) => {
+        console.error(error);
+      });
+    });
+
+    cron.schedule("0 */8 * * *", () => {
+      loopMessages(db, bot).catch((error) => {
+        console.error(error);
+      });
     });
 
     return Promise.all(promises);
