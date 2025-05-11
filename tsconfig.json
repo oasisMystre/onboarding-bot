@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/recommended",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": "src",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "allowJs": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["src", "drizzle.config.ts", "ecosystem.config.js"]
+}
