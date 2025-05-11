@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: apexflix
+    name: trevonis
     runtime: node
     plan: starter
     autoDeploy: true
