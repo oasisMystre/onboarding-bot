@@ -6,7 +6,7 @@ import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
-import { updateWebinarById } from "controllers/webinar.controller";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {

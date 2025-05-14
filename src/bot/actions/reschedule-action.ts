@@ -3,7 +3,7 @@ import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
-import { updateWebinarById } from "controllers/webinar.controller";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function rescheduleAction(bot: Telegraf) {
   bot.action("reshedule", (context) => {
