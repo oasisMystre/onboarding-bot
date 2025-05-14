@@ -33,7 +33,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
         updateWebinarById(db, context.user.webinar.id, {
           metadata: {
             ...context.user.webinar.metadata,
-            date: date.toISOString(),
+            time: date.toISOString(),
           },
         }),
         context.replyWithMarkdownV2(

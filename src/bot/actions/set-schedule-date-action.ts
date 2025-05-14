@@ -130,16 +130,20 @@ export default function setScheduleDateAction(bot: Telegraf) {
         }),
         createMessages(db, {
           buttons: [
-            {
-              type: "callback",
-              name: "🔴 I Joined Live",
-              data: "joined-live",
-            },
-            {
-              type: "callback",
-              name: "🔁 I Missed It But Want the Replay",
-              data: "reschedule",
-            },
+            [
+              {
+                type: "callback",
+                name: "🔴 I Joined Live",
+                data: "joined-live",
+              },
+            ],
+            [
+              {
+                type: "callback",
+                name: "🔁 I Missed It But Want the Replay",
+                data: "reschedule",
+              },
+            ],
           ],
           user: context.user.id,
           schedule: moment(date).add(1, "hours").toDate(),
