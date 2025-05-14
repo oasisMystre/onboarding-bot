@@ -1,5 +1,7 @@
+import { eq } from "drizzle-orm";
+
 import type { Database } from "../db";
-import { users } from "../db/schema";
+import { users, webinar as _webinar } from "../db/schema";
 import { userInsertSchema } from "../db/zod";
 
 export const createUser = async (
@@ -13,10 +15,18 @@ export const createUser = async (
     .returning()
     .execute();
 
-  return user;
+  const [webinar] = await db
+    .insert(_webinar)
+    .values({ user: user.id, metadata: {} })
+    .onConflictDoUpdate({ target: _webinar.user, set: { user: user.id } })
+    .returning()
+    .execute();
+
+  return { ...user, webinar };
 };
 
-export const updateUser = async (
+export const updateUserById = async (
   db: Database,
+  id: Zod.infer<typeof userInsertSchema>["id"],
   values: Partial<Zod.infer<typeof userInsertSchema>>
-) => db.update(users).set(values).returning().execute();
+) => db.update(users).set(values).where(eq(users.id, id)).returning().execute();

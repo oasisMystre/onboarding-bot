@@ -6,9 +6,12 @@ import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleDateAction(bot: Telegraf) {
   bot.action(/^set_schedule_date-(.+)$/, (context) => {
+    if (context.user.webinar.metadata.date) return;
+
     const text =
       context.callbackQuery && "data" in context.callbackQuery
         ? context.callbackQuery.data
@@ -19,6 +22,12 @@ export default function setScheduleDateAction(bot: Telegraf) {
       const date = moment(dates.join("-"));
 
       return Promise.all([
+        updateWebinarById(db, context.user.webinar.id, {
+          metadata: {
+            ...context.user.webinar.metadata,
+            date: date.toISOString(),
+          },
+        }),
         context.replyWithMarkdownV2(
           readFileSync("locale/en/webinar/flow-7.md", "utf-8")
             .replace("%date%", date.format("MMM Do YYYY"))
@@ -35,7 +44,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
         createMessages(db, {
           buttons: [],
           user: context.user.id,
-          schedule: moment(date).subtract(24, "h").toDate(),
+          schedule: moment(date).subtract(24, "hours").toDate(),
           text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
             .replace(
               "%name%",
@@ -87,7 +96,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
         createMessages(db, {
           buttons: [],
           user: context.user.id,
-          schedule: moment(date).add(30, "minutes").toDate(),
+          schedule: moment(date).subtract(30, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
             .replace(
               "%name%",
@@ -100,7 +109,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
         createMessages(db, {
           buttons: [],
           user: context.user.id,
-          schedule: moment(date).add(15, "minutes").toDate(),
+          schedule: moment(date).subtract(15, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
             "%name%",
             cleanText(

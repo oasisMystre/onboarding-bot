@@ -9,30 +9,29 @@ import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
 
 export default function onStartAction(bot: Telegraf) {
-  bot.start(
-    privateFunc(async (context) => {
-      await createMessages(db, {
-        text: readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
-          "%name%",
-          format("%%", context.from.first_name, context.from.last_name)
-        ),
-        buttons: [
-          {
-            type: "callback",
-            name: "Yes, Send Link",
-            data: "send-link",
-          },
-          {
-            type: "callback",
-            name: "Reschedule Me",
-            data: "reshedule",
-          },
-        ],
-        user: context.user.id,
-        schedule: moment().add(2, "minutes").toDate(),
-      });
-
+  const onStart = privateFunc(async (context) => {
+    if (context.from)
       return Promise.all([
+        await createMessages(db, {
+          text: readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
+            "%name%",
+            format("%%", context.from.first_name, context.from.last_name)
+          ),
+          buttons: [
+            {
+              type: "callback",
+              name: "Yes, Send Link",
+              data: "send-link",
+            },
+            {
+              type: "callback",
+              name: "Reschedule Me",
+              data: "reshedule",
+            },
+          ],
+          user: context.user.id,
+          schedule: moment().add(2, "minutes").toDate(),
+        }),
         context.telegram
           .approveChatJoinRequest(getEnv("CHANNEL_ID", Number), context.from.id)
           .catch(async (error) => {
@@ -45,8 +44,8 @@ export default function onStartAction(bot: Telegraf) {
                       cleanText(
                         format(
                           "%%",
-                          context.from.first_name,
-                          context.from.last_name
+                          context.from!.first_name,
+                          context.from!.last_name
                         )
                       )
                     )
@@ -59,6 +58,7 @@ export default function onStartAction(bot: Telegraf) {
             }
           }),
       ]);
-    })
-  );
+  });
+  bot.start(onStart);
+  bot.action("start", onStart);
 }

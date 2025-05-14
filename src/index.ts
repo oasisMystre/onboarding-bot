@@ -7,7 +7,7 @@ import { getEnv } from "./env";
 import { db } from "./instances";
 import registerBot from "./bot";
 import { format } from "./utils/format";
-import { processScheduledMessages, loopMessages } from "./jobs";
+import { processScheduledMessages, loopMessages, checkJoined } from "./jobs";
 
 export const main = (bot: Telegraf) => {
   async function main(server: FastifyInstance, bot: Telegraf) {
@@ -44,6 +44,12 @@ export const main = (bot: Telegraf) => {
 
     cron.schedule("0 */8 * * *", () => {
       loopMessages(db, bot).catch((error) => {
+        console.error(error);
+      });
+    });
+
+    cron.schedule("*/10 * * * * *", () => {
+      checkJoined(db, bot).catch((error) => {
         console.error(error);
       });
     });

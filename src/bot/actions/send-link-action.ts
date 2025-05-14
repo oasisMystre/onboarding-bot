@@ -6,10 +6,15 @@ import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
+import { updateWebinarById } from "controllers/webinar.controller";
 
 export default function sendLinkAction(bot: Telegraf) {
-  bot.action("send-link", (context) =>
-    Promise.all([
+  bot.action("send-link", (context) => {
+    if (context.user.webinar.metadata.reschedule) return;
+    return Promise.all([
+      updateWebinarById(db, context.user.webinar.id, {
+        metadata: { ...context.user.webinar.metadata, reschedule: false },
+      }),
       createMessages(db, {
         buttons: [],
         user: context.user.id,
@@ -29,6 +34,6 @@ export default function sendLinkAction(bot: Telegraf) {
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME")))
       ),
       context.deleteMessage(),
-    ])
-  );
+    ]);
+  });
 }

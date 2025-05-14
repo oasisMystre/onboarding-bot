@@ -1,6 +1,6 @@
-import z from "zod";
+import z, { boolean, object, string, enum as enum_ } from "zod";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { messages, users } from "./schema";
+import { messages, users, webinar } from "./schema";
 
 export const userSelectSchema = createSelectSchema(users);
 export const userInsertSchema = createInsertSchema(users);
@@ -27,4 +27,18 @@ export const messageInsertSchema = createInsertSchema(messages, {
   buttons: z
     .array(messageMetadataSchema)
     .or(z.array(z.array(messageMetadataSchema))),
+});
+
+const webinarMetadata = object({
+  date: string().nullish(),
+  time: string().nullish(),
+  schedule: enum_(["weekdays", "weekend"]).nullish(),
+  reschedule: boolean().nullish(),
+});
+
+export const webinarSelectSchema = createSelectSchema(webinar, {
+  metadata: webinarMetadata,
+});
+export const webinarInsertSchema = createInsertSchema(webinar, {
+  metadata: webinarMetadata,
 });
