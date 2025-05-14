@@ -37,7 +37,7 @@ export default function scheduleAction(bot: Telegraf) {
               return [
                 Markup.button.callback(
                   date.format("MMM Do YYYY"),
-                  format("set_schedule_time-%", date.toISOString())
+                  format("setScheduleTime_%", date.toISOString())
                 ),
               ];
             }),

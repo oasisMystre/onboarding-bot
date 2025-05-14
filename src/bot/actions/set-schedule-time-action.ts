@@ -7,18 +7,17 @@ import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
-  bot.action(/^set_schedule_time-(.+)$/, (context) => {
-    if (context.user.webinar.metadata.time) return;
-
+  bot.action(/^setScheduleTime_(.+)$/, (context) => {
+    if(context.user.webinar.metadata.time) return;
+    
     const text =
       context.callbackQuery && "data" in context.callbackQuery
         ? context.callbackQuery.data
         : undefined;
 
     if (text) {
-      const [, ...dates] = text.split(/-/g);
-      console.log(dates);
-      const date = moment(dates.join("-"));
+      const [, ISOString] = text.split(/_/);
+      const date = moment(ISOString);
 
       const times = [
         "🕘 9AM",
@@ -44,7 +43,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
                 format("%%", context.from.first_name, context.from.last_name)
               )
             )
-            .replace("%date%", cleanText(moment().format("MMM Do YYYY"))),
+            .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
             ...times.map((value, index) => {
               const [emoji, time] = value.split(/\s+/g);

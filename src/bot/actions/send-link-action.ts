@@ -11,6 +11,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
     if (context.user.webinar.metadata.reschedule) return;
+    
     return Promise.all([
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { ...context.user.webinar.metadata, reschedule: false },
