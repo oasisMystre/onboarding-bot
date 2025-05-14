@@ -2,7 +2,7 @@ import moment, { type Moment } from "moment";
 
 export const getWeekdays = (): Moment[] => {
   const weekdays: Moment[] = [];
-  let offset = 0;
+  let offset = 1;
 
   while (weekdays.length < 5) {
     const date = moment().add(offset, "days");
@@ -18,7 +18,7 @@ export const getWeekdays = (): Moment[] => {
 
 export const getWeekends = (): Moment[] => {
   const weekends: Moment[] = [];
-  let offset = 0;
+  let offset = 1;
 
   while (weekends.length < 2) {
     const date = moment().add(offset, "days");

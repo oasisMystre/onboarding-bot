@@ -19,7 +19,118 @@ export default function setScheduleDateAction(bot: Telegraf) {
 
     if (text) {
       const [, ...dates] = text.split(/-/g);
+      const now = moment();
       const date = moment(dates.join("-"));
+
+      const twentyHrsBefore = moment(date).subtract(24, "hours");
+      const twelveHrsBefore = moment(date).subtract(12, "hours");
+      const sixHrsBefore = moment(date).subtract(6, "hours");
+      const twoHoursBefore = moment(date).subtract(2, "hours");
+      const thirtyMinutesBefore = moment(date).subtract(30, "minutes");
+      const fifteenMinutesBefore = moment(date).subtract(15, "minutes");
+
+      const scheduleMessages = [];
+
+      if (twentyHrsBefore.isSameOrAfter(now.add(24, "hours"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: twelveHrsBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
+              .replace(
+                "%name%",
+                cleanText(
+                  format("%%", context.from.first_name, context.from.last_name)
+                )
+              )
+              .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
+          })
+        );
+      }
+      if (twelveHrsBefore.isSameOrAfter(now.add(12, "hours"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: twelveHrsBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-10.md", "utf-8")
+              .replace(
+                "%name%",
+                cleanText(
+                  format("%%", context.from.first_name, context.from.last_name)
+                )
+              )
+              .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
+          })
+        );
+      }
+      if (sixHrsBefore.isSameOrAfter(now.add(6, "hours"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: sixHrsBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-11.md", "utf-8")
+              .replace(
+                "%name%",
+                cleanText(
+                  format("%%", context.from.first_name, context.from.last_name)
+                )
+              )
+              .replace("%time%", cleanText(date.format("h:mm A"))),
+          })
+        );
+      }
+      if (twoHoursBefore.isSameOrAfter(now.add(2, "hours"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: twoHoursBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-12.md", "utf-8")
+              .replace(
+                "%name%",
+                cleanText(
+                  format("%%", context.from.first_name, context.from.last_name)
+                )
+              )
+              .replace("%time%", cleanText(date.format("h:mm A"))),
+          })
+        );
+      }
+      if (thirtyMinutesBefore.isSameOrAfter(now.add(30, "minutes"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: thirtyMinutesBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
+              .replace(
+                "%name%",
+                cleanText(
+                  format("%%", context.from.first_name, context.from.last_name)
+                )
+              )
+              .replace("%time%", cleanText(date.format("h:mm A"))),
+          })
+        );
+      }
+      if (fifteenMinutesBefore.isSameOrAfter(now.add(30, "minutes"))) {
+        scheduleMessages.push(
+          createMessages(db, {
+            buttons: [],
+            user: context.user.id,
+            schedule: fifteenMinutesBefore.toDate(),
+            text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
+              "%name%",
+              cleanText(
+                format("%%", context.from.first_name, context.from.last_name)
+              )
+            ),
+          })
+        );
+      }
 
       return Promise.all([
         updateWebinarById(db, context.user.webinar.id, {
@@ -28,11 +139,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
             date: date.toISOString(),
           },
         }),
+        ...scheduleMessages,
         context.replyWithMarkdownV2(
           readFileSync("locale/en/webinar/flow-7.md", "utf-8")
             .replace("%date%", date.format("MMM Do YYYY"))
             .replace("%time%", date.format("h A"))
         ),
+
         createMessages(db, {
           buttons: [],
           user: context.user.id,
@@ -40,82 +153,6 @@ export default function setScheduleDateAction(bot: Telegraf) {
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace("%admin%", cleanText(getEnv("ADMIN"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(24, "hours").toDate(),
-          text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
-            .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(12, "hours").toDate(),
-          text: readFileSync("locale/en/webinar/flow-10.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
-            .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(6, "hours").toDate(),
-          text: readFileSync("locale/en/webinar/flow-11.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
-            .replace("%time%", cleanText(date.format("h:mm A"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(2, "hours").toDate(),
-          text: readFileSync("locale/en/webinar/flow-12.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
-            .replace("%time%", cleanText(date.format("h:mm A"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(30, "minutes").toDate(),
-          text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
-            .replace("%time%", cleanText(date.format("h:mm A"))),
-        }),
-        createMessages(db, {
-          buttons: [],
-          user: context.user.id,
-          schedule: moment(date).subtract(15, "minutes").toDate(),
-          text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
-            "%name%",
-            cleanText(
-              format("%%", context.from.first_name, context.from.last_name)
-            )
-          ),
         }),
         createMessages(db, {
           buttons: [],
@@ -141,7 +178,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
               {
                 type: "callback",
                 name: "🔁 I Missed It But Want the Replay",
-                data: "reschedule",
+                data: "start",
               },
             ],
           ],
