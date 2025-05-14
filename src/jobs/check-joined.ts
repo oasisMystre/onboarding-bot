@@ -9,14 +9,14 @@ import { cleanText } from "../utils/format";
 import type { userInsertSchema } from "../db/zod";
 import { updateUserById } from "../controllers/users.controller";
 
-const onJoin = (
+const onJoin = async (
   db: Database,
   bot: Telegraf,
   user: Zod.infer<typeof userInsertSchema>,
   sendMessage?: boolean
 ) => [
   updateUserById(db, user.id, { joinedChannel: true }),
-  bot.telegram.sendMessage(
+  await bot.telegram.sendMessage(
     user.id,
     readFileSync("locale/en/joined-group.md", "utf-8").replace(
       "%project_name%",
@@ -33,7 +33,7 @@ const onJoin = (
         {
           parse_mode: "MarkdownV2",
           reply_markup: Markup.inlineKeyboard([
-            Markup.button.callback("⚡️ Start", "start"),
+            Markup.button.callback("⚡️ Start", "on-start"),
           ]).reply_markup,
         }
       )

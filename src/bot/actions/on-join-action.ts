@@ -24,7 +24,7 @@ export default function onJoinAction(bot: Telegraf) {
         {
           parse_mode: "MarkdownV2",
           reply_markup: Markup.inlineKeyboard([
-            Markup.button.callback("⚡️ Start", "start"),
+            Markup.button.callback("⚡️ Start", "on-start"),
           ]).reply_markup,
         }
       ),
