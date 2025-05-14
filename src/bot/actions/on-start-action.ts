@@ -28,10 +28,12 @@ export default function onStartAction(bot: Telegraf) {
                       "utf-8"
                     ).replace(
                       "%name%",
-                      format(
-                        "%%",
-                        context.from!.first_name,
-                        context.from!.last_name
+                      cleanText(
+                        format(
+                          "%%",
+                          context.from!.first_name,
+                          context.from!.last_name
+                        )
                       )
                     ),
                     buttons: [
