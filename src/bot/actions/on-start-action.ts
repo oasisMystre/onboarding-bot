@@ -7,7 +7,7 @@ import { getEnv } from "../../env";
 import { privateFunc } from "../utils/private-func";
 import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
-import { updateWebinarById } from "controllers/webinar.controller";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function onStartAction(bot: Telegraf) {
   const onStart = privateFunc(async (context) => {

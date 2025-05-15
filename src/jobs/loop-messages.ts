@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
-import { Telegraf } from "telegraf";
+import { Markup, Telegraf } from "telegraf";
 
+import { getEnv } from "../env";
 import { Database } from "../db";
 import { format } from "../utils/format";
 import { updateUserById } from "../controllers/users.controller";
@@ -22,6 +23,15 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
           ).replace("%name%", user.name!),
           {
             parse_mode: "MarkdownV2",
+            reply_markup: Markup.inlineKeyboard([
+              [
+                Markup.button.callback("🚀 I'm Ready", "webinar"),
+                Markup.button.switchToChat(
+                  "💬 Contact Support",
+                  getEnv("ADMIN")
+                ),
+              ],
+            ]).reply_markup,
           }
         ),
         updateUserById(db, user.id, { loopIndex }),

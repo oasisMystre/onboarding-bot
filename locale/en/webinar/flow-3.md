@@ -1,6 +1,6 @@
 *While you\'re getting set for the training\, take this quick step now\,*
 
-✅ Create your trading acount here\.
+[✅ Create your trading acount here](%link%)\.
 
 Once done, send your code `%code%` to %admin%
 

@@ -152,7 +152,8 @@ export default function setScheduleDateAction(bot: Telegraf) {
           schedule: moment().add(2, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
             .replace("%code%", cleanText(getEnv("CODE")))
-            .replace("%admin%", cleanText(getEnv("ADMIN"))),
+            .replace("%admin%", cleanText(getEnv("ADMIN")))
+            .replace('%link%', getEnv('TRADE_ACCOUNT_LINK')),
         }),
         createMessages(db, {
           buttons: [],

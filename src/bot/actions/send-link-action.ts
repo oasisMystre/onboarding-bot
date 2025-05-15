@@ -11,7 +11,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
     if (context.user.webinar.metadata.reschedule) return;
-    
+
     return Promise.all([
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { ...context.user.webinar.metadata, reschedule: false },
@@ -22,7 +22,8 @@ export default function sendLinkAction(bot: Telegraf) {
         schedule: moment().add(2, "minutes").toDate(),
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
           .replace("%code%", cleanText(getEnv("CODE")))
-          .replace("%admin%", cleanText(getEnv("ADMIN"))),
+          .replace("%admin%", cleanText(getEnv("ADMIN")))
+          .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-2.md", "utf-8")
