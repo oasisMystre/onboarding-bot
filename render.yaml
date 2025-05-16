@@ -6,10 +6,6 @@ services:
     autoDeploy: true
     buildCommand: bun install && bun run build
     startCommand: bun migrate && bun dist/src/index.js
-    buildFilter:
-      paths:
-        - servers/api/*.json
-        - servers/api/**/*.ts
     envVars:
       - fromGroup: trevonis/bot
       - key: DATABASE_URL
