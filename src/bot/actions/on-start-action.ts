@@ -22,37 +22,35 @@ export default function onStartAction(bot: Telegraf) {
                   updateWebinarById(db, context.user!.webinar.id, {
                     metadata: {},
                   }),
-                  context.user.webinar.metadata.reschedule
-                    ? undefined
-                    : createMessages(db, {
-                        text: readFileSync(
-                          "locale/en/webinar/flow-1.md",
-                          "utf-8"
-                        ).replace(
-                          "%name%",
-                          cleanText(
-                            format(
-                              "%%",
-                              context.from!.first_name,
-                              context.from!.last_name
-                            )
-                          )
-                        ),
-                        buttons: [
-                          {
-                            type: "callback",
-                            name: "Yes, Send Link",
-                            data: "send-link",
-                          },
-                          {
-                            type: "callback",
-                            name: "Reschedule Me",
-                            data: "reshedule",
-                          },
-                        ],
-                        user: context.user.id,
-                        schedule: moment().add(2, "minutes").toDate(),
-                      }),
+                  createMessages(db, {
+                    text: readFileSync(
+                      "locale/en/webinar/flow-1.md",
+                      "utf-8"
+                    ).replace(
+                      "%name%",
+                      cleanText(
+                        format(
+                          "%%",
+                          context.from!.first_name,
+                          context.from!.last_name
+                        )
+                      )
+                    ),
+                    buttons: [
+                      {
+                        type: "callback",
+                        name: "Yes, Send Link",
+                        data: "send-link",
+                      },
+                      {
+                        type: "callback",
+                        name: "Reschedule Me",
+                        data: "reshedule",
+                      },
+                    ],
+                    user: context.user.id,
+                    schedule: moment().add(2, "minutes").toDate(),
+                  }),
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")
                       .replace(
