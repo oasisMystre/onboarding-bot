@@ -33,8 +33,8 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
           {
             parse_mode: "MarkdownV2",
             reply_markup: Markup.inlineKeyboard([
+              [Markup.button.callback("🚀 I'm Ready", "webinar")],
               [
-                Markup.button.callback("🚀 I'm Ready", "webinar"),
                 Markup.button.switchToChat(
                   "💬 Contact Support",
                   getEnv("ADMIN")
