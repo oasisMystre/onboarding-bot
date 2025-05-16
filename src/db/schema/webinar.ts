@@ -11,7 +11,7 @@ type Metadata = {
 export const webinar = pgTable("webinar", {
   id: uuid().defaultRandom().primaryKey(),
   user: text()
-    .references(() => users.id)
+    .references(() => users.id, { onDelete: "cascade" })
     .unique()
     .notNull(),
   metadata: jsonb().$type<Metadata>().notNull(),

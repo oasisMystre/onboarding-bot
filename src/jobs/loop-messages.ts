@@ -1,17 +1,26 @@
 import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
+import { eq, getTableColumns } from "drizzle-orm";
 
 import { getEnv } from "../env";
 import { Database } from "../db";
 import { format } from "../utils/format";
+import { users, webinar } from "../db/schema";
 import { updateUserById } from "../controllers/users.controller";
 
 export const loopMessages = async (db: Database, bot: Telegraf) => {
-  const users = await db.query.users.findMany();
-  console.log("[processing.loop.messages] users=", users.length);
+  const dbUsers = await db
+    .select({
+      ...getTableColumns(users),
+      webinar: getTableColumns(webinar),
+    })
+    .from(users)
+    .innerJoin(webinar, eq(webinar.metadata, {}));
+
+  console.log("[processing.loop.messages] users=", dbUsers.length);
 
   return Promise.allSettled(
-    users.flatMap(async (user) => {
+    dbUsers.flatMap(async (user) => {
       const loopIndex = user.loopIndex >= 20 ? 1 : user.loopIndex + 1;
 
       return [

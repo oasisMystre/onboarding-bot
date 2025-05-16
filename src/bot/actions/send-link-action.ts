@@ -5,14 +5,16 @@ import { Telegraf } from "telegraf";
 import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
-import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import {
+  createMessages,
+  deleteMessagesByUser,
+} from "../../controllers/message.controller";
 
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
-    if (context.user.webinar.metadata.reschedule) return;
-
     return Promise.all([
+      deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { ...context.user.webinar.metadata, reschedule: false },
       }),

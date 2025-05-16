@@ -4,10 +4,12 @@ import { Markup, Telegraf } from "telegraf";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import { deleteMessagesByUser } from "../../controllers/message.controller";
 
 export const webinarAction = (bot: Telegraf) => {
   bot.action("webinar", (context) => {
     return Promise.all([
+      deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, { metadata: {} }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
