@@ -16,7 +16,7 @@ export default function sendLinkAction(bot: Telegraf) {
     return Promise.all([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
-        metadata: { ...context.user.webinar.metadata, reschedule: false },
+        metadata: {},
       }),
       createMessages(db, {
         buttons: [],

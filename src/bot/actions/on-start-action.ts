@@ -6,8 +6,11 @@ import { db } from "../../instances";
 import { getEnv } from "../../env";
 import { privateFunc } from "../utils/private-func";
 import { cleanText, format } from "../../utils/format";
-import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import {
+  createMessages,
+  deleteMessagesByUser,
+} from "../../controllers/message.controller";
 
 export default function onStartAction(bot: Telegraf) {
   const onStart = privateFunc(async (context) => {
@@ -19,6 +22,7 @@ export default function onStartAction(bot: Telegraf) {
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
                 return Promise.all([
+                  deleteMessagesByUser(db, context.user.id),
                   updateWebinarById(db, context.user!.webinar.id, {
                     metadata: {},
                   }),

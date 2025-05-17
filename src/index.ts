@@ -36,7 +36,7 @@ export const main = (bot: Telegraf) => {
     process.once("SIGINT", () => bot.stop("SIGINT"));
     process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
-    cron.schedule("*/60 * * * * *", () => {
+    cron.schedule("*/2 * * * *", () => {
       processScheduledMessages(db, bot).catch((error) => {
         console.error(error);
       });

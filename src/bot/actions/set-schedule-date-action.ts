@@ -9,7 +9,7 @@ import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleDateAction(bot: Telegraf) {
-  bot.action(/^set_schedule_date-(.+)$/, (context) => {
+  bot.action(/^setScheduleDate_(.+)$/, (context) => {
     if (context.user.webinar.metadata.date) return;
 
     const text =
@@ -18,9 +18,9 @@ export default function setScheduleDateAction(bot: Telegraf) {
         : undefined;
 
     if (text) {
-      const [, ...dates] = text.split(/-/g);
+      const [, ISOString] = text.split(/_/g);
       const now = moment();
-      const date = moment(dates.join("-"));
+      const date = moment(ISOString);
 
       const twentyHrsBefore = moment(date).subtract(24, "hours");
       const twelveHrsBefore = moment(date).subtract(12, "hours");
@@ -153,7 +153,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace("%admin%", cleanText(getEnv("ADMIN")))
-            .replace('%link%', getEnv('TRADE_ACCOUNT_LINK')),
+            .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
         }),
         createMessages(db, {
           buttons: [],

@@ -8,8 +8,8 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
   bot.action(/^setScheduleTime_(.+)$/, (context) => {
-    if(context.user.webinar.metadata.time) return;
-    
+    if (context.user.webinar.metadata.time) return;
+
     const text =
       context.callbackQuery && "data" in context.callbackQuery
         ? context.callbackQuery.data
@@ -45,9 +45,9 @@ export default function setScheduleTimeAction(bot: Telegraf) {
             )
             .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
-            ...times.map((value, index) => {
+            ...times.map((value) => {
               const [emoji, time] = value.split(/\s+/g);
-              date.add(index, "days").set({
+              date.set({
                 second: 0,
                 minute: 0,
                 hour: parseInt(time.replace(/AM|PM/i, "")),
@@ -56,7 +56,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
               return [
                 Markup.button.callback(
                   date.format(format("% %", emoji, "h A")),
-                  format("set_schedule_date-%", date.toISOString())
+                  format("setScheduleDate_%", date.toISOString())
                 ),
               ];
             }),
