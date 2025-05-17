@@ -5,7 +5,7 @@ services:
     plan: starter
     autoDeploy: true
     buildCommand: bun install && bun run build
-    startCommand: bun migrate && bun dist/src/index.js
+    startCommand: bun migrate && node dist/src/index.js
     envVars:
       - fromGroup: trevonis/bot
       - key: DATABASE_URL
