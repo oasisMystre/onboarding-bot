@@ -16,7 +16,7 @@ export const main = (bot: Telegraf) => {
     const promises = [];
 
     bot.catch((error) => console.error(error));
-    if (process.env.DOMAIN) {
+    if (process.env.RENDER_EXTERNAL_HOSTNAME) {
       server.post(
         format("/telegraf/%", bot.secretPathComponent()),
         (await bot.createWebhook({ domain: process.env.DOMAIN! })) as any

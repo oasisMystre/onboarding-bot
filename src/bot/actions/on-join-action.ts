@@ -3,7 +3,7 @@ import { message } from "telegraf/filters";
 import { Context, Markup, type Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 
 export default function onJoinAction(bot: Telegraf) {
   const onJoin = async (context: Context) => {
