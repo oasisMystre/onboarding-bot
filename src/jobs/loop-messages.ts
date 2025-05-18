@@ -10,11 +10,12 @@ import { updateUserById } from "../controllers/users.controller";
 
 export const loopMessages = async (db: Database, bot: Telegraf) => {
   const dbUsers = await db
-    .select({
+    .selectDistinct({
       ...getTableColumns(users),
       webinar: getTableColumns(webinar),
     })
     .from(users)
+    
     .innerJoin(webinar, eq(webinar.metadata, {}));
 
   console.log("[processing.loop.messages] users=", dbUsers.length);

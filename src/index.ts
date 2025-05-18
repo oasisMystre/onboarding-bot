@@ -9,60 +9,56 @@ import registerBot from "./bot";
 import { format } from "./utils/format";
 import { processScheduledMessages, loopMessages, checkJoined } from "./jobs";
 
-export const main = (bot: Telegraf) => {
-  async function main(server: FastifyInstance, bot: Telegraf) {
-    registerBot(bot);
+async function main(server: FastifyInstance, bot: Telegraf) {
+  registerBot(bot);
 
-    const promises = [];
+  const promises = [];
 
-    bot.catch((error) => console.error(error));
-    if (process.env.RENDER_EXTERNAL_URL) {
-      server.post(
-        format("/telegraf/%", bot.secretPathComponent()),
-        (await bot.createWebhook({
-          domain: process.env.RENDER_EXTERNAL_URL,
-        })) as any
-      );
-    } else
-      promises.push(
-        bot.launch().then(() => console.log("bot running in background"))
-      );
-
+  bot.catch((error) => console.error(error));
+  if (process.env.RENDER_EXTERNAL_HOSTNAME) {
+    server.post(
+      format("/telegraf/%", bot.secretPathComponent()),
+      (await bot.createWebhook({
+        domain: process.env.RENDER_EXTERNAL_HOSTNAME,
+      })) as any
+    );
+  } else
     promises.push(
-      server.listen({
-        host: process.env.HOST ? process.env.HOST : "0.0.0.0",
-        port: process.env.PORT ? Number(process.env.PORT!) : 10004,
-      })
+      bot.launch().then(() => console.log("bot running in background"))
     );
 
-    process.once("SIGINT", () => bot.stop("SIGINT"));
-    process.once("SIGTERM", () => bot.stop("SIGTERM"));
+  promises.push(
+    server.listen({
+      host: process.env.HOST ? process.env.HOST : "0.0.0.0",
+      port: process.env.PORT ? Number(process.env.PORT!) : 10004,
+    })
+  );
 
-    cron.schedule("*/2 * * * *", () => {
-      processScheduledMessages(db, bot).catch((error) => {
-        console.error(error);
-      });
+  process.once("SIGINT", () => bot.stop("SIGINT"));
+  process.once("SIGTERM", () => bot.stop("SIGTERM"));
+
+  cron.schedule("*/2 * * * *", () => {
+    processScheduledMessages(db, bot).catch((error) => {
+      console.error(error);
     });
+  });
 
-    cron.schedule("0 */8 * * *", () => {
-      loopMessages(db, bot).catch((error) => {
-        console.error(error);
-      });
+  cron.schedule("0 */8 * * *", () => {
+    loopMessages(db, bot).catch((error) => {
+      console.error(error);
     });
+  });
 
-    cron.schedule("*/10 * * * * *", () => {
-      checkJoined(db, bot).catch((error) => {
-        console.error(error);
-      });
+  cron.schedule("*/10 * * * * *", () => {
+    checkJoined(db, bot).catch((error) => {
+      console.error(error);
     });
+  });
 
-    return Promise.all(promises);
-  }
-
-  const server = fastify({ logger: true, ignoreTrailingSlash: true });
-
-  main(server, bot);
-};
+  return Promise.all(promises);
+}
 
 const bot = new Telegraf(getEnv("TELEGRAM_ACCESS_TOKEN"));
-main(bot);
+const server = fastify({ logger: true, ignoreTrailingSlash: true });
+
+main(server, bot);

@@ -1,4 +1,4 @@
-%name%, just checking in\. Did you make it to the webinar\?
+%name%\, just checking in\. Did you make it to the webinar\?
 
 We shared some powerful strategies and actionable steps that could seriously move you forward\.
 

@@ -47,6 +47,8 @@ export const checkJoined = async (db: Database, bot: Telegraf) => {
     })
     .execute();
 
+  console.log("[processing.checked.joined] unjoined=", unjoinedUsers.length);
+
   return Promise.allSettled(
     unjoinedUsers.flatMap(async (user) => {
       await bot.telegram
