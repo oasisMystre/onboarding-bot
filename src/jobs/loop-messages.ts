@@ -20,7 +20,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
 
   console.log("[processing.loop.messages] users=", dbUsers.length);
 
-  return Promise.allSettled(
+  return Promise.all(
     dbUsers.flatMap(async (user) => {
       const loopIndex = user.loopIndex >= 20 ? 1 : user.loopIndex + 1;
 

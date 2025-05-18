@@ -49,7 +49,7 @@ export const checkJoined = async (db: Database, bot: Telegraf) => {
 
   console.log("[processing.checked.joined] unjoined=", unjoinedUsers.length);
 
-  return Promise.allSettled(
+  return Promise.all(
     unjoinedUsers.flatMap(async (user) => {
       await bot.telegram
         .approveChatJoinRequest(getEnv("CHANNEL_ID"), Number(user.id))
