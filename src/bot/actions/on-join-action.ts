@@ -3,11 +3,16 @@ import { message } from "telegraf/filters";
 import { Context, Markup, type Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
+import { db } from "../../instances";
 import { cleanText } from "../../utils/format";
+import { joinChannel } from "../utils/join-channel";
+import { deleteMessagesByUser } from "../../controllers/message.controller";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function onJoinAction(bot: Telegraf) {
   const onJoin = async (context: Context) => {
-    return Promise.all([
+    return Promise.allSettled([
+      joinChannel(context),
       context.telegram.sendMessage(
         context.user.id,
         readFileSync("locale/en/joined-group.md", "utf-8").replace(
@@ -36,5 +41,12 @@ export default function onJoinAction(bot: Telegraf) {
   });
 
   bot.on("chat_join_request", onJoin);
+  bot.on("left_chat_member", (context) => {
+    console.log('left user');
+    Promise.all([
+      deleteMessagesByUser(db, context.user.id),
+      updateWebinarById(db, context.user.webinar.id, { metadata: {} }),
+    ]);
+  });
   bot.on(message("new_chat_members"), onJoin);
 }

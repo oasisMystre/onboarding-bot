@@ -15,6 +15,13 @@
       "when": 1747185002750,
       "tag": "0001_fresh_ironclad",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1747550254288,
+      "tag": "0002_third_sally_floyd",
+      "breakpoints": true
     }
   ]
 }

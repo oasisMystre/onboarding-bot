@@ -18,7 +18,7 @@ export default function scheduleAction(bot: Telegraf) {
       const [, type] = data.split(/-/g);
       const dates = type === "weekdays" ? getWeekdays() : getWeekends();
 
-      return Promise.all([
+      return Promise.allSettled([
         updateWebinarById(db, context.user.webinar.id, {
           metadata: {
             ...context.user.webinar.metadata,

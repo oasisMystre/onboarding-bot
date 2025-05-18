@@ -15,7 +15,7 @@ import {
 export default function onStartAction(bot: Telegraf) {
   const onStart = privateFunc(async (context) => {
     if (context.from)
-      return Promise.all([
+      return Promise.allSettled([
         context.telegram
           .approveChatJoinRequest(getEnv("CHANNEL_ID", Number), context.from.id)
           .catch(async (error) => {

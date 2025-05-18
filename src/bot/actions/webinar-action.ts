@@ -8,7 +8,7 @@ import { deleteMessagesByUser } from "../../controllers/message.controller";
 
 export const webinarAction = (bot: Telegraf) => {
   bot.action("webinar", (context) => {
-    return Promise.all([
+    return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, { metadata: {} }),
       context.replyWithMarkdownV2(
