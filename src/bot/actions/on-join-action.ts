@@ -35,5 +35,6 @@ export default function onJoinAction(bot: Telegraf) {
     if (context.chatMember.new_chat_member) return onJoin(context);
   });
 
+  bot.on("chat_join_request", onJoin);
   bot.on(message("new_chat_members"), onJoin);
 }
