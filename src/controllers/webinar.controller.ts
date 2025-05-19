@@ -1,3 +1,4 @@
+import type { z } from "zod";
 import { eq } from "drizzle-orm";
 
 import { Database } from "../db";
@@ -10,17 +11,17 @@ import {
 
 export const createWebinar = (
   db: Database,
-  value: Zod.infer<typeof webinarInsertSchema>
+  value: z.infer<typeof webinarInsertSchema>
 ) => db.insert(webinar).values(value).returning().execute();
 
 export const getWebinarByUser = (
   db: Database,
-  user: Zod.infer<typeof userSelectSchema>["id"]
+  user: z.infer<typeof userSelectSchema>["id"]
 ) => db.query.webinar.findFirst({ where: eq(webinar.id, user) });
 
 export const updateWebinarById = (
   db: Database,
-  id: Zod.infer<typeof webinarSelectSchema>["id"],
-  value: Partial<Zod.infer<typeof webinarInsertSchema>>
+  id: z.infer<typeof webinarSelectSchema>["id"],
+  value: Partial<z.infer<typeof webinarInsertSchema>>
 ) =>
   db.update(webinar).set(value).where(eq(webinar.id, id)).returning().execute();

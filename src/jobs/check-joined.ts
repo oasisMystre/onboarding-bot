@@ -1,3 +1,5 @@
+import type { z } from "zod";
+
 import { eq } from "drizzle-orm";
 import { readFileSync } from "fs";
 import { Markup, TelegramError, type Telegraf } from "telegraf";
@@ -12,7 +14,7 @@ import { updateUserById } from "../controllers/users.controller";
 const onJoin = async (
   db: Database,
   bot: Telegraf,
-  user: Zod.infer<typeof userInsertSchema>,
+  user: z.infer<typeof userInsertSchema>,
   sendMessage?: boolean
 ) => [
   updateUserById(db, user.id, { joinedChannel: true }),
