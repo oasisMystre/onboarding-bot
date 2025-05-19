@@ -56,11 +56,14 @@ export const checkJoined = async (db: Database, bot: Telegraf) => {
       await bot.telegram
         .approveChatJoinRequest(getEnv("CHANNEL_ID"), Number(user.id))
         .then(() => onJoin(db, bot, user, true))
-        .catch((error) => {
+        .catch(async (error) => {
           if (error instanceof TelegramError) {
             if (error.description.includes("USER_ALREADY_PARTICIPANT"))
               return onJoin(db, bot, user);
-            return Promise.reject(error);
+            bot.telegram.sendMessage(
+              user.id,
+              getEnv<string>("CHANNEL_INVITE_LINK")
+            );
           }
         });
     })
