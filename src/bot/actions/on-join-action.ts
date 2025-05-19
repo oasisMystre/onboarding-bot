@@ -42,10 +42,12 @@ export default function onJoinAction(bot: Telegraf) {
 
   bot.on("chat_join_request", onJoin);
   bot.on("left_chat_member", (context) => {
-    console.log('left user');
+    console.log("left user");
     Promise.all([
       deleteMessagesByUser(db, context.user.id),
-      updateWebinarById(db, context.user.webinar.id, { metadata: {} }),
+      updateWebinarById(db, context.user.webinar.id, {
+        metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
+      }),
     ]);
   });
   bot.on(message("new_chat_members"), onJoin);

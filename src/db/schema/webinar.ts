@@ -1,4 +1,5 @@
-import { jsonb, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { boolean, jsonb, pgTable, text, uuid } from "drizzle-orm/pg-core";
+
 import { users } from "./users";
 
 type Metadata = {
@@ -6,6 +7,8 @@ type Metadata = {
   date?: string | null;
   time?: string | null;
   reschedule?: boolean | null;
+  preWebinarLoopIndex: number;
+  postWebinarLoopIndex: number;
 };
 
 export const webinar = pgTable("webinar", {
@@ -14,5 +17,10 @@ export const webinar = pgTable("webinar", {
     .references(() => users.id, { onDelete: "cascade" })
     .unique()
     .notNull(),
+  state: text({ enum: ["pre", "post"] })
+    .default("pre")
+    .notNull(),
+  disablePostWebinarSequence: boolean().default(false),
+  disablePreWebinarSequence: boolean().default(false),
   metadata: jsonb().$type<Metadata>().notNull(),
 });

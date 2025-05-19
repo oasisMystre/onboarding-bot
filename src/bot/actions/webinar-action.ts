@@ -10,7 +10,9 @@ export const webinarAction = (bot: Telegraf) => {
   bot.action("webinar", (context) => {
     return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
-      updateWebinarById(db, context.user.webinar.id, { metadata: {} }),
+      updateWebinarById(db, context.user.webinar.id, {
+        metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
+      }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
           "%name%",

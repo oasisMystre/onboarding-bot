@@ -1,40 +1,72 @@
 import { readFileSync } from "fs";
+import { eq, or } from "drizzle-orm";
 import { Markup, Telegraf } from "telegraf";
-import { eq, getTableColumns } from "drizzle-orm";
 
 import { getEnv } from "../env";
 import { Database } from "../db";
 import { format } from "../utils/format";
-import { users, webinar } from "../db/schema";
-import { updateUserById } from "../controllers/users.controller";
+import { webinar } from "../db/schema";
+import { updateWebinarById } from "../controllers/webinar.controller";
 
 export const loopMessages = async (db: Database, bot: Telegraf) => {
-  const dbUsers = await db
-    .selectDistinct({
-      ...getTableColumns(users),
-      webinar: getTableColumns(webinar),
-    })
-    .from(users)
-    
-    .innerJoin(webinar, eq(webinar.metadata, {}));
+  const webinars = await db.query.webinar.findMany({
+    where: or(
+      eq(webinar.disablePreWebinarSequence, false),
+      eq(webinar.disablePostWebinarSequence, false)
+    ),
+    with: {
+      user: {
+        columns: { id: true, name: true },
+      },
+    },
+    columns: {
+      id: true,
+      state: true,
+      metadata: true,
+    },
+  });
 
-  console.log("[processing.loop.messages] users=", dbUsers.length);
+  console.log("[processing.loop.messages] webinars=", webinars.length);
 
   return Promise.all(
-    dbUsers.flatMap(async (user) => {
-      const loopIndex = user.loopIndex >= 20 ? 1 : user.loopIndex + 1;
+    webinars.flatMap(async (webinar) => {
+      const loopIndex =
+        webinar.state === "pre"
+          ? webinar.metadata.preWebinarLoopIndex >= 20
+            ? 1
+            : webinar.metadata.preWebinarLoopIndex
+          : webinar.metadata.postWebinarLoopIndex >= 20
+          ? 1
+          : webinar.metadata.postWebinarLoopIndex;
+
+      if (webinar.state === "pre")
+        webinar.metadata.preWebinarLoopIndex = loopIndex + 1;
+      else webinar.metadata.postWebinarLoopIndex = loopIndex + 1;
 
       return [
         bot.telegram.sendMessage(
-          user.id,
+          webinar.user.id,
           readFileSync(
-            format("locale/en/loop/flow-%.md", loopIndex),
+            format(
+              "locale/en/loop/%/flow-%.md",
+              webinar.state === "pre" ? "prewebinar" : "postwebinar",
+              loopIndex
+            ),
             "utf-8"
-          ).replace("%name%", user.name!),
+          )
+            .replace("%name%", webinar.user.name!)
+            .replace("%product_name%", getEnv("PRODUCT_NAME")),
           {
             parse_mode: "MarkdownV2",
             reply_markup: Markup.inlineKeyboard([
-              [Markup.button.callback("🚀 I'm Ready", "webinar")],
+              [
+                webinar.state === "pre"
+                  ? Markup.button.callback("🚀 I'm Ready", "webinar")
+                  : Markup.button.url(
+                      "➕ Create Account",
+                      getEnv("TRADE_ACCOUNT_LINK")
+                    ),
+              ],
               [
                 Markup.button.switchToChat(
                   "💬 Contact Support",
@@ -44,7 +76,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
             ]).reply_markup,
           }
         ),
-        updateUserById(db, user.id, { loopIndex }),
+        updateWebinarById(db, webinar.id, { metadata: webinar.metadata }),
       ];
     })
   );

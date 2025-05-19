@@ -21,10 +21,14 @@ export default function onStartAction(bot: Telegraf) {
           .catch(async (error) => {
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
-                return Promise.all([
+                return Promise.allSettled([
                   deleteMessagesByUser(db, context.user.id),
                   updateWebinarById(db, context.user!.webinar.id, {
-                    metadata: {},
+                    state: "pre",
+                    metadata: {
+                      postWebinarLoopIndex: 1,
+                      preWebinarLoopIndex: 1,
+                    },
                   }),
                   createMessages(db, {
                     text: readFileSync(

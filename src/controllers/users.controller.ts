@@ -17,7 +17,10 @@ export const createUser = async (
 
   const [webinar] = await db
     .insert(_webinar)
-    .values({ user: user.id, metadata: {} })
+    .values({
+      user: user.id,
+      metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
+    })
     .onConflictDoUpdate({ target: _webinar.user, set: { user: user.id } })
     .returning()
     .execute();

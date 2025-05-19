@@ -179,7 +179,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
               {
                 type: "callback",
                 name: "🔁 I Missed It But Want the Replay",
-                data: "start",
+                data: "on-start",
               },
             ],
           ],

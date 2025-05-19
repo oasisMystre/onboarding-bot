@@ -1,4 +1,4 @@
-import z, { boolean, object, string, enum as enum_ } from "zod";
+import z, { boolean, object, string, enum as enum_, number } from "zod";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { messages, users, webinar } from "./schema";
 
@@ -34,6 +34,8 @@ const webinarMetadata = object({
   time: string().nullish(),
   schedule: enum_(["weekdays", "weekend"]).nullish(),
   reschedule: boolean().nullish(),
+  preWebinarLoopIndex: number(),
+  postWebinarLoopIndex: number(),
 });
 
 export const webinarSelectSchema = createSelectSchema(webinar, {

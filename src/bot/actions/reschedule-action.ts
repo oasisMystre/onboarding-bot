@@ -11,7 +11,7 @@ export default function rescheduleAction(bot: Telegraf) {
     return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
-        metadata: { reschedule: true },
+        metadata: { ...context.user.webinar.metadata, reschedule: true },
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-4.md", "utf-8").replace(
