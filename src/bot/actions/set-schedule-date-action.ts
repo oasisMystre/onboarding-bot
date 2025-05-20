@@ -22,21 +22,17 @@ export default function setScheduleDateAction(bot: Telegraf) {
       const now = moment();
       const date = moment(ISOString);
 
-      const twentyHrsBefore = moment(date).subtract(24, "hours");
-      const twelveHrsBefore = moment(date).subtract(12, "hours");
-      const sixHrsBefore = moment(date).subtract(6, "hours");
-      const twoHoursBefore = moment(date).subtract(2, "hours");
-      const thirtyMinutesBefore = moment(date).subtract(30, "minutes");
-      const fifteenMinutesBefore = moment(date).subtract(15, "minutes");
+      const diffHours = date.clone().diff(now, "hours");
+      const diffMinutes = date.clone().diff(now, "minutes");
 
       const scheduleMessages = [];
 
-      if (twentyHrsBefore.isSameOrAfter(now.add(24, "hours"))) {
+      if (diffHours >= 24) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: twelveHrsBefore.toDate(),
+            schedule: date.clone().subtract(24, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
               .replace(
                 "%name%",
@@ -48,12 +44,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           })
         );
       }
-      if (twelveHrsBefore.isSameOrAfter(now.add(12, "hours"))) {
+
+      if (diffHours >= 12) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: twelveHrsBefore.toDate(),
+            schedule: date.clone().subtract(12, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-10.md", "utf-8")
               .replace(
                 "%name%",
@@ -65,12 +62,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           })
         );
       }
-      if (sixHrsBefore.isSameOrAfter(now.add(6, "hours"))) {
+
+      if (diffHours >= 6) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: sixHrsBefore.toDate(),
+            schedule: date.clone().subtract(6, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-11.md", "utf-8")
               .replace(
                 "%name%",
@@ -82,12 +80,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           })
         );
       }
-      if (twoHoursBefore.isSameOrAfter(now.add(2, "hours"))) {
+
+      if (diffHours >= 2) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: twoHoursBefore.toDate(),
+            schedule: date.clone().subtract(2, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-12.md", "utf-8")
               .replace(
                 "%name%",
@@ -99,12 +98,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           })
         );
       }
-      if (thirtyMinutesBefore.isSameOrAfter(now.add(30, "minutes"))) {
+
+      if (diffMinutes >= 30) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: thirtyMinutesBefore.toDate(),
+            schedule: date.clone().subtract(30, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
               .replace(
                 "%name%",
@@ -116,12 +116,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           })
         );
       }
-      if (fifteenMinutesBefore.isSameOrAfter(now.add(30, "minutes"))) {
+
+      if (diffMinutes >= 5) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: fifteenMinutesBefore.toDate(),
+            schedule: date.clone().subtract(5, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
               "%name%",
               cleanText(
@@ -184,7 +185,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             ],
           ],
           user: context.user.id,
-          schedule: moment(date).add(1, "hours").toDate(),
+          schedule: date.clone().add(1, "hours").toDate(),
           text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
             "%name%",
             cleanText(

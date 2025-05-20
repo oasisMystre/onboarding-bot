@@ -8,7 +8,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
   bot.action(/^setScheduleTime_(.+)$/, (context) => {
-    if (context.user.webinar.metadata.time) return;
+    if (context.user.webinar.metadata.date) return;
 
     const text =
       context.callbackQuery && "data" in context.callbackQuery
@@ -45,21 +45,35 @@ export default function setScheduleTimeAction(bot: Telegraf) {
             )
             .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
-            ...times.map((value) => {
-              const [emoji, time] = value.split(/\s+/g);
-              date.set({
-                second: 0,
-                minute: 0,
-                hour: parseInt(time.replace(/AM|PM/i, "")),
-              });
+            ...times
+              .filter((value) => {
+                const [, time] = value.split(/\s+/g);
+                const now = moment();
+                const dateClone = date
+                  .clone()
+                  .set({
+                    second: 0,
+                    minute: 0,
+                    hour: parseInt(time.replace(/AM|PM/i, "")),
+                  });
 
-              return [
-                Markup.button.callback(
-                  date.format(format("% %", emoji, "h A")),
-                  format("setScheduleDate_%", date.toISOString())
-                ),
-              ];
-            }),
+                  return dateClone.diff(now) > 0;
+              })
+              .map((value) => {
+                const [emoji, time] = value.split(/\s+/g);
+                date.set({
+                  second: 0,
+                  minute: 0,
+                  hour: parseInt(time.replace(/AM|PM/i, "")),
+                });
+
+                return [
+                  Markup.button.callback(
+                    date.format(format("% %", emoji, "h A")),
+                    format("setScheduleDate_%", date.toISOString())
+                  ),
+                ];
+              }),
           ])
         ),
       ]);

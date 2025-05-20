@@ -6,6 +6,7 @@ import { db } from "../../instances";
 import { getEnv } from "../../env";
 import { privateFunc } from "../utils/private-func";
 import { cleanText, format } from "../../utils/format";
+import { updateUserById } from "controllers/users.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import {
   createMessages,
@@ -19,10 +20,12 @@ export default function onStartAction(bot: Telegraf) {
         context.telegram
           .approveChatJoinRequest(getEnv("CHANNEL_ID", Number), context.from.id)
           .catch(async (error) => {
+            console.error(error);
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
                 return Promise.allSettled([
                   deleteMessagesByUser(db, context.user.id),
+                  updateUserById(db, context.user.id, { joinedChannel: true }),
                   updateWebinarById(db, context.user!.webinar.id, {
                     state: "pre",
                     metadata: {
