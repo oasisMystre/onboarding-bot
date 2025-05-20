@@ -15,17 +15,17 @@ async function main(server: FastifyInstance, bot: Telegraf) {
   const promises = [];
 
   bot.catch((error) => console.error(error));
-  if (process.env.RENDER_EXTERNAL_HOSTNAME) {
-    server.post(
-      format("/telegraf/%", bot.secretPathComponent()),
-      (await bot.createWebhook({
-        domain: process.env.RENDER_EXTERNAL_HOSTNAME,
-      })) as any
-    );
-  } else
-    promises.push(
-      bot.launch().then(() => console.log("bot running in background"))
-    );
+  // if (process.env.RENDER_EXTERNAL_HOSTNAME) {
+  //   server.post(
+  //     format("/telegraf/%", bot.secretPathComponent()),
+  //     (await bot.createWebhook({
+  //       domain: process.env.RENDER_EXTERNAL_HOSTNAME,
+  //     })) as any
+  //   );
+  // } else
+  promises.push(
+    bot.launch().then(() => console.log("bot running in background"))
+  );
 
   promises.push(
     server.listen({
@@ -49,7 +49,7 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     });
   });
 
-  cron.schedule("*/10 * * * * *", () => {
+  cron.schedule("* * * * *", () => {
     checkJoined(db, bot).catch((error) => {
       console.error(error);
     });
