@@ -1,4 +1,4 @@
-Just 15 Minutes to Go\, %name%\! 
+Just 5 Minutes to Go\, %name%\! 
  
 Your exclusive webinar is about to begin\! 🎯
 
