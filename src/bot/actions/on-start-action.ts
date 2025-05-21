@@ -29,7 +29,7 @@ export default function onStartAction(bot: Telegraf) {
                   updateWebinarById(db, context.user!.webinar.id, {
                     state: "pre",
                     metadata: {
-                      postWebinarLoopIndex: 1,
+                      postWebinarLoopIndex: 2,
                       preWebinarLoopIndex: 1,
                     },
                   }),
