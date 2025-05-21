@@ -1,5 +1,5 @@
+import moment from "moment";
 import { readFileSync } from "fs";
-import moment from "moment-timezone";
 import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
@@ -17,7 +17,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
 
     if (text) {
       const [, ISOString] = text.split(/_/);
-      const date = moment(ISOString).tz("Africa/Lagos");
+      const date = moment(ISOString);
 
       const times = [
         "🕘 9AM",
@@ -48,7 +48,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
             ...times
               .filter((value) => {
                 const [, time] = value.split(/\s+/g);
-                const now = moment().tz("Africa/Lagos");
+                const now = moment();
                 const dateClone = date
                   .clone()
                   .set({
