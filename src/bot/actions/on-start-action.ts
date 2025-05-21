@@ -20,7 +20,6 @@ export default function onStartAction(bot: Telegraf) {
         context.telegram
           .approveChatJoinRequest(getEnv("CHANNEL_ID", Number), context.from.id)
           .catch(async (error) => {
-            console.error(error);
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
                 return Promise.allSettled([

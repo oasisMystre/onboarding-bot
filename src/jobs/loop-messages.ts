@@ -28,7 +28,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
 
   console.log("[processing.loop.messages] webinars=", webinars.length);
 
-  return Promise.all(
+  return Promise.allSettled(
     webinars.flatMap(async (webinar) => {
       const loopIndex =
         webinar.state === "pre"
