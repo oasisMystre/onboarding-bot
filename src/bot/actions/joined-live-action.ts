@@ -11,7 +11,7 @@ export const joinedLiveAction = (bot: Telegraf) => {
       updateWebinarById(db, context.user.webinar.id, { state: "post" }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/loop/postwebinar/flow-1.md", "utf-8")
-          .replace("%name%", context.user.name!)
+          .replace("%name%", context.user.name)
           .replace("%product_name%", getEnv("PRODUCT_NAME")),
         {
           parse_mode: "MarkdownV2",
