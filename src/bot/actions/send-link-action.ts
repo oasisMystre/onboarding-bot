@@ -1,6 +1,6 @@
-import moment from "moment";
 import { readFileSync } from "fs";
 import { Telegraf } from "telegraf";
+import moment from "moment-timezone";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
@@ -21,7 +21,7 @@ export default function sendLinkAction(bot: Telegraf) {
       createMessages(db, {
         buttons: [],
         user: context.user.id,
-        schedule: moment().add(2, "minutes").toDate(),
+        schedule: moment().tz("Africa/Lagos").add(2, "minutes").toDate(),
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
           .replace("%code%", cleanText(getEnv("CODE")))
           .replace("%admin%", cleanText(getEnv("ADMIN")))
@@ -45,7 +45,7 @@ export default function sendLinkAction(bot: Telegraf) {
           ],
         ],
         user: context.user.id,
-        schedule: moment().add(1, "hours").toDate(),
+        schedule: moment().tz("Africa/Lagos").add(1, "hours").toDate(),
         text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
           "%name%",
           cleanText(

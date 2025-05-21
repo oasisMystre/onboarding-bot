@@ -1,5 +1,3 @@
-import moment from "moment";
-
 export function cleanText(value: string) {
   return value
     .replace(/\_/g, "\\_")

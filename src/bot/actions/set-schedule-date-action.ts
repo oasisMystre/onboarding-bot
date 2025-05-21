@@ -1,6 +1,6 @@
-import moment from "moment";
 import { readFileSync } from "fs";
 import { Telegraf } from "telegraf";
+import moment from "moment-timezone";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
@@ -19,8 +19,8 @@ export default function setScheduleDateAction(bot: Telegraf) {
 
     if (text) {
       const [, ISOString] = text.split(/_/g);
-      const now = moment();
-      const date = moment(ISOString);
+      const now = moment().tz("Africa/Lagos");
+      const date = moment(ISOString).tz("Africa/Lagos");
 
       const diffHours = date.clone().diff(now, "hours");
       const diffMinutes = date.clone().diff(now, "minutes");
@@ -150,7 +150,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
         createMessages(db, {
           buttons: [],
           user: context.user.id,
-          schedule: moment().add(2, "minutes").toDate(),
+          schedule: moment().tz("Africa/Lagos").add(2, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace("%admin%", cleanText(getEnv("ADMIN")))

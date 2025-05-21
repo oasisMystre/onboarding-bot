@@ -1,5 +1,5 @@
-import moment from "moment";
 import { readFileSync } from "fs";
+import moment from "moment-timezone";
 import { TelegramError, type Telegraf } from "telegraf";
 
 import { db } from "../../instances";
@@ -60,7 +60,10 @@ export default function onStartAction(bot: Telegraf) {
                       },
                     ],
                     user: context.user.id,
-                    schedule: moment().add(2, "minutes").toDate(),
+                    schedule: moment()
+                      .tz("Africa/Lagos")
+                      .add(2, "minutes")
+                      .toDate(),
                   }),
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")

@@ -4,6 +4,7 @@ import type { InlineKeyboardButton } from "telegraf/types";
 
 import { Database } from "../db";
 import { Button, messages } from "../db/schema";
+import moment from "moment-timezone";
 
 export const getButtons = (buttons: Button[] | Button[][]) => {
   const results: unknown[] = [];
@@ -17,7 +18,7 @@ export const getButtons = (buttons: Button[] | Button[][]) => {
 };
 
 export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
-  const now = new Date();
+  const now = moment().tz('Africa/Lagos').toDate();
   const scheduledMessages = await db.query.messages
     .findMany({
       where: lte(messages.schedule, now),
