@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import { format } from "./utils/format";
 
-type Env = "CODE"|"PROJECT_NAME"|"PRODUCT_NAME"|"ADMIN"|"CHANNEL_ID"|"DATABASE_URL"|"TELEGRAM_ACCESS_TOKEN"|"CHANNEL_INVITE_LINK"|"TRADE_ACCOUNT_LINK";
+type Env = "CODE"|"PROJECT_NAME"|"PRODUCT_NAME"|"ADMIN"|"CHANNEL_ID"|"CONTACT_SUPPORT"|"DATABASE_URL"|"CHANNEL_INVITE_LINK"|"TELEGRAM_ACCESS_TOKEN"|"TRADE_ACCOUNT_LINK";
 
 export const getEnv = <T extends object | number | string | null = string>(
   name: Env,

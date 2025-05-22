@@ -22,7 +22,12 @@ export const joinedLiveAction = (bot: Telegraf) => {
                 getEnv("TRADE_ACCOUNT_LINK")
               ),
             ],
-            [Markup.button.switchToChat("💬 Contact Support", getEnv("ADMIN"))],
+            [
+              Markup.button.url(
+                "💬 Contact Support",
+                getEnv("CONTACT_SUPPORT")
+              ),
+            ],
           ]).reply_markup,
         }
       ),

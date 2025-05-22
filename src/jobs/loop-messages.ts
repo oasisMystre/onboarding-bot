@@ -68,9 +68,9 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
                     ),
               ],
               [
-                Markup.button.switchToChat(
+                Markup.button.url(
                   "💬 Contact Support",
-                  getEnv("ADMIN")
+                  getEnv("CONTACT_SUPPORT")
                 ),
               ],
             ]).reply_markup,
