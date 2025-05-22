@@ -3,7 +3,7 @@ import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
-import { getWeekdays, getWeekends } from "../../utils/date";
+import { formatDate, getWeekdays, getWeekends } from "../../utils/date";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function scheduleAction(bot: Telegraf) {
@@ -36,7 +36,7 @@ export default function scheduleAction(bot: Telegraf) {
             ...dates.map((date) => {
               return [
                 Markup.button.callback(
-                  date.format("MMM Do YYYY"),
+                  formatDate(date),
                   format("setScheduleTime_%", date.toISOString())
                 ),
               ];

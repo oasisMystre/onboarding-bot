@@ -1,4 +1,4 @@
-⏳ 30 Minutes to Go\, %name%\!
+⏳ 15 Minutes to Go\, %name%\!
 
 We\’re going Live shortly\, your exclusive webinar starts at %time% ⏰
 

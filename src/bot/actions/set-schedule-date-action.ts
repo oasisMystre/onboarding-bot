@@ -99,12 +99,12 @@ export default function setScheduleDateAction(bot: Telegraf) {
         );
       }
 
-      if (diffMinutes >= 30) {
+      if (diffMinutes >= 15) {
         scheduleMessages.push(
           createMessages(db, {
             buttons: [],
             user: context.user.id,
-            schedule: date.clone().subtract(30, "minutes").toDate(),
+            schedule: date.clone().subtract(15, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
               .replace(
                 "%name%",

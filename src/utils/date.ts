@@ -31,3 +31,14 @@ export const getWeekends = (): Moment[] => {
 
   return weekends;
 };
+
+export const formatDate = (date: Moment) => {
+  return date.calendar(null, {
+    sameDay: `[Today] -- MMM Do YYYY`,
+    nextDay: `[Tomorrow] -- MMM Do YYYY`,
+    nextWeek: `dddd -- MMM Do YYYY`,
+    lastDay: `[Yesterday] -- MMM Do YYYY`,
+    lastWeek: `[Last] dddd -- MMM Do YYYY`,
+    sameElse: `dddd -- MMM Do YYYY`,
+  });
+};
