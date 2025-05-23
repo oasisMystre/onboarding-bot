@@ -19,7 +19,13 @@ export default function sendLinkAction(bot: Telegraf) {
         metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
       }),
       createMessages(db, {
-        buttons: [],
+        buttons: [
+          {
+            type: "url",
+            name: "📈 Create Trading Account",
+            data: getEnv("TRADE_ACCOUNT_LINK"),
+          },
+        ],
         user: context.user.id,
         schedule: moment().add(2, "minutes").toDate(),
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")

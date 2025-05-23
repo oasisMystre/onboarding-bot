@@ -21,8 +21,8 @@ export default function rescheduleAction(bot: Telegraf) {
           )
         ),
         Markup.inlineKeyboard([
-          Markup.button.callback("Weekdays", "schedule-weekdays"),
-          Markup.button.callback("Weekend", "schedule-weekend"),
+          Markup.button.callback("💼 Weekdays", "schedule-weekdays"),
+          Markup.button.callback("🎉 Weekend", "schedule-weekend"),
         ])
       ),
     ]);

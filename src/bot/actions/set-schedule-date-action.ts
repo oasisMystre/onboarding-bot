@@ -148,7 +148,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
         ),
 
         createMessages(db, {
-          buttons: [],
+          buttons: [
+            {
+              type: "url",
+              name: "📈 Create Trading Account",
+              data: getEnv("TRADE_ACCOUNT_LINK"),
+            },
+          ],
           user: context.user.id,
           schedule: moment().add(2, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
@@ -157,7 +163,11 @@ export default function setScheduleDateAction(bot: Telegraf) {
             .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
         }),
         createMessages(db, {
-          buttons: [],
+          buttons: [{
+            type: "url",
+            name: "🔴 Join us live now",
+            data: getEnv('CHANNEL_INVITE_LINK'),
+          }],
           user: context.user.id,
           schedule: date.toDate(),
           text: readFileSync("locale/en/webinar/flow-15.md", "utf-8").replace(
