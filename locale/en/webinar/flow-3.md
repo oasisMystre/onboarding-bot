@@ -2,7 +2,7 @@
 
 [✅ Create your trading acount here](%link%)\.
 
-Once done, send your code `%code%` to %admin%
+Once done, send your code *`%code%`* to %admin%
 
 So we can *activate your access immediately* before the session starts\.
 
