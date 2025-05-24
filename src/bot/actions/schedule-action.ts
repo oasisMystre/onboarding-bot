@@ -8,7 +8,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function scheduleAction(bot: Telegraf) {
   bot.action(/schedule-(weekdays|weekend)/, (context) => {
-    if (context.user.webinar.metadata.date) return;
+    if (context.user.webinar.metadata.date) return context.deleteMessage();
 
     const data =
       context.callbackQuery && "data" in context.callbackQuery

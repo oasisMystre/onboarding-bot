@@ -13,7 +13,9 @@ import {
 
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
-    return Promise.allSettled([
+    if (context.user.webinar.metadata.date) return context.deleteMessage();
+
+    return Promise.all([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
@@ -67,6 +69,7 @@ export default function sendLinkAction(bot: Telegraf) {
               format("%%", context.from.first_name, context.from.last_name)
             )
           )
+          .replace("%link%", getEnv("CHANNEL_INVITE_LINK"))
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         Markup.inlineKeyboard([
           Markup.button.url(
@@ -75,7 +78,6 @@ export default function sendLinkAction(bot: Telegraf) {
           ),
         ])
       ),
-      context.deleteMessage(),
     ]);
   });
 }
