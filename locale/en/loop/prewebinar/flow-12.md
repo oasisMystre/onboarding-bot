@@ -2,4 +2,4 @@
 
 The best time was yesterday\. 
 
-*The next best time is now\.*
+*The next best time is now\, %name%\.*
