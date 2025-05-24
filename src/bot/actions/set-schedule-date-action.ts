@@ -165,7 +165,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
         createMessages(db, {
           buttons: [{
             type: "url",
-            name: "🔴 Join us live now",
+            name: "🔴 Join Us Live Now",
             data: getEnv('CHANNEL_INVITE_LINK'),
           }],
           user: context.user.id,

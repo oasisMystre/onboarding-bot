@@ -70,7 +70,7 @@ export default function sendLinkAction(bot: Telegraf) {
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         Markup.inlineKeyboard([
           Markup.button.url(
-            "🔴 Join us live now",
+            "🔴 Join Us Live Now",
             getEnv("CHANNEL_INVITE_LINK")
           ),
         ])
