@@ -9,4 +9,4 @@ This is your final chance to prepare\!
 
 Remember\, spots are limited and it\'s first come\, first served\.
 
-Set your reminder\, clear your schedule\, and get ready to make a real change\! See you soon\! 🚀*
+*Set your reminder\, clear your schedule\, and get ready to make a real change\! See you soon\! 🚀*
