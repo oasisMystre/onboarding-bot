@@ -1,4 +1,4 @@
-Boom\! You\'re in %name%\, Perfect Timing\!
+*Boom\! You\'re in %name%\, Perfect Timing*\!
 
 We\'re going *Live In Few Minutes* with a Fast\-Track Training To Help You Start Earning Like The Top 1\%\.
 
