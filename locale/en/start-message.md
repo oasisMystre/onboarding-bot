@@ -4,7 +4,7 @@ We\'re going *Live In Few Minutes* with a Fast\-Track Training To Help You Start
 
 You\'ll learn\:
 
-💡 How To Use Our AI Signals For Smarter Trades\.
+*💡 How To Use Our AI Signals For Smarter Trades*\.
 
 📊 How To Unlock Pro\-Level Tools\.
 
