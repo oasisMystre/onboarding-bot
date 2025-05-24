@@ -1,6 +1,6 @@
 import moment from "moment";
 import { readFileSync } from "fs";
-import { TelegramError, type Telegraf } from "telegraf";
+import { Markup, TelegramError, type Telegraf } from "telegraf";
 
 import { db } from "../../instances";
 import { getEnv } from "../../env";
@@ -49,12 +49,12 @@ export default function onStartAction(bot: Telegraf) {
                     buttons: [
                       {
                         type: "callback",
-                        name: "Yes, Send Link",
+                        name: "✅ Yes, Send Link",
                         data: "send-link",
                       },
                       {
                         type: "callback",
-                        name: "Reschedule Me",
+                        name: "⏳ Reschedule Me",
                         data: "reshedule",
                       },
                     ],
@@ -77,7 +77,13 @@ export default function onStartAction(bot: Telegraf) {
                       .replace(
                         "%product_name%",
                         cleanText(format("%%", getEnv("PRODUCT_NAME")))
-                      )
+                      ),
+                    Markup.inlineKeyboard([
+                      Markup.button.url(
+                        "＋ Create Account",
+                        getEnv("TRADE_ACCOUNT_LINK")
+                      ),
+                    ])
                   ),
                 ]);
               return context.reply(getEnv("CHANNEL_INVITE_LINK"));

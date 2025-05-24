@@ -24,12 +24,12 @@ export const webinarAction = (bot: Telegraf) => {
           [
             {
               type: "callback",
-              name: "Yes, Send Link",
+              name: "✅ Yes, Send Link",
               data: "send-link",
             },
             {
               type: "callback",
-              name: "Reschedule Me",
+              name: "⏳ Reschedule Me",
               data: "reshedule",
             },
           ].map((button) => Markup.button.callback(button.name, button.data)),

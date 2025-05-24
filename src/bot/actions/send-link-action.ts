@@ -1,6 +1,6 @@
 import moment from "moment";
 import { readFileSync } from "fs";
-import { Telegraf } from "telegraf";
+import { Markup, Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
@@ -67,7 +67,13 @@ export default function sendLinkAction(bot: Telegraf) {
               format("%%", context.from.first_name, context.from.last_name)
             )
           )
-          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME")))
+          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
+        Markup.inlineKeyboard([
+          Markup.button.url(
+            "🔴 Join us live now",
+            getEnv("CHANNEL_INVITE_LINK")
+          ),
+        ])
       ),
       context.deleteMessage(),
     ]);
