@@ -1,6 +1,6 @@
 A funded account \= a committed account 🔒\.
 
-*Fundedc members grow thier capital 📊\.*
+*Funded members grow thier capital 📊\.*
 
 Unfunded ones keep looking while time waste away 📘\.
 
