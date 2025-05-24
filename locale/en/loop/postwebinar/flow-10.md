@@ -1,4 +1,4 @@
-*%name%\.* Imagine this\.\.\. 
+*%name%\,* Imagine this\.\.\. 
 
 *You check your account\, see a signal\, copy it\.\.\. 3 hours later\, you\'re up 50\% 💸\.*
 
