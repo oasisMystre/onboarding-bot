@@ -1,13 +1,13 @@
-Awesome\! You\'re In\! Here\'s Your Exclusive Training Access\:
+*Awesome\! You\'re In\! Here\'s Your Exclusive Training Access*\:
 
 👉[Join Live](%link%)
 
 This quick session is packed with value\. Here\'s what you\'ll get\:
 
-📈 Copy Premium AI Signals Step\-by\-Step\. Perfect for beginners\. Follow trades with ease and confidence\.
+*📈 Copy Premium AI Signals Step\-by\-Step*\. Perfect for beginners\. Follow trades with ease and confidence\.
 
-📊 Full Dashboard Access\. Unlock advanced tools to analyze\, customize\, and maximize your trading strategy like a pro\.
+*📊 Full Dashboard Access*\. Unlock advanced tools to analyze\, customize\, and maximize your trading strategy like a pro\.
 
-🤖 TREV AI Automation\. Unlock Smart tools\, and hands\-free trading with powerful AI\.
+*🤖 TREV AI Automation*\. Unlock Smart tools\, and hands\-free trading with powerful AI\.
 
-We\'re LIVE\. Jump IN NOW And Start Strong\! 🔥
+*We\'re Going LIVE Now\. Jump IN NOW And Start Strong\! 🔥*
