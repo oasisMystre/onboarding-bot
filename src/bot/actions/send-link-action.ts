@@ -69,13 +69,10 @@ export default function sendLinkAction(bot: Telegraf) {
               format("%%", context.from.first_name, context.from.last_name)
             )
           )
-          .replace("%link%", getEnv("CHANNEL_INVITE_LINK"))
+          .replace("%link%", cleanText(getEnv("LIVE_LINK")))
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         Markup.inlineKeyboard([
-          Markup.button.url(
-            "🔴 Join Us Live Now",
-            getEnv("CHANNEL_INVITE_LINK")
-          ),
+          Markup.button.url("🔴 Join Us Live Now", getEnv("LIVE_LINK")),
         ])
       ),
     ]);

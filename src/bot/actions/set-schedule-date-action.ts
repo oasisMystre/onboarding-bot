@@ -163,11 +163,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
             .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
         }),
         createMessages(db, {
-          buttons: [{
-            type: "url",
-            name: "🔴 Join Us Live Now",
-            data: getEnv('CHANNEL_INVITE_LINK'),
-          }],
+          buttons: [
+            {
+              type: "url",
+              name: "🔴 Join Us Live Now",
+              data: getEnv("LIVE_LINK"),
+            },
+          ],
           user: context.user.id,
           schedule: date.toDate(),
           text: readFileSync("locale/en/webinar/flow-15.md", "utf-8").replace(
