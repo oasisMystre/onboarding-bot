@@ -63,7 +63,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
                 webinar.state === "pre"
                   ? Markup.button.callback("🚀 I'm Ready", "webinar")
                   : Markup.button.url(
-                      "＋ Create Account",
+                      "✅  Trading Account",
                       getEnv("TRADE_ACCOUNT_LINK")
                     ),
               ],

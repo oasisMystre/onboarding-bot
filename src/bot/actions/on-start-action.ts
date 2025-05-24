@@ -80,7 +80,7 @@ export default function onStartAction(bot: Telegraf) {
                       ),
                     Markup.inlineKeyboard([
                       Markup.button.url(
-                        "＋ Create Account",
+                        "✅ Create Trading Account",
                         getEnv("TRADE_ACCOUNT_LINK")
                       ),
                     ])

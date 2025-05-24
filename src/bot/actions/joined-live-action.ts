@@ -18,7 +18,7 @@ export const joinedLiveAction = (bot: Telegraf) => {
           reply_markup: Markup.inlineKeyboard([
             [
               Markup.button.url(
-                "＋ Create Account",
+                "✅ Create Trading Account",
                 getEnv("TRADE_ACCOUNT_LINK")
               ),
             ],
