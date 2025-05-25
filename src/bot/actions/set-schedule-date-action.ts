@@ -34,12 +34,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(24, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
-              .replace(
-                "%name%",
-                cleanText(
-                  format("%%", context.from.first_name, context.from.last_name)
-                )
-              )
+              .replace("%name%", cleanText(context.user.name))
               .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
           })
         );
@@ -52,12 +47,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(12, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-10.md", "utf-8")
-              .replace(
-                "%name%",
-                cleanText(
-                  format("%%", context.from.first_name, context.from.last_name)
-                )
-              )
+              .replace("%name%", cleanText(context.user.name))
               .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
           })
         );
@@ -70,12 +60,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(6, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-11.md", "utf-8")
-              .replace(
-                "%name%",
-                cleanText(
-                  format("%%", context.from.first_name, context.from.last_name)
-                )
-              )
+              .replace("%name%", cleanText(context.user.name))
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -88,12 +73,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(2, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-12.md", "utf-8")
-              .replace(
-                "%name%",
-                cleanText(
-                  format("%%", context.from.first_name, context.from.last_name)
-                )
-              )
+              .replace("%name%", cleanText(context.user.name))
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -106,12 +86,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(15, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
-              .replace(
-                "%name%",
-                cleanText(
-                  format("%%", context.from.first_name, context.from.last_name)
-                )
-              )
+              .replace("%name%", cleanText(context.user.name))
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -125,9 +100,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             schedule: date.clone().subtract(5, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
               "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
+              cleanText(context.user.name)
             ),
           })
         );
@@ -175,9 +148,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           schedule: date.toDate(),
           text: readFileSync("locale/en/webinar/flow-15.md", "utf-8").replace(
             "%name%",
-            cleanText(
-              format("%%", context.from.first_name, context.from.last_name)
-            )
+            cleanText(context.user.name)
           ),
         }),
         createMessages(db, {
@@ -201,9 +172,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           schedule: date.clone().add(1, "hours").toDate(),
           text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
             "%name%",
-            cleanText(
-              format("%%", context.from.first_name, context.from.last_name)
-            )
+            cleanText(context.user.name)
           ),
         }),
       ]);

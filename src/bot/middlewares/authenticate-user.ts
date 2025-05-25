@@ -13,7 +13,7 @@ export const authenticateUser = async (
     const dbUser = await createUser(db, {
       id: String(user.id),
       lastLogin: new Date(),
-      name: format("%%", context.from.first_name, context.from.last_name),
+      name: format("% %", context.from.first_name, context.from.last_name),
     });
 
     context.user = dbUser;

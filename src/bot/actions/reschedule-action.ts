@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import { deleteMessagesByUser } from "../../controllers/message.controller";
 
@@ -19,9 +19,7 @@ export default function rescheduleAction(bot: Telegraf) {
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-4.md", "utf-8").replace(
           "%name%",
-          cleanText(
-            format("%%", context.from.first_name, context.from.last_name)
-          )
+          cleanText(context.user.name)
         ),
         Markup.inlineKeyboard([
           Markup.button.callback("💼 Weekdays", "schedule-weekdays"),

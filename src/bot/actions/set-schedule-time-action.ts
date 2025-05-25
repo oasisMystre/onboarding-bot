@@ -38,27 +38,20 @@ export default function setScheduleTimeAction(bot: Telegraf) {
         }),
         context.replyWithMarkdownV2(
           readFileSync("locale/en/webinar/flow-6.md", "utf-8")
-            .replace(
-              "%name%",
-              cleanText(
-                format("%%", context.from.first_name, context.from.last_name)
-              )
-            )
+            .replace("%name%", cleanText(context.user.name))
             .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
             ...times
               .filter((value) => {
                 const [, time] = value.split(/\s+/g);
                 const now = moment();
-                const dateClone = date
-                  .clone()
-                  .set({
-                    second: 0,
-                    minute: 0,
-                    hour: parseInt(time.replace(/AM|PM/i, "")),
-                  });
+                const dateClone = date.clone().set({
+                  second: 0,
+                  minute: 0,
+                  hour: parseInt(time.replace(/AM|PM/i, "")),
+                });
 
-                  return dateClone.diff(now) > 0;
+                return dateClone.diff(now) > 0;
               })
               .map((value) => {
                 const [emoji, time] = value.split(/\s+/g);

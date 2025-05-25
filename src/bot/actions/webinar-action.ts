@@ -16,9 +16,7 @@ export const webinarAction = (bot: Telegraf) => {
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
           "%name%",
-          cleanText(
-            format("%%", context.from!.first_name, context.from!.last_name)
-          )
+          cleanText(context.user.name)
         ),
         Markup.inlineKeyboard([
           [
