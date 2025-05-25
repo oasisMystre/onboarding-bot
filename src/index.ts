@@ -1,7 +1,7 @@
 import "dotenv/config";
 import cron from "node-cron";
 import { Telegraf } from "telegraf";
-import fastify, { type FastifyInstance } from "fastify";
+import fastify, { FastifyRequest, type FastifyInstance } from "fastify";
 
 import { getEnv } from "./env";
 import { db } from "./instances";
@@ -15,17 +15,18 @@ async function main(server: FastifyInstance, bot: Telegraf) {
   const promises = [];
 
   bot.catch((error) => console.error(error));
-  // if (process.env.RENDER_EXTERNAL_HOSTNAME) {
-  //   server.post(
-  //     format("/telegraf/%", bot.secretPathComponent()),
-  //     (await bot.createWebhook({
-  //       domain: process.env.RENDER_EXTERNAL_HOSTNAME,
-  //     })) as any
-  //   );
-  // } else
-  promises.push(
-    bot.launch().then(() => console.log("bot running in background"))
-  );
+  if ("RENDER_EXTERNAL_HOSTNAME" in process.env) {
+    const webhook = await bot.createWebhook({
+      domain: process.env.RENDER_EXTERNAL_HOSTNAME!,
+    });
+    server.post(
+      "/telegraf/" + bot.secretPathComponent(),
+      webhook as unknown as (request: FastifyRequest) => void
+    );
+  } else
+    promises.push(
+      bot.launch().then(() => console.log("bot running in background"))
+    );
 
   promises.push(
     server.listen({

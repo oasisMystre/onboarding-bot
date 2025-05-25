@@ -1,6 +1,5 @@
 import { test } from "bun:test";
 import { readFileSync } from "fs";
-import { readFile } from "fs/promises";
 
 import { bot } from "../instances";
 import { getEnv } from "../env";

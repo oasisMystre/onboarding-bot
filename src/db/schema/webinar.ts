@@ -18,8 +18,7 @@ export const webinar = pgTable("webinar", {
     .unique()
     .notNull(),
   state: text({ enum: ["pre", "post"] })
-    .default("pre")
-    .notNull(),
+    .default("pre"),
   disablePostWebinarSequence: boolean().default(false),
   disablePreWebinarSequence: boolean().default(false),
   metadata: jsonb().$type<Metadata>().notNull(),

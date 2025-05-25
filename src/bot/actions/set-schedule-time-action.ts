@@ -30,6 +30,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
 
       return Promise.allSettled([
         updateWebinarById(db, context.user.webinar.id, {
+          state: "pre",
           metadata: {
             ...context.user.webinar.metadata,
             time: date.toISOString(),

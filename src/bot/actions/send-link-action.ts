@@ -33,7 +33,7 @@ export default function sendLinkAction(bot: Telegraf) {
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
           .replace("%code%", cleanText(getEnv("CODE")))
           .replace("%admin%", cleanText(getEnv("ADMIN")))
-          .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
+          .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
       }),
       createMessages(db, {
         buttons: [

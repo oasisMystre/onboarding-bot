@@ -73,7 +73,7 @@ export default function onStartAction(bot: Telegraf) {
                           )
                         )
                       )
-                      .replace("%link%", getEnv("TRADE_ACCOUNT_LINK"))
+                      .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK")))
                       .replace(
                         "%product_name%",
                         cleanText(getEnv("PRODUCT_NAME"))

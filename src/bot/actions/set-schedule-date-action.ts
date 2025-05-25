@@ -135,6 +135,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
 
       return Promise.allSettled([
         updateWebinarById(db, context.user.webinar.id, {
+          state: null,
           metadata: {
             ...context.user.webinar.metadata,
             date: date.toISOString(),
@@ -160,7 +161,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace("%admin%", cleanText(getEnv("ADMIN")))
-            .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
+            .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
         }),
         createMessages(db, {
           buttons: [

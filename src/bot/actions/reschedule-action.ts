@@ -13,6 +13,7 @@ export default function rescheduleAction(bot: Telegraf) {
     return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
+        state: "pre",
         metadata: { ...context.user.webinar.metadata, reschedule: true },
       }),
       context.replyWithMarkdownV2(

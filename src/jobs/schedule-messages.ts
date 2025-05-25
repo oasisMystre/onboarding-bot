@@ -32,7 +32,7 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
 
   console.log("[processing.messages] messages=", scheduledMessages.length);
 
-  return Promise.allSettled(
+  return Promise.all(
     scheduledMessages.map(async (message) => {
       await bot.telegram.sendMessage(message.user.id, message.text, {
         parse_mode: "MarkdownV2",
