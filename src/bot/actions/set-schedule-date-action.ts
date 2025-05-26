@@ -95,13 +95,18 @@ export default function setScheduleDateAction(bot: Telegraf) {
       if (diffMinutes >= 5) {
         scheduleMessages.push(
           createMessages(db, {
-            buttons: [],
+            buttons: [
+              {
+                type: "url",
+                name: "🚀 Join Now",
+                data: getEnv("LIVE_LINK"),
+              },
+            ],
             user: context.user.id,
             schedule: date.clone().subtract(5, "minutes").toDate(),
-            text: readFileSync("locale/en/webinar/flow-14.md", "utf-8").replace(
-              "%name%",
-              cleanText(context.user.name)
-            ),
+            text: readFileSync("locale/en/webinar/flow-14.md", "utf-8")
+              .replace("%name%", cleanText(context.user.name))
+              .replace("%link%", cleanText(getEnv("LIVE_LINK"))),
           })
         );
       }
@@ -146,10 +151,9 @@ export default function setScheduleDateAction(bot: Telegraf) {
           ],
           user: context.user.id,
           schedule: date.toDate(),
-          text: readFileSync("locale/en/webinar/flow-15.md", "utf-8").replace(
-            "%name%",
-            cleanText(context.user.name)
-          ),
+          text: readFileSync("locale/en/webinar/flow-15.md", "utf-8")
+            .replace("%name%", cleanText(context.user.name))
+            .replace("%link%", cleanText(getEnv("LIVE_LINK"))),
         }),
         createMessages(db, {
           buttons: [
