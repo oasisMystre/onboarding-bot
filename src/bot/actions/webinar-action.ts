@@ -1,3 +1,4 @@
+import moment from "moment";
 import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
@@ -11,6 +12,8 @@ export const webinarAction = (bot: Telegraf) => {
     return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
+        state: "pre",
+        nextWebinarSequence: moment().add(8, "hours").toDate(),
         metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
       }),
       context.replyWithMarkdownV2(

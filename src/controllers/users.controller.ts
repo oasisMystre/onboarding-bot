@@ -1,3 +1,4 @@
+import moment from "moment";
 import type { z } from "zod";
 
 import { eq } from "drizzle-orm";
@@ -21,6 +22,7 @@ export const createUser = async (
     .insert(_webinar)
     .values({
       user: user.id,
+      nextWebinarSequence: moment().add(8, "hours").toDate(),
       metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
     })
     .onConflictDoUpdate({ target: _webinar.user, set: { user: user.id } })

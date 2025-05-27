@@ -1,5 +1,6 @@
+import moment from "moment";
 import { readFileSync } from "fs";
-import { eq, or } from "drizzle-orm";
+import { eq, lte, or, sql } from "drizzle-orm";
 import { Markup, Telegraf } from "telegraf";
 
 import { getEnv } from "../env";
@@ -12,7 +13,8 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
   const webinars = await db.query.webinar.findMany({
     where: or(
       eq(webinar.disablePreWebinarSequence, false),
-      eq(webinar.disablePostWebinarSequence, false)
+      eq(webinar.disablePostWebinarSequence, false),
+      lte(webinar.nextWebinarSequence, sql`NOW()`)
     ),
     with: {
       user: {
@@ -79,7 +81,10 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
               ]).reply_markup,
             }
           ),
-          updateWebinarById(db, webinar.id, { metadata: webinar.metadata }),
+          updateWebinarById(db, webinar.id, {
+            metadata: webinar.metadata,
+            nextWebinarSequence: moment().add(8, "hours").toDate(),
+          }),
         ];
       }
     })

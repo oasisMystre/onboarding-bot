@@ -1,1 +1,0 @@
-ALTER TABLE "webinar" ALTER COLUMN "state" DROP NOT NULL;

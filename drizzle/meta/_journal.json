@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1746963941070,
-      "tag": "0000_eminent_lyja",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1747185002750,
-      "tag": "0001_fresh_ironclad",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1747550254288,
-      "tag": "0002_third_sally_floyd",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1747693005519,
-      "tag": "0003_ambitious_dark_phoenix",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1748187535101,
-      "tag": "0004_shiny_purple_man",
+      "when": 1748360680733,
+      "tag": "0000_light_puma",
       "breakpoints": true
     }
   ]

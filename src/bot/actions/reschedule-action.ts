@@ -1,3 +1,4 @@
+import moment from "moment";
 import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
@@ -14,6 +15,7 @@ export default function rescheduleAction(bot: Telegraf) {
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         state: "pre",
+        nextWebinarSequence: moment().add(8, "hours").toDate(),
         metadata: { ...context.user.webinar.metadata, reschedule: true },
       }),
       context.replyWithMarkdownV2(

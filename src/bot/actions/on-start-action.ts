@@ -27,6 +27,7 @@ export default function onStartAction(bot: Telegraf) {
                   updateUserById(db, context.user.id, { joinedChannel: true }),
                   updateWebinarById(db, context.user!.webinar.id, {
                     state: "pre",
+                    nextWebinarSequence: moment().add(8, "hours").toDate(),
                     metadata: {
                       postWebinarLoopIndex: 2,
                       preWebinarLoopIndex: 1,

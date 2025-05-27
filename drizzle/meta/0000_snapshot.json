@@ -1,9 +1,90 @@
 {
-  "id": "491cbc01-9456-4163-bc63-8a38b356b1e0",
+  "id": "c8d1de1e-5aba-4039-a2a6-46e3f65fd6a4",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.webinar": {
+      "name": "webinar",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "user": {
+          "name": "user",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "state": {
+          "name": "state",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'pre'"
+        },
+        "disablePostWebinarSequence": {
+          "name": "disablePostWebinarSequence",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "disablePreWebinarSequence": {
+          "name": "disablePreWebinarSequence",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nextWebinarSequence": {
+          "name": "nextWebinarSequence",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "webinar_user_users_id_fk": {
+          "name": "webinar_user_users_id_fk",
+          "tableFrom": "webinar",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "webinar_user_unique": {
+          "name": "webinar_user_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "user"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.users": {
       "name": "users",
       "schema": "",
@@ -20,12 +101,12 @@
           "primaryKey": false,
           "notNull": true
         },
-        "loopIndex": {
-          "name": "loopIndex",
-          "type": "integer",
+        "joinedChannel": {
+          "name": "joinedChannel",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": true,
-          "default": 1
+          "default": false
         },
         "lastLogin": {
           "name": "lastLogin",

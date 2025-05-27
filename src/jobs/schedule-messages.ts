@@ -10,7 +10,12 @@ export const getButtons = (buttons: Button[] | Button[][]) => {
 
   for (const button of buttons) {
     if (Array.isArray(button)) results.push(getButtons(button));
-    else results.push(Markup.button.callback(button.name, button.data));
+    else
+      results.push(
+        button.type === "url"
+          ? Markup.button.url(button.name, button.data)
+          : Markup.button.callback(button.name, button.data)
+      );
   }
 
   return results as InlineKeyboardButton[][];

@@ -1,3 +1,4 @@
+import moment from "moment";
 import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
@@ -9,7 +10,10 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 export const joinedLiveAction = (bot: Telegraf) => {
   bot.action("joined-live", async (context) => {
     return Promise.allSettled([
-      updateWebinarById(db, context.user.webinar.id, { state: "post" }),
+      updateWebinarById(db, context.user.webinar.id, {
+        state: "post",
+        nextWebinarSequence: moment().add(8, "hours").toDate(),
+      }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/loop/postwebinar/flow-1.md", "utf-8")
           .replace("%name%", cleanText(context.user.name))

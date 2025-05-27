@@ -1,3 +1,4 @@
+import moment from "moment";
 import type { z } from "zod";
 import { eq } from "drizzle-orm";
 
@@ -11,8 +12,16 @@ import {
 
 export const createWebinar = (
   db: Database,
-  value: z.infer<typeof webinarInsertSchema>
-) => db.insert(webinar).values(value).returning().execute();
+  value: Omit<z.infer<typeof webinarInsertSchema>, "nextWebinarSequence">
+) =>
+  db
+    .insert(webinar)
+    .values({
+      ...value,
+      nextWebinarSequence: moment().add(8, "hours").toDate(),
+    })
+    .returning()
+    .execute();
 
 export const getWebinarByUser = (
   db: Database,
