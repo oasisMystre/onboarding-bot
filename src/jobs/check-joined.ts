@@ -16,8 +16,7 @@ const onJoin = async (
   bot: Telegraf,
   user: z.infer<typeof userInsertSchema>,
   sendMessage?: boolean
-) => [
-  updateUserById(db, user.id, { joinedChannel: true }),
+) => {
   await bot.telegram.sendMessage(
     user.id,
     readFileSync("locale/en/joined-group.md", "utf-8").replace(
@@ -25,22 +24,26 @@ const onJoin = async (
       getEnv("PROJECT_NAME")
     ),
     { parse_mode: "MarkdownV2" }
-  ),
-  sendMessage
-    ? bot.telegram.sendMessage(
-        user.id,
-        readFileSync("locale/en/welcome-message.md", "utf-8")
-          .replace("%project_name%", cleanText(getEnv("PROJECT_NAME")))
-          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
-        {
-          parse_mode: "MarkdownV2",
-          reply_markup: Markup.inlineKeyboard([
-            Markup.button.callback("⚡️ Start", "onstart"),
-          ]).reply_markup,
-        }
-      )
-    : null,
-];
+  );
+
+  return [
+    updateUserById(db, user.id, { joinedChannel: true }),
+    sendMessage
+      ? bot.telegram.sendMessage(
+          user.id,
+          readFileSync("locale/en/welcome-message.md", "utf-8")
+            .replace("%project_name%", cleanText(getEnv("PROJECT_NAME")))
+            .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
+          {
+            parse_mode: "MarkdownV2",
+            reply_markup: Markup.inlineKeyboard([
+              Markup.button.callback("⚡️ Start", "onstart"),
+            ]).reply_markup,
+          }
+        )
+      : null,
+  ];
+};
 
 export const checkJoined = async (db: Database, bot: Telegraf) => {
   const unjoinedUsers = await db.query.users
@@ -59,7 +62,7 @@ export const checkJoined = async (db: Database, bot: Telegraf) => {
         .catch(async (error) => {
           if (error instanceof TelegramError) {
             if (error.description.includes("USER_ALREADY_PARTICIPANT"))
-              return onJoin(db, bot, user);
+              return onJoin(db, bot, user, true);
             bot.telegram.sendMessage(
               user.id,
               getEnv<string>("CHANNEL_INVITE_LINK")
