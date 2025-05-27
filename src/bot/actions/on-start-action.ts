@@ -79,5 +79,5 @@ export default function onStartAction(bot: Telegraf) {
   });
 
   bot.start(onStart);
-  bot.action("on-start", onStart);
+  bot.action("onstart", onStart);
 }

@@ -29,7 +29,7 @@ export default function onJoinAction(bot: Telegraf) {
         {
           parse_mode: "MarkdownV2",
           reply_markup: Markup.inlineKeyboard([
-            Markup.button.callback("⚡️ Start", "on-start"),
+            Markup.button.callback("⚡️ Start", "onstart"),
           ]).reply_markup,
         }
       ),
