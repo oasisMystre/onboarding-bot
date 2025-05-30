@@ -14,7 +14,7 @@ export const webinarAction = (bot: Telegraf) => {
       updateWebinarById(db, context.user.webinar.id, {
         state: "pre",
         nextWebinarSequence: moment().add(8, "hours").toDate(),
-        metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
+        metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(

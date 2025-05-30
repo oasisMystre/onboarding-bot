@@ -23,7 +23,7 @@ export const createUser = async (
     .values({
       user: user.id,
       nextWebinarSequence: moment().add(8, "hours").toDate(),
-      metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
+      metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
     })
     .onConflictDoUpdate({ target: _webinar.user, set: { user: user.id } })
     .returning()

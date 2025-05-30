@@ -1,5 +1,2 @@
-*⚠️ Final reminder\, %name%\.*
-
-We\'ll keep checking in but this won\'t stay open forever\.
-
-*Make your move\.*
+⚠️ Last nudge %name%,
+We\'ll keep the door open for a little longer\.\.\. But you need to walk through it\.

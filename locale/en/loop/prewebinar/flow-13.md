@@ -1,5 +1,2 @@
-*💡 You deserve better\. %name%\.*
-
-And this is the first step\. 
-
-*Don\'t delay the version of you that\'s waiting\.*
+💡 You know you want more\.
+This is your chance to step up\. Delay will only keep you stuck where you are\.

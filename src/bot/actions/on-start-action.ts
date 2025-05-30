@@ -5,7 +5,7 @@ import { Markup, TelegramError, type Telegraf } from "telegraf";
 import { db } from "../../instances";
 import { getEnv } from "../../env";
 import { privateFunc } from "../utils/private-func";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { updateUserById } from "../../controllers/users.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import {
@@ -29,7 +29,7 @@ export default function onStartAction(bot: Telegraf) {
                     state: "pre",
                     nextWebinarSequence: moment().add(8, "hours").toDate(),
                     metadata: {
-                      postWebinarLoopIndex: 2,
+                      postWebinarLoopIndex: 1,
                       preWebinarLoopIndex: 1,
                     },
                   }),
@@ -55,7 +55,7 @@ export default function onStartAction(bot: Telegraf) {
                   }),
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")
-                      .replace("%name%", context.user.name)
+                      .replace("%name%", cleanText(context.user.name))
                       .replace(
                         "%link%",
                         cleanText(getEnv("TRADE_ACCOUNT_LINK"))
@@ -63,6 +63,10 @@ export default function onStartAction(bot: Telegraf) {
                       .replace(
                         "%product_name%",
                         cleanText(getEnv("PRODUCT_NAME"))
+                      )
+                      .replace(
+                        "%project_name%",
+                        cleanText(getEnv("PROJECT_NAME"))
                       ),
                     Markup.inlineKeyboard([
                       Markup.button.url(

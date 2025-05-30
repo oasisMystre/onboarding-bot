@@ -1,5 +1,2 @@
-🤔 Still on the fence\, *%name%\?*
-
-What\'s stopping you\? Let\'s break through that together\.
-
-*One click is all it takes\.*
+🤔 Still doubting\?
+What\’s holding you back\, %name%? Let\'s break that hesitation together\.It only takes one step to start\.

@@ -1,8 +1,9 @@
 *%name%\, just checking in\.*
 
-Did you make it to the webinar\?
+Did you attend the sniper small account growth session\?
 
-*We shared some powerful strategies and actionable steps that could seriously move you forward\.*
+*We shared the exact sniper setups and strategies our members use to grow
+small accounts daily\.*
 
 If you missed it\, no worries\. I might be able to get you private access to the replay \(only if you're interested\)\.
 

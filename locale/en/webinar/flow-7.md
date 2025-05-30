@@ -1,7 +1,7 @@
-*🎉 Prefect\! You\'re all set for the webinar on %date% at %time%\.*
+*🎉 Locked in, %name%\!*
 
-We\'ll send you reminders as we get closer\, so you won\'t miss a thing\! ⌛️ 
+You\'re all set for the webinar on %date% at %time%\.*
 
-Get ready to dive in\, We\'ll be in touch soon\!
+We\'ll send you reminders before it starts\. 
 
-*Let\'s make it happen\! 🚀*
+Let\'s make sure you show up ready to learn how to grow your small account the sniper way\.

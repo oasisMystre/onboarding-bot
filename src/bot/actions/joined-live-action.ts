@@ -15,26 +15,16 @@ export const joinedLiveAction = (bot: Telegraf) => {
         nextWebinarSequence: moment().add(8, "hours").toDate(),
       }),
       context.replyWithMarkdownV2(
-        readFileSync("locale/en/loop/postwebinar/flow-1.md", "utf-8")
+        readFileSync("locale/en/webinar/flow-17.md", "utf-8")
           .replace("%name%", cleanText(context.user.name))
-          .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
-        {
-          parse_mode: "MarkdownV2",
-          reply_markup: Markup.inlineKeyboard([
-            [
-              Markup.button.url(
-                "✅ Create Trading Account",
-                getEnv("TRADE_ACCOUNT_LINK")
-              ),
-            ],
-            [
-              Markup.button.url(
-                "💬 Contact Support",
-                getEnv("CONTACT_SUPPORT")
-              ),
-            ],
-          ]).reply_markup,
-        }
+          .replace("%lnk%", cleanText(getEnv("GIFT_LINK")))
+          .replace("%project_name%", cleanText(getEnv("PROJECT_NAME"))),
+        Markup.inlineKeyboard([
+          Markup.button.url(
+            "📥 Download Your Strategy Blueprint",
+            getEnv("GIFT_LINK")
+          ),
+        ])
       ),
     ]);
   });

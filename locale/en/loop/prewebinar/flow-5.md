@@ -1,3 +1,1 @@
-*🤝%name%\,* just a gentle nudge\.
-
-Success rewards speed\, *don\'t let hesitation steal this from you\.*
+The sniper gift is waiting for you inside\. Don\'t sit out\.

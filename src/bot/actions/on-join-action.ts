@@ -17,7 +17,7 @@ export default function onJoinAction(bot: Telegraf) {
         context.user.id,
         readFileSync("locale/en/joined-group.md", "utf-8").replace(
           "%project_name%",
-          getEnv("PROJECT_NAME")
+          cleanText(getEnv("PROJECT_NAME"))
         ),
         { parse_mode: "MarkdownV2" }
       ),
@@ -45,7 +45,7 @@ export default function onJoinAction(bot: Telegraf) {
     Promise.all([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
-        metadata: { postWebinarLoopIndex: 2, preWebinarLoopIndex: 1 },
+        metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
       }),
     ]);
   });

@@ -1,6 +1,6 @@
 Just 5 Minutes to Go\, *%name%\!*
  
-Your exclusive webinar is about to begin\! 🎯
+Your exclusive sniper session is about to begin\! 🎯
 
 [*🎥 Join now using your private access link*](%link%)
 

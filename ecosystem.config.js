@@ -3,7 +3,7 @@ require("dotenv").config();
 module.exports = {
   apps: [
     {
-      name: "trevonis",
+      name: "profittown",
       exec_mode: process.env.EXEC_MODE,
       interpreter: process.env.INTERPRETER,
       instances: process.env.CPU_INSTANCES

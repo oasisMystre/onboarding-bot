@@ -1,3 +1,1 @@
-⚡️ Quick one\, *%name%\.*
-
-If you\'re still interested\, act now\, your spot isn\'t guaranteed\.
+The sniper setups that changed our students\’ accounts could change yours too\.

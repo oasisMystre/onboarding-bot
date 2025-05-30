@@ -1,19 +1,18 @@
-*Boom\! You\'re in %name%\, Perfect Timing*\!
+Perfect timing\, %name%\.
 
-We\'re going *Live In Few Minutes* with a Fast\-Track Training To Help You Start Earning Like The Top 1\%\.
+We\'re going LIVE in a few minutes for the free %project_name% training\, a private sniper session on flipping small accounts\.
 
-You\'ll learn\:
+In this session\, you\'ll discover\,
 
-*💡 How To Use Our AI Signals For Smarter Trades*\.
+💰 How to start growing your small account with sniper entries and a consistent strategy\.
+📊 How to plug into our manual signal service\.
+🤖 How our team grows accounts hands\-free for serious traders\.
 
-*📊 How To Unlock Pro\-Level Tools*\.
+AND\.\.\. for those who attend till the end\, we\'re unlocking a special \
+strategy gift as a reward\.
 
-*🤖 How To Activate %product_name% For Hands\-Free Income*\.
+Don\'t have a trading account yet\?
 
-You Should Also Set Up Your Trading Account Now\. Takes Just 2 Minutes\.
+Set up your account with our recommended broker\, it takes just 2 minutes\.
 
-👉 [*Click Here To Create Your Trading Account*](%link%)
-
-Or Use The Button Below 👇
-
-*Serious Income Starts Now\. Be Ready\!*
+Do it now before the session starts\, [👉Deriv partner link](%link%)  

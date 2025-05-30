@@ -1,3 +1,2 @@
-🧠 Real change comes from real action\. Reading won\'t do it\. 
-
-*Take Action\, %name%\.*
+🧠 Let\'s keep it real\, nothing changes if you don\'t\.
+Reading won\'t grow your account\. Action will\.

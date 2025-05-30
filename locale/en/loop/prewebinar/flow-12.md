@@ -1,5 +1,2 @@
-⏳ Let\'s not pretend tomorrow is better\.
-
-The best time was yesterday\. 
-
-*The next best time is now\, %name%\.*
+⏳ Truth is waiting never made anyone rich\.
+The best time\? Yesterday\. Second best\? Right now\.

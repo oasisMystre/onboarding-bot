@@ -1,7 +1,5 @@
 *🔴 We\'re LIVE Now\, %name%\!*
 
-The webinar has officially started and the room is filling up fast\! 🚀
+Join the room now and see how we sniper\-grow small accounts 🚀
 
 [*🎥 Click To Join Immediately*](%link%)
-
-Don\'t miss a second powerful strategies are already being shared\. Jump in now\!

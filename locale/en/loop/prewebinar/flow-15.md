@@ -1,3 +1,2 @@
-📍 We\'re still waiting on you\, *%name%\.*
-
-But not forever\. Tap in before the window closes\.
+📍 We\'re patient\, %name%\, but the window won\'t stay open\.
+Step in now before it\'s gone\.

@@ -1,9 +1,4 @@
-*As you anticipate the training\, go ahead and create your trading account now*
+Quick one\, %name%\.
+Before the session, get your trading account ready\. [👉Deriv partner link](%link%)
 
-[*✅ Create your trading acount here*](%link%)\.
-
-Once you\'ve created your account\, simply send your code *`%code%`* to %admin%
-
-This will ensure we activate your account and get you set up instantly\.
-
-*It only takes 2 minutes\, don\'t wait\! Let\'s get your account ready\!\.*
+Once done\, send your account ID to %admin%\. We\'ll fast-track your sniper access and bonuses\.

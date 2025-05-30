@@ -1,3 +1,4 @@
-*📅 Let\'s lock in your spot for the upcoming webinar\!*
+✅ No stress\, %name%\.
+We\'ll lock you into the next sniper small account growth session\.
 
-Choose the day that works best for you below 
+Pick your preferred day below

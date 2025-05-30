@@ -1,3 +1,2 @@
-🔁 Same inputs \= same results\.
-
-Break the cycle\. *Do it differently this time\, %name%\.*
+🔁 Same moves\, same account balance\.
+Change the playbook\. Try the Profittown way\.

@@ -1,13 +1,5 @@
-*Welcome to %project_name%*
+First\, here\'s your invite to our FREE Telegram community [👉Join Profittown Free Group](%link%)
 
-The game changing trading system designed for everyday people like you\.
+Inside the group, you\'ll get updates\, free setups\, and exclusive invites to our free webinars, where we show how traders grow \$50\+ accounts step by step\.
 
-Right now\, you have two powerful options at your fingertips\.
-
-⚙️ *Manually copy* our ultra\-accurate AI trading signals\ 
-OR
-🤖 *Activate %product_name%* and let it trade for you 100% automatically\. Zero experience needed\, fully Hands\-Free\!
-
-No fluff\. No delays\. Just results\.
-
-> Tap 👉 /start now to get plugged in and start seeing real trades in action within minutes\.
+PLUS attendees will unlock a special free gift inside the webinar you\'ll find out when you show up\.

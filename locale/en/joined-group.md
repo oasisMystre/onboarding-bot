@@ -1,3 +1,1 @@
-✅ Channel joined successfully
-
->Your request to join %project_name% has been approved\!
+✅ You\'ve been approved to join %project_name%\, the sniper trading community focused on growing small accounts consistently\.

@@ -1,4 +1,4 @@
-*Great\! You selected %date%\.*
+*🎯 Got it, %date%\.*
 Now, let\'s lock in your preferred time ⏰
 
 *What time works bet for you?*

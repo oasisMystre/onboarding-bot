@@ -1,2 +1,2 @@
-📆 Imagine 30 days from now\.\.\.
-Everything could change\, starting with this one click today\.
+📆 Picture this\,
+30 days from now\, your account tells a different story\. It starts with one action today\.

@@ -13,6 +13,7 @@ type Env =
   | "DATABASE_URL"
   | "CHANNEL_INVITE_LINK"
   | "TELEGRAM_ACCESS_TOKEN"
+  | "GIFT_LINK"
   | "TRADE_ACCOUNT_LINK";
 
 export const getEnv = <T extends object | number | string | null = string>(
