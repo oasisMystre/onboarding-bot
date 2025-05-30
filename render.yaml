@@ -4,6 +4,7 @@ services:
     runtime: node
     plan: starter
     autoDeploy: true
+    branch: profittown
     buildCommand: bun install && bun run build
     startCommand: bun migrate && node dist/src/index.js
     envVars:
