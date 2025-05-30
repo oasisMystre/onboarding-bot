@@ -48,7 +48,7 @@ export default function sendLinkAction(bot: Telegraf) {
             {
               type: "callback",
               name: "🔁 I Missed It But Want the Replay",
-              data: "on-start",
+              data: "webinar",
             },
           ],
         ],

@@ -6,8 +6,8 @@ import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText } from "../../utils/format";
 import { joinChannel } from "../utils/join-channel";
-import { deleteMessagesByUser } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import { deleteMessagesByUser } from "../../controllers/message.controller";
 
 export default function onJoinAction(bot: Telegraf) {
   const onJoin = async (context: Context) => {

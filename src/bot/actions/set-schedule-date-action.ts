@@ -4,13 +4,13 @@ import { Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleDateAction(bot: Telegraf) {
   bot.action(/^setScheduleDate_(.+)$/, (context) => {
-    if (context.user.webinar.metadata.date) return;
+    if (context.user.webinar.metadata.time) return;
 
     const text =
       context.callbackQuery && "data" in context.callbackQuery
@@ -116,12 +116,13 @@ export default function setScheduleDateAction(bot: Telegraf) {
           state: null,
           metadata: {
             ...context.user.webinar.metadata,
-            date: date.toISOString(),
+            time: date.toISOString(),
           },
         }),
         ...scheduleMessages,
         context.replyWithMarkdownV2(
           readFileSync("locale/en/webinar/flow-7.md", "utf-8")
+            .replace("%name%", cleanText(context.user.name))
             .replace("%date%", date.format("MMM Do YYYY"))
             .replace("%time%", date.format("h A"))
         ),
@@ -137,6 +138,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           user: context.user.id,
           schedule: moment().add(2, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
+            .replace("%name%", cleanText(context.user.name))
             .replace("%code%", cleanText(getEnv("CODE")))
             .replace("%admin%", cleanText(getEnv("ADMIN")))
             .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
@@ -168,7 +170,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
               {
                 type: "callback",
                 name: "🔁 I Missed It But Want the Replay",
-                data: "on-start",
+                data: "webinar",
               },
             ],
           ],

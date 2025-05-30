@@ -8,7 +8,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
   bot.action(/^setScheduleTime_(.+)$/, (context) => {
-    if (context.user.webinar.metadata.date) return;
+    if (context.user.webinar.metadata.time) return;
 
     const text =
       context.callbackQuery && "data" in context.callbackQuery
@@ -34,7 +34,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
           nextWebinarSequence: moment().add(8, "hours").toDate(),
           metadata: {
             ...context.user.webinar.metadata,
-            time: date.toISOString(),
+            date: date.toISOString(),
           },
         }),
         context.replyWithMarkdownV2(
