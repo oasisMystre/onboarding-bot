@@ -20,7 +20,7 @@ export default function sendLinkAction(bot: Telegraf) {
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
       }),
-      createMessages(db, {
+   /*   createMessages(db, {
         buttons: [
           {
             type: "url",
@@ -34,7 +34,7 @@ export default function sendLinkAction(bot: Telegraf) {
           .replace("%code%", cleanText(getEnv("CODE")))
           .replace("%admin%", cleanText(getEnv("ADMIN")))
           .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
-      }),
+      }),*/
       createMessages(db, {
         buttons: [
           [
