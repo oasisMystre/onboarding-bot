@@ -1,6 +1,3 @@
-✅ No stress, %name%\.
+📢 We\'re getting closer, *%name%*\.
 
-We’ll lock you into the next sniper small account growth session.
-
-Pick your preferred day below:
-👉 [Monday] | [Tuesday] | [Wednesday] | [Thursday] | [Friday] | [Saturday] | [Sunday]
+Your sniper session is in 12 hours\. Prepare to see how we help traders grow small accounts with sniper setups\.

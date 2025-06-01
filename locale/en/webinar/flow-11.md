@@ -1,7 +1,3 @@
-🔥 Locked in, _%name%\!_.
+🚀 Almost time\, %name%\.
 
-Your sniper session is scheduled for _%day% %date%_\.
-
-We\’ll send you reminders before it starts.
-
-Let\’s make sure you show up ready to learn how to grow your small account the sniper way.
+Your sniper session starts in 15 minutes\. I\'ll drop your access link shortly\.

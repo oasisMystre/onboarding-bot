@@ -1,8 +1,12 @@
-{NAME}, We're going live shortly — the private session is about to begin\.
+🔥 You\'re locked in\.
 
-Get ready to learn how we flip small accounts with sniper precision\.
+Here\'s your private access, [👉Webinar Link](%links%)
 
-Are you ready to join the sniper session?
+Inside, you\'ll learn:
+✅ The synthetic assets we trade\, why we trade it and the strategy we use to grow small
+accounts consistently\.
+✅ How to tap into our VIP signals and complete mentorship experience
+✅ How to join our hands\-free account growth service
+AND at the end, we\'ll unlock your strategy gift\. \(Hint\: You\'ll want to stick around for it\.\)
 
-• YES, SEND LINK 🚀 → [YES, SEND LINK](%link%)
-• RESCHEDULE ME 📅 → [ RESCHEDULE ME ](%links%)
+>Once you choose\, I\'ll reserve your spot and send the details\!

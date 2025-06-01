@@ -1,1 +1,1 @@
-You came this far\, %name%. Let\'s finish what you started\.
+You came this far\, %name%\. Let\'s finish what you started\.

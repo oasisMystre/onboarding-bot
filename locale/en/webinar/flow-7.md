@@ -1,10 +1,6 @@
-✅ Awesome, %name%\!
+Quick one, %name%\!
 
-Here\’s your Sniper Small Account Growth Blueprint (PDF) as promised:
+Before the session, get your trading account ready\.
+[👉 Deriv partner link](%links%)
 
-👉 [Download Your Strategy Blueprint](%links%)
-
-This blueprint breaks down the sniper setups, risk approach, and
-structure-based strategies we use in Profittown to grow small accounts.
-
-Let’s put it to work.
+Once done\, send your account ID to @ProfittownAdmin\. We\'ll fast\-track your sniper access and bonuses\.

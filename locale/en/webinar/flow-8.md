@@ -1,6 +1,3 @@
-No stress at all.
+⏳ Reminder, %name%\!
 
-Let’s get you rescheduled for the next sniper small account growth session.
-
-Pick the best day below:
-[ WEEKDAYS ](%links%) | [ WEEKEND ](%links%)
+Your sniper session is tomorrow at %time%\. Be early\. Spots are first\-come, first\-served\.

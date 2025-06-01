@@ -1,4 +1,7 @@
-⏳ Reminder, _%name%\!._
+✅ Awesome\, %name%\!
+Here\'s your Sniper Small Account Growth Blueprint PDF as promised\. [👉 Download Your Strategy Blueprint](%link%)
 
-Your sniper session is tomorrow at %time%\.
-Be early. Spots are first-come, first-served.
+This blueprint breaks down the sniper setups\, risk approach, and
+structure based strategies we use in %product_name% to grow small accounts\.
+
+Let\'s put it to work\.

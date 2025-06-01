@@ -1,1 +1,1 @@
-The sniper setups that changed our students\’ accounts could change yours too\.
+The sniper setups that changed our students\' accounts could change yours too\.

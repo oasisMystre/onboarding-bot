@@ -54,7 +54,7 @@ export default function sendLinkAction(bot: Telegraf) {
         ],
         user: context.user.id,
         schedule: moment().add(1, "hours").toDate(),
-        text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
+        text: readFileSync("locale/en/webinar/flow-13.md", "utf-8").replace(
           "%name%",
           cleanText(
             format("%%", context.from.first_name, context.from.last_name)
@@ -63,12 +63,7 @@ export default function sendLinkAction(bot: Telegraf) {
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-2.md", "utf-8")
-          .replace(
-            "%name%",
-            cleanText(
-              format("%%", context.from.first_name, context.from.last_name)
-            )
-          )
+          .replace("%name%", cleanText(context.user.name))
           .replace("%link%", cleanText(getEnv("LIVE_LINK")))
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         Markup.inlineKeyboard([

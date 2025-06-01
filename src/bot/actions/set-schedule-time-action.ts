@@ -5,10 +5,12 @@ import { Markup, Telegraf } from "telegraf";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import { deleteMessagesByUser } from "controllers/message.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
-  bot.action(/^setScheduleTime_(.+)$/, (context) => {
-    if (context.user.webinar.metadata.time) return;
+  bot.action(/^setScheduleTime_(.+)$/, async (context) => {
+    if (context.user.webinar.metadata.time)
+      await deleteMessagesByUser(db, context.user.id);
 
     const text =
       context.callbackQuery && "data" in context.callbackQuery
@@ -38,7 +40,7 @@ export default function setScheduleTimeAction(bot: Telegraf) {
           },
         }),
         context.replyWithMarkdownV2(
-          readFileSync("locale/en/webinar/flow-6.md", "utf-8")
+          readFileSync("locale/en/webinar/flow-5.md", "utf-8")
             .replace("%name%", cleanText(context.user.name))
             .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
