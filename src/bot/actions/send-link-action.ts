@@ -25,14 +25,14 @@ export default function sendLinkAction(bot: Telegraf) {
           [
             {
               type: "callback",
-              name: "🔴 I Joined Live",
+              name: "✅ I Attended",
               data: "joined-live",
             },
           ],
           [
             {
               type: "callback",
-              name: "🔁 I Missed It But Want the Replay",
+              name: "🔁 I Missed It",
               data: "webinar",
             },
           ],
