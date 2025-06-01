@@ -5,7 +5,7 @@ import { Markup, Telegraf } from "telegraf";
 import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
-import { deleteMessagesByUser } from "controllers/message.controller";
+import { deleteMessagesByUser } from "../../controllers/message.controller";
 
 export default function setScheduleTimeAction(bot: Telegraf) {
   bot.action(/^setScheduleTime_(.+)$/, async (context) => {
