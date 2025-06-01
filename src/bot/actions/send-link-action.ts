@@ -20,21 +20,6 @@ export default function sendLinkAction(bot: Telegraf) {
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
       }),
-   /*   createMessages(db, {
-        buttons: [
-          {
-            type: "url",
-            name: "📈 Create Trading Account",
-            data: getEnv("TRADE_ACCOUNT_LINK"),
-          },
-        ],
-        user: context.user.id,
-        schedule: moment().add(2, "minutes").toDate(),
-        text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
-          .replace("%code%", cleanText(getEnv("CODE")))
-          .replace("%admin%", cleanText(getEnv("ADMIN")))
-          .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
-      }),*/
       createMessages(db, {
         buttons: [
           [
@@ -53,7 +38,7 @@ export default function sendLinkAction(bot: Telegraf) {
           ],
         ],
         user: context.user.id,
-        schedule: moment().add(1, "hours").toDate(),
+        schedule: moment().add(30, "minutes").toDate(),
         text: readFileSync("locale/en/webinar/flow-13.md", "utf-8").replace(
           "%name%",
           cleanText(
