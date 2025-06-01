@@ -134,20 +134,20 @@ export default function setScheduleDateAction(bot: Telegraf) {
             [
               {
                 type: "callback",
-                name: "🔴 I Joined Live",
+                name: "✅ I Attended",
                 data: "joined-live",
               },
             ],
             [
               {
                 type: "callback",
-                name: "🔁 I Missed It But Want the Replay",
+                name: "🔁 I Missed It",
                 data: "webinar",
               },
             ],
           ],
           user: context.user.id,
-          schedule: moment().toDate(),
+          schedule: date.clone().add(30, "minutes").toDate(),
           text: readFileSync("locale/en/webinar/flow-13.md", "utf-8").replace(
             "%name%",
             cleanText(context.user.name)
