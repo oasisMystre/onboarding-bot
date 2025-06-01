@@ -1,7 +1,1 @@
-⏰ 12 Hours to Go, *%name%\!*
-
-Prepare to see how we help traders grow small accounts with sniper setups\. This is your final chance to prepare\!
-
-Remember\, spots are limited and it\'s first come\, first served\.
-
-*Set your reminder\, clear your schedule\, and get ready to make a real change\! See you soon\! 🚀*
+⚡️ Just 2 hours left till your sniper session\. Charge your device\, get in a quiet space\, and show up ready to move your account forward\.

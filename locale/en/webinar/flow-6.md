@@ -1,6 +1,3 @@
-*🎯 Got it, %date%\.*
-Now, let\'s lock in your preferred time ⏰
+*🎉 Locked in, %name%\!*
 
-*What time works bet for you?*
-
->Once you pick a time\, We\'ll reserve your session and send the full access details\. Let'\s make this count\!🚀
+You\'re all set for the webinar on *%date%* at *%time%*\. We\'ll send you reminders before it starts\. Let\'s make sure you show up ready to learn how to grow your small account the sniper way\.

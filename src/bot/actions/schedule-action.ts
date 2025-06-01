@@ -26,7 +26,7 @@ export default function scheduleAction(bot: Telegraf) {
           },
         }),
         context.replyWithMarkdownV2(
-          readFileSync("locale/en/webinar/flow-5.md", "utf-8").replace(
+          readFileSync("locale/en/webinar/flow-4.md", "utf-8").replace(
             "%name%",
             cleanText(
               format("%%", context.from.first_name, context.from.last_name)

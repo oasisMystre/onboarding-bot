@@ -1,11 +1,9 @@
-import moment from "moment";
-import type { z } from "zod";
-
-import { eq } from "drizzle-orm";
-
-import type { Database } from "../db";
-import { users, webinar as _webinar } from "../db/schema";
-import { userInsertSchema } from "../db/zod";
+import moment from 'moment';
+import type { z } from 'zod';
+import { eq } from 'drizzle-orm';
+import type { Database } from '../db';
+import { users, webinar as _webinar } from '../db/schema';
+import { userInsertSchema } from '../db/zod';
 
 export const createUser = async (
   db: Database,
@@ -22,7 +20,7 @@ export const createUser = async (
     .insert(_webinar)
     .values({
       user: user.id,
-      nextWebinarSequence: moment().add(8, "hours").toDate(),
+      nextWebinarSequence: moment().add(8, 'hours').toDate(),
       metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
     })
     .onConflictDoUpdate({ target: _webinar.user, set: { user: user.id } })
@@ -34,6 +32,6 @@ export const createUser = async (
 
 export const updateUserById = async (
   db: Database,
-  id: z.infer<typeof userInsertSchema>["id"],
+  id: z.infer<typeof userInsertSchema>['id'],
   values: Partial<z.infer<typeof userInsertSchema>>
 ) => db.update(users).set(values).where(eq(users.id, id)).returning().execute();

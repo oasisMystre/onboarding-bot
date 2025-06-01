@@ -1,9 +1,12 @@
-*While you\'re getting set for the training\, take this quick step now\,*
+🔥 You\'re locked in\.
 
-[✅ Create your trading acount here](%link%)\.
+Here\'s your private access, [👉Webinar Link](%links%)
 
-Once done, send your code *`%code%`* to %admin%
+Inside, you\'ll learn:
+✅ The synthetic assets we trade\, why we trade it and the strategy we use to grow small
+accounts consistently\.
+✅ How to tap into our VIP signals and complete mentorship experience
+✅ How to join our hands\-free account growth service
+AND at the end, we\'ll unlock your strategy gift\. \(Hint\: You\'ll want to stick around for it\.\)
 
-So we can *activate your access immediately* before the session starts\.
-
->It only takes *2 minutes*\, don'\t delay\. Let\'s get you fully set up\!
+>Once you choose\, I\'ll reserve your spot and send the details\!

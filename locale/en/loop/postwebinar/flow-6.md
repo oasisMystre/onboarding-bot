@@ -1,7 +1,4 @@
-A funded account \= a committed account 🔒\.
+Still watching others win\? 👀
+No shame\, just don\'t wait too long, %name%\.
 
-*Funded members grow thier capital 📊\.*
-
-Unfunded ones keep looking while time waste away 📘\.
-
-*Where do you want to be this time next week\? ⏳*
+Even the slowest progress beats standing still\. 🐌

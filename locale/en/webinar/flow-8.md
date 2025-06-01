@@ -1,4 +1,3 @@
-Quick one\, %name%\.
-Before the session, get your trading account ready\. [👉Deriv partner link](%link%)
+⏳ Reminder, %name%\!
 
-Once done\, send your account ID to %admin%\. We\'ll fast\-track your sniper access and bonuses\.
+Your sniper session is tomorrow at %time%\. Be early\. Spots are first\-come, first\-served\.

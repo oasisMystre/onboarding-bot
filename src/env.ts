@@ -14,6 +14,7 @@ type Env =
   | "CHANNEL_INVITE_LINK"
   | "TELEGRAM_ACCESS_TOKEN"
   | "GIFT_LINK"
+  | "BOT_LINK"
   | "TRADE_ACCOUNT_LINK";
 
 export const getEnv = <T extends object | number | string | null = string>(

@@ -1,9 +1,3 @@
-*⚡️ Just a quick reminder\, %name%*
+📢 We\'re getting closer, *%name%*\.
 
-Your sniper session is *tommorrow at %date%\!*
-
-🔥 We\'ll be diving into crucial strategies and techniques you definitely don\'t want to miss\.
-
-⌛️ *Limited spots available\,* be sure to join on time to secure your place\!
-
-See you there\! 🚀
+Your sniper session is in 12 hours\. Prepare to see how we help traders grow small accounts with sniper setups\.

@@ -1,7 +1,6 @@
-*🎉 Locked in, %name%\!*
+Quick one, %name%\!
 
-You\'re all set for the webinar on %date% at %time%\.*
+Before the session, get your trading account ready\.
+[👉 Deriv partner link](%links%)
 
-We\'ll send you reminders before it starts\. 
-
-Let\'s make sure you show up ready to learn how to grow your small account the sniper way\.
+Once done\, send your account ID to @ProfittownAdmin\. We\'ll fast\-track your sniper access and bonuses\.

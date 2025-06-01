@@ -1,9 +1,7 @@
-*⏳ 15 Minutes to Go\, %name%\!*
+✅ Awesome\, %name%\!
+Here\'s your Sniper Small Account Growth Blueprint PDF as promised\. [👉 Download Your Strategy Blueprint](%link%)
 
-We\’re going Live shortly\, your exclusive sniper session starts at %time% ⏰
+This blueprint breaks down the sniper setups\, risk approach, and
+structure based strategies we use in %product_name% to grow small accounts\.
 
-I\'ll send your access link in 15 minutes\, so keep an eye on your messages 👀
-
-*Make sure you\'re in a quiet space\, your device is charged\, and you\'re ready to jump in early Limited spots\, first come\, first served\.*
-
-See you inside\! 🚀
+Let\'s put it to work\.

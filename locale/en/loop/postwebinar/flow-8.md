@@ -1,7 +1,3 @@
-*%name%\,* This isn\'t just trading\, *it\'s a team 🤝\.*
-
-Signals\. Education\. Strategy\. Automation\.
-
-*Real people making real money\, together 📈\.*
-
-Join the community\. Choose your tier 🌐\.
+We\'re one week in\.
+If you\'ve taken action\, salute �\.
+If you\'re still holding back\, ask yourself\: what\'s stopping me\?
