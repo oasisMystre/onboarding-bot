@@ -1,7 +1,7 @@
 import moment from "moment";
 import { readFileSync } from "fs";
-import { eq, isNotNull, lte, or, sql } from "drizzle-orm";
 import { Markup, Telegraf } from "telegraf";
+import { eq, isNotNull, lte, or, sql } from "drizzle-orm";
 
 import { getEnv } from "../env";
 import { Database } from "../db";
@@ -136,7 +136,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
           ),
           updateWebinarById(db, webinar.id, {
             metadata: webinar.metadata,
-            nextWebinarSequence: moment().add(8, "hours").toDate(),
+            nextWebinarSequence: moment().add(24, "hours").toDate(),
           }),
         ];
       }

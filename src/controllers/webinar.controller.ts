@@ -18,7 +18,7 @@ export const createWebinar = (
     .insert(webinar)
     .values({
       ...value,
-      nextWebinarSequence: moment().add(8, "hours").toDate(),
+      nextWebinarSequence: moment().add(24, "hours").toDate(),
     })
     .returning()
     .execute();

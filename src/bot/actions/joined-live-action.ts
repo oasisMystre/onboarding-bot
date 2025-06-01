@@ -12,10 +12,10 @@ export const joinedLiveAction = (bot: Telegraf) => {
     return Promise.allSettled([
       updateWebinarById(db, context.user.webinar.id, {
         state: "post",
-        nextWebinarSequence: moment().add(8, "hours").toDate(),
+        nextWebinarSequence: moment().add(24, "hours").toDate(),
       }),
       context.replyWithMarkdownV2(
-        readFileSync("locale/en/webinar/flow-17.md", "utf-8")
+        readFileSync("locale/en/webinar/flow-14.md", "utf-8")
           .replace("%name%", cleanText(context.user.name))
           .replace("%lnk%", cleanText(getEnv("GIFT_LINK")))
           .replace("%project_name%", cleanText(getEnv("PROJECT_NAME"))),

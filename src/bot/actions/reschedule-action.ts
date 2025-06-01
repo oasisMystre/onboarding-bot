@@ -15,7 +15,7 @@ export default function rescheduleAction(bot: Telegraf) {
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         state: "pre",
-        nextWebinarSequence: moment().add(8, "hours").toDate(),
+        nextWebinarSequence: moment().add(24, "hours").toDate(),
         metadata: { ...context.user.webinar.metadata, reschedule: true },
       }),
       context.replyWithMarkdownV2(
