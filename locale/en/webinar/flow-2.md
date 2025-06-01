@@ -1,9 +1,14 @@
-🔥 You\'re locked in\.
-Here\'s your private access\, [👉Webinar Link](%link%)
+_Perfect timing, %name%\!_
 
-Inside\, you'll learn\,
-✅ The synthetic assets we trade, why we trade it and the strategy we use to grow small accounts consistently\.
-✅ How to tap into our VIP signals and complete mentorship experience\.
-✅ How to join our hands\-free account growth service\.
+We're going LIVE in a few minutes for the free Profittown training — a private sniper session on flipping small accounts\.
 
-AND at the end\, we\'ll unlock your strategy gift\. \(Hint\: You\'ll want to stick around for it\.\)
+In this session, you'll discover:
+💰 How to start growing your small account with sniper entries and a consistent strategy\.
+📊 How to plug into our manual signal service
+🤖 How our team grows accounts hands\-free for serious traders
+AND… for those who attend till the end — we're unlocking a special strategy gift as a reward\.
+
+Don't have a trading account yet?
+Set up your account with our recommended broker — it takes just 2 minutes\.
+Do it now before the session starts:
+👉 \[Deriv partner link\](%link%\)

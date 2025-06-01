@@ -1,5 +1,8 @@
-*%name%\,* One trade could shift your whole income path 📈
+A lot of people get inspired… then go back to life as usual\.
 
-Last week\: *\$650 in\, \$4120 out\, In Just A Week\!\.* That member started just like you\.
+But you're not here for "usual\."
+Whether you've taken the next step or you're still thinking — we're here when you're ready\.
 
-*Choose your tier\. Fund it\. Let\'s help you do the same ✅\.*
+_Start Now 🚀 → \[Insert account link\]_
+_Pick a Tier 📊 → @profit_townbot_
+_Ask a Question ❓ → @ProfittownAdmin_

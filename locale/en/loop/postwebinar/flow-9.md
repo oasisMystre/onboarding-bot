@@ -1,5 +1,9 @@
-*%name%\,* If you wait\, you\'ll forget ⏳\.
+Got just 5–10 mins a day? That's enough to follow signals\.
+Want hands\-free? Let us handle it for you\.
 
-The motivation you felt\? It fades fast ❌\.
+No pressure, \[first_name\]\. You move when it feels right\.
 
-*Lock in your commitment\, fund your account now 🔐\.*
+Buttons:
+_Start Now 🚀 → \[Insert account link\]_
+_Join Now � → @profit_townbot_
+_Need Help? 💬 → @ProfittownAdmin_

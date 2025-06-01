@@ -1,9 +1,8 @@
-*While you\'re getting set for the training\, take this quick step now\,*
+{NAME}, We're going live shortly — the private session is about to begin\.
 
-[✅ Create your trading acount here](%link%)\.
+Get ready to learn how we flip small accounts with sniper precision\.
 
-Once done, send your code *`%code%`* to %admin%
+Are you ready to join the sniper session?
 
-So we can *activate your access immediately* before the session starts\.
-
->It only takes *2 minutes*\, don'\t delay\. Let\'s get you fully set up\!
+• YES, SEND LINK 🚀 → [YES, SEND LINK](%link%)
+• RESCHEDULE ME 📅 → [ RESCHEDULE ME ](%links%)

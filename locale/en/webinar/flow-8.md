@@ -1,4 +1,6 @@
-Quick one\, %name%\.
-Before the session, get your trading account ready\. [👉Deriv partner link](%link%)
+No stress at all.
 
-Once done\, send your account ID to %admin%\. We\'ll fast\-track your sniper access and bonuses\.
+Let’s get you rescheduled for the next sniper small account growth session.
+
+Pick the best day below:
+[ WEEKDAYS ](%links%) | [ WEEKEND ](%links%)

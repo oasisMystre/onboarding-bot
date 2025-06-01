@@ -1,9 +1,14 @@
-*No Stress, %name%\!*
+🔥 You’re locked in.
 
-I totally get it\, timing doesn\'t always line up\.
+Here’s your private access:
+👉 [Webinar Link](%links%)
 
-The good news? *We\'ve got you covered with flexible training sessions on both weekdays and weekends\, so you can plug in when it suits you best\.*
+Inside, you’ll learn:
+✅ The synthetic assets we trade, why we trade it — and the strategy we use to grow small
+accounts consistently.
+✅ How to tap into our VIP signals and complete mentorship experience
+✅ How to join our hands-free account growth service
+AND at the end, we’ll unlock your strategy gift.
+(Hint: You’ll want to stick around for it.)
 
-Pick the best day for your sniper session
-
->Once you choose\, I\'ll reserve your spot and send the details\!
+> Once you choose\, I\'ll reserve your spot and send the details\!

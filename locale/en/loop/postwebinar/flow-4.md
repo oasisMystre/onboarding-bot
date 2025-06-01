@@ -1,13 +1,8 @@
-Not sure which tier to pick\?
+A few days in now\. This is the tipping point — either you act or forget\.
 
-*New\?* → Tier 1 \[easy start\] 🟢
+We've seen members go from zero to their first flip in under a week\.
+It starts with one step\.
 
-*Want results \+ community\?* → Tier 2 👥
-
-*Want to scale fast with Automation\?* → Tier 3 ⚙️
-
-*Want All Alerts \& Automation\?* → Tier 4 📲
-
-*Want Everything \+ Direct Live Streams\?* → Tier 5 🎥
-
->Contact Support with your goal and We\'ll recommend the best fit\.
+_Create Account 💰 → [Insert account link](%link%)
+_Explore Options 🔍 → @profit_townbot_
+_Talk to Admin 💬 → @ProfittownAdmin_

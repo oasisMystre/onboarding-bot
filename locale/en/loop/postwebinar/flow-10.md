@@ -1,7 +1,9 @@
-*%name%\,* Imagine this\.\.\. 
+10 days ago, you took a step most won't:
+You showed up\. Watched\. Learned\.
 
-*You check your account\, see a signal\, copy it\.\.\. 3 hours later\, you\'re up 50\% 💸\.*
+Some already moved forward\. If you're still thinking — that's okay too\.
+We're here when you're ready to take the next one\.
 
-That\'s what Tier 2 to 4 members are doing now\. 
-
-*Want in\? ⬇️*
+_Create Account 💰 → \[Insert account link\]_
+_Explore Options 🔍 → @profit_townbot_
+_Contact Admin 💬 → @ProfittownAdmin_

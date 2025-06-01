@@ -1,8 +1,7 @@
-⏳ Just 6 Hours to go\, *%name%\!*
+🔥 Locked in, _%name%\!_.
 
-The countdown is on your exclusive sniper session *starts today at %time%\!*
+Your sniper session is scheduled for _%day% %date%_\.
 
-Spots are limited and it\'s first\-come\, first\-served\, so make sure you\'re ready to join us before we go
-live\. 
+We\’ll send you reminders before it starts.
 
-*See you soon\. don\'t miss out\! 🚀*
+Let\’s make sure you show up ready to learn how to grow your small account the sniper way.

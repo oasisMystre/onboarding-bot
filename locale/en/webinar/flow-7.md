@@ -1,7 +1,10 @@
-*🎉 Locked in, %name%\!*
+✅ Awesome, %name%\!
 
-You\'re all set for the webinar on %date% at %time%\.*
+Here\’s your Sniper Small Account Growth Blueprint (PDF) as promised:
 
-We\'ll send you reminders before it starts\. 
+👉 [Download Your Strategy Blueprint](%links%)
 
-Let\'s make sure you show up ready to learn how to grow your small account the sniper way\.
+This blueprint breaks down the sniper setups, risk approach, and
+structure-based strategies we use in Profittown to grow small accounts.
+
+Let’s put it to work.

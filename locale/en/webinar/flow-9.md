@@ -1,9 +1,6 @@
-*⚡️ Just a quick reminder\, %name%*
+✅ No stress, %name%\.
 
-Your sniper session is *tommorrow at %date%\!*
+We’ll lock you into the next sniper small account growth session.
 
-🔥 We\'ll be diving into crucial strategies and techniques you definitely don\'t want to miss\.
-
-⌛️ *Limited spots available\,* be sure to join on time to secure your place\!
-
-See you there\! 🚀
+Pick your preferred day below:
+👉 [Monday] | [Tuesday] | [Wednesday] | [Thursday] | [Friday] | [Saturday] | [Sunday]

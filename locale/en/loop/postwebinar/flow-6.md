@@ -1,7 +1,9 @@
-A funded account \= a committed account 🔒\.
+Still watching others win? 👀
+No shame — just don't wait too long, \[first_name\]\.
 
-*Funded members grow thier capital 📊\.*
+Even the slowest progress beats standing still\. 🐌
 
-Unfunded ones keep looking while time waste away 📘\.
-
-*Where do you want to be this time next week\? ⏳*
+Buttons:
+_Start Now 🚀 → \[Insert account link\]_
+_Pick a Tier 📊 → @profit_townbot_
+_Ask a Question ❓ → @ProfittownAdmin_

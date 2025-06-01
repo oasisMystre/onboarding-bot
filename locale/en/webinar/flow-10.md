@@ -1,7 +1,5 @@
-⏰ 12 Hours to Go, *%name%\!*
+🎯 Got it\, *%day%\.*
 
-Prepare to see how we help traders grow small accounts with sniper setups\. This is your final chance to prepare\!
+Now, what time works best for you?
 
-Remember\, spots are limited and it\'s first come\, first served\.
-
-*Set your reminder\, clear your schedule\, and get ready to make a real change\! See you soon\! 🚀*
+[🕘 9 AM](%links%) | [🕚 11 AM](%links%) | [🕐 1 PM](%links%) | [🕒 3 PM](%links%) | [🕔 5 PM](%links%) | [🕖 7 PM](%links%)

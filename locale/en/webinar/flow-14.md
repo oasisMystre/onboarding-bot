@@ -1,9 +1,4 @@
-Just 5 Minutes to Go\, *%name%\!*
- 
-Your exclusive sniper session is about to begin\! 🎯
+📢 We’re getting closer, *%name%\.*
 
-[*🎥 Join now using your private access link*](%link%)
-
-*This is your chance to learn about systems that could transform your results\.*
-
-Don\'t miss it\. Spots are limited and filling fast\! See you inside\! 
+Your sniper session is in 12 hours.
+Prepare to see how we help traders grow small accounts with sniper setups.

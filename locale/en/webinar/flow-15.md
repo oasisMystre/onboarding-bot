@@ -1,5 +1,4 @@
-*🔴 We\'re LIVE Now\, %name%\!*
+🚀 Almost time, _%name%\._
 
-Join the room now and see how we sniper\-grow small accounts 🚀
-
-[*🎥 Click To Join Immediately*](%link%)
+Your sniper session starts in 15 minutes.
+I’ll drop your access link shortly.

@@ -1,7 +1,10 @@
-What happens after the webinar\? Results\.
+Watched the training 🎥\. Got the PDF 📄\.
 
-*\- Create your account 📝*
-*\- Pick your tier 🎯*
-*\- Fund it 💳*
+If you've already joined — solid move\.
 
-Trade Starts And Income Boosts FAST ⚡
+If not yet, no pressure\. But don't let the momentum fade, %first_name%\.
+Sometimes all it takes is one step\.
+
+_Fund Your Account � → \[Insert account link\]_
+_Join Now 🚀 → @profit_townbot_
+_Message Support 💬 → @ProfittownAdmin_

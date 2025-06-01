@@ -1,7 +1,8 @@
-*%name%\,* This isn\'t just trading\, *it\'s a team 🤝\.*
+We're one week in\.
+If you've taken action, salute �\.
+If you're still holding back — ask yourself: what's stopping me?
 
-Signals\. Education\. Strategy\. Automation\.
-
-*Real people making real money\, together 📈\.*
-
-Join the community\. Choose your tier 🌐\.
+Buttons:
+_Create Account 💰 → \[Insert account link\]_
+_Join Now 🚀 → @profit_townbot_
+_Need Help? 💬 → @ProfittownAdmin_

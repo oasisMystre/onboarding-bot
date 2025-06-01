@@ -1,7 +1,9 @@
-You watched the webinar\. *Now it\'s time to make money 💰\.*
+You've watched the webinar 🎥\. You've got the PDF 📄\.
+That already puts you ahead of most 🚀\.
 
-Most people stop at motivation\. You won\'t ⚡\.
+Whenever you're ready, %first_name%, the next step is simple\.
+Your journey can start today — no pressure, just clarity ✨\.
 
-Tier 3 is the most recommended to start, *%product_name% AutoTrades 🤖\. Zero Experience \& Knowledge Needed\.*
-
-*Create your account \+ fund it today\. Let\'s move 🚀*
+*_Create Account 💰 → [Insert account link](%link%)*
+_Explore Options 🔍 → @profit_townbot_
+_Talk to Admin 💬 → @ProfittownAdmin_

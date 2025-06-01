@@ -1,7 +1,7 @@
-*%name%\,* No time\? No problem ⏱️\.
+Others are still on the fence\.
 
-Our system requires just 5 to 10 mins\/day\.
+Either is okay\. Just don't forget why you showed up in the first place\.
 
-Copy\/paste trades\. Simple 📝 Or With Automation\, 0 Minutes 🤖\.
-
-*Fund your account\, pick a tier\, and go ➡️*
+_Get Started 🚀 → \[Insert account link\]_
+_Pick a Tier 📊 → @profit_townbot_
+_Ask Questions ❓ → @ProfittownAdmin_

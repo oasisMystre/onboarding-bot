@@ -1,4 +1,6 @@
-✅ No stress\, %name%\.
-We\'ll lock you into the next sniper small account growth session\.
+No stress\, %name%\.
 
-Pick your preferred day below
+Pick the best day for your sniper session:
+[ WEEKDAYS ](%links%) | [ WEEKEND ](%links%)
+
+
