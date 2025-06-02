@@ -33,7 +33,7 @@ export default function sendLinkAction(bot: Telegraf) {
             {
               type: "callback",
               name: "🔁 I Missed It",
-              data: "webinar",
+              data: "reshedule",
             },
           ],
         ],
