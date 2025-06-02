@@ -5,10 +5,12 @@ import { db } from "../../instances";
 import { cleanText, format } from "../../utils/format";
 import { formatDate, getWeekdays, getWeekends } from "../../utils/date";
 import { updateWebinarById } from "../../controllers/webinar.controller";
+import { deleteMessagesByUser } from "controllers/message.controller";
 
 export default function scheduleAction(bot: Telegraf) {
-  bot.action(/schedule-(weekdays|weekend)/, (context) => {
-    if (context.user.webinar.metadata.date) return context.deleteMessage();
+  bot.action(/schedule-(weekdays|weekend)/, async (context) => {
+    if (context.user.webinar.metadata.date)
+      await deleteMessagesByUser(db, context.user.id);
 
     const data =
       context.callbackQuery && "data" in context.callbackQuery

@@ -13,8 +13,6 @@ import {
 
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
-    if (context.user.webinar.metadata.date) return context.deleteMessage();
-
     return Promise.all([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {

@@ -8,9 +8,7 @@ import { updateWebinarById } from "../../controllers/webinar.controller";
 import { deleteMessagesByUser } from "../../controllers/message.controller";
 
 export default function rescheduleAction(bot: Telegraf) {
-  bot.action("reshedule", (context) => {
-    if (context.user.webinar.metadata.date) return context.deleteMessage();
-
+  bot.action("reshedule", async (context) => {
     return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
