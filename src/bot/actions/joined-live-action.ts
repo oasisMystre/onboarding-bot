@@ -17,7 +17,7 @@ export const joinedLiveAction = (bot: Telegraf) => {
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-14.md", "utf-8")
           .replace("%name%", cleanText(context.user.name))
-          .replace("%lnk%", cleanText(getEnv("GIFT_LINK")))
+          .replace("%link%", cleanText(getEnv("GIFT_LINK")))
           .replace("%project_name%", cleanText(getEnv("PROJECT_NAME"))),
         Markup.inlineKeyboard([
           Markup.button.url(
