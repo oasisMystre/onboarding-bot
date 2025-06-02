@@ -4,7 +4,7 @@ import { Context, Markup, type Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
-import { cleanText } from "../../utils/format";
+import { cleanText, format } from "../../utils/format";
 import { joinChannel } from "../utils/join-channel";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import { deleteMessagesByUser } from "../../controllers/message.controller";
@@ -29,7 +29,14 @@ export default function onJoinAction(bot: Telegraf) {
         {
           parse_mode: "MarkdownV2",
           reply_markup: Markup.inlineKeyboard([
-            Markup.button.callback("⚡️ Start", "onstart"),
+            Markup.button.url(
+              "⚡️ Start",
+              format(
+                "https://t.me/%?start=",
+                context.botInfo.username,
+                context.user.id
+              )
+            ),
           ]).reply_markup,
         }
       ),
