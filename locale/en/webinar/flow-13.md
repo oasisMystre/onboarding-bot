@@ -1,7 +1,4 @@
-✅ Awesome\, %name%\!
-Here\'s your Sniper Small Account Growth Blueprint PDF as promised\. [👉 Download Your Strategy Blueprint](%link%)
-
-This blueprint breaks down the sniper setups\, risk approach, and
-structure based strategies we use in %product_name% to grow small accounts\.
-
-Let\'s put it to work\.
+⌛️ %name%, just checking in\.\.\.
+Did you attend the sniper small account growth session\? We shared the exact sniper setups and strategies our members use to grow small accounts daily\.
+If you were there\, I\'ve got something special for you, your sniper gift \(PDF Strategy Blueprint\)\.
+If you missed it\, no worries\, I can help you book the next session\.
