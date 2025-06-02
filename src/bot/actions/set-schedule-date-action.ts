@@ -39,6 +39,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
             schedule: date.clone().subtract(24, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-8.md", "utf-8")
               .replace("%name%", cleanText(context.user.name))
+              .replace("%time%", cleanText(date.format("h:mm A")))
               .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
           })
         );
