@@ -13,7 +13,7 @@ import {
 
 export default function sendLinkAction(bot: Telegraf) {
   bot.action("send-link", (context) => {
-    return Promise.all([
+    return Promise.allSettled([
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },

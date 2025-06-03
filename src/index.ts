@@ -44,8 +44,15 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     })
   );
 
+  const onPromiseError = (
+    reason: Error,
+    promise: NodeJS.UncaughtExceptionOrigin | Bun.UncaughtExceptionOrigin
+  ) => console.error("Unhandled Rejection at:", promise, "reason:", reason);
+
   process.once("SIGINT", () => bot.stop("SIGINT"));
   process.once("SIGTERM", () => bot.stop("SIGTERM"));
+  process.on("unhandledRejection", onPromiseError);
+  process.on("uncaughtException", onPromiseError);
 
   cron.schedule("*/2 * * * *", () => {
     processScheduledMessages(db, bot).catch((error) => {
@@ -65,7 +72,7 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     });
   });
 
-  return Promise.all(promises);
+  return Promise.allSettled(promises);
 }
 
 const bot = new Telegraf(getEnv("TELEGRAM_ACCESS_TOKEN"));
