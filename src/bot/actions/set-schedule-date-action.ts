@@ -87,6 +87,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
       return Promise.all([
         updateWebinarById(db, context.user.webinar.id, {
           state: null,
+          nextWebinarSequence: moment().add(2, "hours").toDate(),
           metadata: {
             ...context.user.webinar.metadata,
             time: date.toISOString(),

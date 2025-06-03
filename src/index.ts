@@ -1,20 +1,29 @@
 import "dotenv/config";
 import cron from "node-cron";
-import { Telegraf } from "telegraf";
+import { Telegraf, TelegramError } from "telegraf";
 import fastify, { FastifyRequest, type FastifyInstance } from "fastify";
 
 import { getEnv } from "./env";
 import { db } from "./instances";
 import registerBot from "./bot";
-import { format } from "./utils/format";
 import { processScheduledMessages, loopMessages, checkJoined } from "./jobs";
+import { deleteUserById } from "controllers/users.controller";
 
 async function main(server: FastifyInstance, bot: Telegraf) {
   registerBot(bot);
 
   const promises = [];
 
-  bot.catch((error) => console.error(error));
+  bot.catch(async (error, context) => {
+    if (error instanceof TelegramError) {
+      if (error.description.includes("block")) {
+        await deleteUserById(db, context.user.id);
+        return;
+      }
+    }
+
+    console.error(error);
+  });
   if ("RENDER_EXTERNAL_HOSTNAME" in process.env) {
     const webhook = await bot.createWebhook({
       domain: process.env.RENDER_EXTERNAL_HOSTNAME!,
