@@ -1,5 +1,5 @@
 import type { Telegraf } from "telegraf";
-import { broadcastSceneId } from "../scenes/broadcastScene";
+import { broadcastSceneId } from "../scenes/broadcast-scene";
 
 export const broadcastCommand = (telegraf: Telegraf) => {
   telegraf.command("broadcast", (context) => {

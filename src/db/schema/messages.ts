@@ -2,6 +2,7 @@ import type { MediaGroup } from "telegraf/typings/telegram-types";
 import {
   boolean,
   json,
+  jsonb,
   pgTable,
   text,
   timestamp,
@@ -18,10 +19,16 @@ export type Button = {
 export const messages = pgTable("messages", {
   id: uuid().defaultRandom().primaryKey(),
   text: text().notNull(),
-  media: json().$type<MediaGroup>(),
+  media: jsonb().$type<MediaGroup>(),
   schedule: timestamp().notNull(),
   auto: boolean().default(true).notNull(),
-  buttons: json().array().$type<Button[] | Button[][]>().notNull(),
+  buttons: jsonb().array().$type<Button[] | Button[][]>().notNull(),
   user: text().references(() => users.id, { onDelete: "cascade" }),
   createdAt: timestamp().defaultNow().notNull(),
+  stats: jsonb().$type<{
+    success: number;
+    failed: number;
+    seen: number;
+    messageIds: number[];
+  }>(),
 });

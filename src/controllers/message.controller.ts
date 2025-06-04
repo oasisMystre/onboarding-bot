@@ -14,6 +14,16 @@ export const createMessages = (
   ...values: z.infer<typeof messageInsertSchema>[]
 ) => db.insert(messages).values(values).returning().execute();
 
+export const getMessageById = (
+  db: Database,
+  id: z.infer<typeof messageSelectSchema>["id"]
+) =>
+  db.query.messages
+    .findFirst({
+      where: eq(messages.id, id),
+    })
+    .execute();
+
 export const updateMessageById = (
   db: Database,
   id: z.infer<typeof messageSelectSchema>["id"],
@@ -25,6 +35,7 @@ export const updateMessageById = (
     .where(eq(messages.id, id))
     .returning()
     .execute();
+
 export const deleteMessagesByUser = (
   db: Database,
   user: z.infer<typeof userSelectSchema>["id"]

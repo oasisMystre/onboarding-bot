@@ -1,8 +1,13 @@
-_No of received_
-*%success%*
+Message Stats
 
-_No of failed_
-*%failed%*
+*_Id_*
+`%id%`
 
-_Read_
-*%read%*
+*_Sent_*
+`%sent%`
+
+*_No of received_*
+`%success%`
+
+*_No of failed_*
+`%failed%`

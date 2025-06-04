@@ -1,11 +1,15 @@
 import { Scenes } from "telegraf";
-import { broadcastScene } from "./broadcastScene";
-import { authenticateUser } from "bot/middlewares/authenticate-user";
+import { broadcastScene } from "./broadcast-scene";
 
-const scenes = [broadcastScene];
+import { addButtonScene } from "./add-button-scene";
+import { setScheduleScene } from "./set-schedule-scene";
+import { authenticateUser } from "../middlewares/authenticate-user";
+
+const scenes = [broadcastScene, setScheduleScene, addButtonScene];
 export const stage = new Scenes.Stage<any>(scenes);
 
 scenes.map((scene) => {
+  scene.command("cancel", (context) => context.scene.leave());
   scene.use(authenticateUser);
   scene.use((context, next) => {
     if (!context.session.broadcast)

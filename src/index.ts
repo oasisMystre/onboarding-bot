@@ -56,7 +56,7 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     });
   });
 
-  return Promise.all(promises);
+  return Promise.allSettled(promises);
 }
 
 const bot = new Telegraf(getEnv("TELEGRAM_ACCESS_TOKEN"));

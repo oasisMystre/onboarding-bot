@@ -16,13 +16,13 @@ import {
 export default function onStartAction(bot: Telegraf) {
   const onStart = privateFunc(async (context) => {
     if (context.from)
-      return Promise.all([
+      return Promise.allSettled([
         context.telegram
           .approveChatJoinRequest(getEnv("CHANNEL_ID", Number), context.from.id)
           .catch(async (error) => {
             if (error instanceof TelegramError) {
               if (error.description.includes("USER_ALREADY_PARTICIPANT"))
-                return Promise.all([
+                return Promise.allSettled([
                   deleteMessagesByUser(db, context.user.id),
                   updateUserById(db, context.user.id, { joinedChannel: true }),
                   updateWebinarById(db, context.user!.webinar.id, {

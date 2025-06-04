@@ -1,3 +1,5 @@
-Enter button name and link\.
+Ok\, Send me a list of buttons for your broadcast message\. Please use this format\:
+button1 \- Description
+button2 \- Another Description
 
-_Format ButtonName\-Link i\.e 💬 Contact Support \- t\.me/example_
+Send /empty to keep the list empty\.
