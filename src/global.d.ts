@@ -4,7 +4,11 @@ import type { userSelectSchema } from "./db/zod";
 import { createUser } from "./controllers/users.controller";
 
 type SessionData = {
-  id: string;
+  broadcast: {
+    id: string;
+    messageId: number;
+    actionType?: "add-button" | "set-schedule";
+  };
 };
 
 type Session = SessionData;

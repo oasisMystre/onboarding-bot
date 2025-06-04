@@ -1,3 +1,8 @@
+import { Markup } from "telegraf";
+import type { InlineKeyboardButton } from "telegraf/types";
+
+import type { Button } from "../db/schema";
+
 export function cleanText(value: string) {
   return value
     .replace(/\_/g, "\\_")
@@ -34,4 +39,20 @@ export const format = <
       delimiter
     )
   );
+};
+
+export const getButtons = (buttons: Button[] | Button[][]) => {
+  const results: unknown[] = [];
+
+  for (const button of buttons) {
+    if (Array.isArray(button)) results.push(getButtons(button));
+    else
+      results.push(
+        button.type === "url"
+          ? Markup.button.url(button.name, button.data)
+          : Markup.button.callback(button.name, button.data)
+      );
+  }
+
+  return results as InlineKeyboardButton[][];
 };
