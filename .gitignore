@@ -4,3 +4,4 @@ dist
 .turbo
 .env
 .env.prod
+.env.prod.2
