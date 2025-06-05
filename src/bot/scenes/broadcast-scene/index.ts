@@ -1,4 +1,5 @@
 import assert from "assert";
+import { uniqBy } from "lodash";
 import { readFileSync } from "fs";
 import { Markup, Scenes } from "telegraf";
 import type { MediaGroup } from "telegraf/typings/telegram-types";
@@ -30,10 +31,14 @@ export const broadcastScene = new Scenes.WizardScene(
     if (context.message) {
       if ("photo" in context.message) {
         text = context.message.caption;
-        media = context.message.photo.map((photo) => ({
+        media = uniqBy(context.message.photo, "file_id").map((photo) => ({
           type: "photo",
           media: photo.file_id,
         }));
+
+        media[0].caption = text;
+        media[0].parse_mode = "MarkdownV2";
+        media[0].caption_entities = context.message.caption_entities;
       } else if ("video" in context.message) {
         text = context.message.caption;
         media = [
@@ -76,6 +81,12 @@ export const broadcastScene = new Scenes.WizardScene(
         auto: false,
         buttons: [],
         schedule: new Date(),
+        metadata: {
+          entities:
+            "entities" in context.message
+              ? context.message.entities
+              : undefined,
+        },
       });
 
       context.session.broadcast.id = id;

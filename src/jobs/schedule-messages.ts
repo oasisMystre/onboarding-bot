@@ -29,12 +29,17 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
         : undefined;
 
       if (message.user) {
-        if (message.media)
+        if (message.media) {
+          if (!message.media[0].caption) {
+            message.media[0].caption = message.text;
+            message.media[0].parse_mode = "MarkdownV2";
+          }
           await bot.telegram.sendMediaGroup(message.user.id, message.media);
-        else
+        } else
           await bot.telegram.sendMessage(message.user.id, message.text, {
             parse_mode: "MarkdownV2",
             reply_markup,
+            entities: message.metadata?.entities,
           });
 
         await db.delete(messages).where(eq(messages.id, message.id)).execute();
@@ -44,13 +49,16 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
         const settlements = await Promise.allSettled(
           users.map((user) => {
             if (message.media) {
-              message.media[0].caption = message.text;
-              message.media[0].parse_mode = "MarkdownV2";
+              if (!message.media[0].caption) {
+                message.media[0].caption = message.text;
+                message.media[0].parse_mode = "MarkdownV2";
+              }
               return bot.telegram.sendMediaGroup(user.id, message.media);
             } else
               return bot.telegram.sendMessage(user.id, message.text, {
                 parse_mode: "MarkdownV2",
                 reply_markup,
+                entities: message.metadata?.entities,
               });
           })
         );

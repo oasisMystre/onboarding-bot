@@ -9,6 +9,7 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { users } from "./users";
+import { MessageEntity } from "telegraf/types";
 
 export type Button = {
   type: "callback" | "url";
@@ -25,6 +26,7 @@ export const messages = pgTable("messages", {
   buttons: jsonb().array().$type<Button[] | Button[][]>().notNull(),
   user: text().references(() => users.id, { onDelete: "cascade" }),
   createdAt: timestamp().defaultNow().notNull(),
+  metadata: jsonb().$type<{ entities?: MessageEntity[] }>(),
   stats: jsonb().$type<{
     success: number;
     failed: number;
