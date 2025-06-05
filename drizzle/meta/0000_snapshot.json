@@ -1,5 +1,5 @@
 {
-  "id": "c8d1de1e-5aba-4039-a2a6-46e3f65fd6a4",
+  "id": "1e8858dc-c9bc-449a-979f-1d19bf69c88d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -140,21 +140,34 @@
           "primaryKey": false,
           "notNull": true
         },
+        "media": {
+          "name": "media",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
         "schedule": {
           "name": "schedule",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true
         },
-        "user": {
-          "name": "user",
-          "type": "text",
+        "auto": {
+          "name": "auto",
+          "type": "boolean",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": true
         },
         "buttons": {
           "name": "buttons",
-          "type": "json[]",
+          "type": "jsonb[]",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user": {
+          "name": "user",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -164,6 +177,18 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stats": {
+          "name": "stats",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1748360680733,
-      "tag": "0000_light_puma",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1749020084325,
-      "tag": "0001_striped_random",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1749052067660,
-      "tag": "0002_familiar_starbolt",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1749113606982,
-      "tag": "0003_woozy_wrecker",
+      "when": 1749114567010,
+      "tag": "0000_lying_scream",
       "breakpoints": true
     }
   ]
