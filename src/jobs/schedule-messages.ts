@@ -49,15 +49,34 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
         const settlements = await Promise.allSettled(
           users.map((user) => {
             if (message.media) {
-              if (!message.media[0].caption) {
-                message.media[0].caption = message.text;
-                message.media[0].parse_mode = "MarkdownV2";
-              }
-              return bot.telegram.sendMediaGroup(user.id, message.media);
+              const [media] = message.media;
+
+              if (!media.caption) media.caption = message.text;
+              if (!media.parse_mode) media.parse_mode = "MarkdownV2";
+
+              const func = (() => {
+                switch (media.type) {
+                  case "audio":
+                    return bot.telegram.sendAudio;
+                  case "document":
+                    return bot.telegram.sendDocument;
+                  case "video":
+                    return bot.telegram.sendVideo;
+                  case "photo":
+                    return bot.telegram.sendPhoto;
+                }
+              })();
+
+              return func(user.id, media.media, {
+                reply_markup,
+                caption: media.caption,
+                parse_mode: media.parse_mode,
+                caption_entities: media.caption_entities,
+              });
             } else
               return bot.telegram.sendMessage(user.id, message.text, {
-                parse_mode: "MarkdownV2",
                 reply_markup,
+                parse_mode: "MarkdownV2",
                 entities: message.metadata?.entities,
               });
           })
