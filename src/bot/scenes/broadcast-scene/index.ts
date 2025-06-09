@@ -8,8 +8,8 @@ import { db } from "../../../instances";
 import { statsAction } from "./stats-action";
 import { cleanText } from "../../../utils/format";
 import { addButtonSceneId } from "../add-button-scene";
+import { buildBroadcastMessage } from "./build-message";
 import { sendMessageAction } from "./send-message-action";
-import { getBroadcastControls } from "./broadcast-action";
 import { setScheduleSceneId } from "../set-schedule-scene";
 import { createMessages } from "../../../controllers/message.controller";
 
@@ -75,7 +75,7 @@ export const broadcastScene = new Scenes.WizardScene(
 
       assert(text, "text is required");
 
-      const [{ id }] = await createMessages(db, {
+      const [message] = await createMessages(db, {
         text: cleanText(text),
         media,
         auto: false,
@@ -89,18 +89,8 @@ export const broadcastScene = new Scenes.WizardScene(
         },
       });
 
-      context.session.broadcast.id = id;
-
-      await context.replyWithMarkdownV2(
-        readFileSync("locale/en/tools/broadcast/detail.md", "utf-8")
-          .replace("%schedule%", "Immediate")
-          .replace("%message%", cleanText(text)),
-        {
-          parse_mode: "MarkdownV2",
-          reply_markup: Markup.inlineKeyboard(getBroadcastControls(id))
-            .reply_markup,
-        }
-      );
+      context.session.broadcast.id = message.id;
+      await buildBroadcastMessage(context, message);
 
       return context.wizard.next();
     }

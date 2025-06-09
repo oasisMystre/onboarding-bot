@@ -6,7 +6,7 @@ import { createUser } from "./controllers/users.controller";
 type SessionData = {
   broadcast: {
     id: string;
-    messageId: number;
+    messageId?: number;
     actionType?: "add-button" | "set-schedule";
   };
 };

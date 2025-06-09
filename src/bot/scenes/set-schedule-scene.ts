@@ -3,9 +3,8 @@ import { readFileSync } from "fs";
 import { Markup, Scenes } from "telegraf";
 
 import { db } from "../../instances";
-import { getButtons } from "../../utils/format";
 import { updateMessageById } from "../../controllers/message.controller";
-import { getBroadcastControls } from "./broadcast-scene/broadcast-action";
+import { buildBroadcastMessage } from "./broadcast-scene/build-message";
 
 export const setScheduleSceneId = "set-schedule-scene-id";
 export const setScheduleScene = new Scenes.WizardScene(
@@ -15,8 +14,6 @@ export const setScheduleScene = new Scenes.WizardScene(
       context.callbackQuery && "data" in context.callbackQuery
         ? context.callbackQuery.data
         : undefined;
-
-    console.log(data);
 
     if (data) {
       const [, id] = data.split(/_/g);
@@ -65,24 +62,12 @@ export const setScheduleScene = new Scenes.WizardScene(
       if (message)
         return Promise.allSettled([
           context.scene.leave(),
-          message.media
-            ? context.telegram.editMessageCaption
-            : context.telegram.editMessageText(
-                context.user.id,
-                context.session.broadcast.messageId,
-                undefined,
-                readFileSync("locale/en/tools/broadcast/detail.md", "utf-8")
-                  .replace("%schedule%", schedule.format("Do MM,YYYY h:mm A"))
-                  .replace("%message%", message.text),
-                {
-                  parse_mode: "MarkdownV2",
-                  link_preview_options: { is_disabled: true },
-                  reply_markup: Markup.inlineKeyboard([
-                    ...getButtons(message.buttons),
-                    ...getBroadcastControls(context.session.broadcast.id),
-                  ]).reply_markup,
-                }
-              ),
+          context.session.broadcast.messageId
+            ? context
+                .deleteMessages([context.session.broadcast.messageId])
+                .then(() => (context.session.broadcast.messageId = undefined))
+            : undefined,
+          buildBroadcastMessage(context, message),
         ]);
     }
   }

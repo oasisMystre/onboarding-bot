@@ -3,9 +3,9 @@ import { readFileSync } from "fs";
 import { Markup, Scenes } from "telegraf";
 
 import { db } from "../../instances";
-import { getButtons } from "../../utils/format";
 import { updateMessageById } from "../../controllers/message.controller";
 import { getBroadcastControls } from "./broadcast-scene/broadcast-action";
+import { buildBroadcastMessage } from "./broadcast-scene/build-message";
 
 export const addButtonSceneId = "add-button-scene-id";
 export const addButtonScene = new Scenes.WizardScene(
@@ -41,47 +41,38 @@ export const addButtonScene = new Scenes.WizardScene(
         ? context.message.text
         : undefined;
 
-    if (text) {
-      if (/empty/.test(text))
-        return Promise.allSettled([
-          context.scene.leave(),
-          updateMessageById(db, context.session.broadcast.id, { buttons: [] }),
-          Promise.allSettled([
-            context.scene.leave(),
-            context.telegram.editMessageReplyMarkup(
-              context.user.id,
-              context.session.broadcast.messageId,
-              undefined,
-              Markup.inlineKeyboard([
-                ...getBroadcastControls(context.session.broadcast.id),
-              ]).reply_markup
-            ),
-          ]),
-        ]);
+    let message;
 
-      const buttons = text.split("\n").map((fmtButton) => {
-        const [name, link] = fmtButton.split(/-/);
-        return [
-          {
-            name,
-            data: link,
-            type: "url" as const,
-          },
-        ];
-      });
+    if (text) {
+      if (/empty/.test(text)) {
+        [message] = await updateMessageById(db, context.session.broadcast.id, {
+          buttons: [],
+        });
+      } else {
+        const buttons = text.split("\n").map((fmtButton) => {
+          const [name, link] = fmtButton.split(/-/);
+          return [
+            {
+              name,
+              data: link,
+              type: "url" as const,
+            },
+          ];
+        });
+
+        [message] = await updateMessageById(db, context.session.broadcast.id, {
+          buttons,
+        });
+      }
 
       return Promise.allSettled([
-        await updateMessageById(db, context.session.broadcast.id, { buttons }),
         context.scene.leave(),
-        context.telegram.editMessageReplyMarkup(
-          context.user.id,
-          context.session.broadcast.messageId,
-          undefined,
-          Markup.inlineKeyboard([
-            ...getButtons(buttons),
-            ...getBroadcastControls(context.session.broadcast.id),
-          ]).reply_markup
-        ),
+        context.session.broadcast.messageId
+          ? context
+              .deleteMessages([context.session.broadcast.messageId])
+              .then(() => (context.session.broadcast.messageId = undefined))
+          : undefined,
+        buildBroadcastMessage(context, message),
       ]);
     }
   }
