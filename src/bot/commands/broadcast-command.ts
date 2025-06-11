@@ -5,7 +5,10 @@ import { broadcastSceneId } from "../scenes/broadcast-scene";
 
 export const broadcastCommand = (telegraf: Telegraf) => {
   telegraf.command("broadcast", (context) => {
-    if (context.from.username !== getEnv("ADMIN").replace(/^@/, ""))
+    if (
+      context.from.username?.toLowerCase() !==
+      getEnv("ADMIN").replace(/^@/, "").toLowerCase()
+    )
       return context.reply("Not authorized");
     return context.scene.enter(broadcastSceneId);
   });
