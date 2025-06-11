@@ -1,4 +1,3 @@
-import assert from "assert";
 import { uniqBy } from "lodash";
 import { readFileSync } from "fs";
 import { Markup, Scenes } from "telegraf";
@@ -35,11 +34,9 @@ export const broadcastScene = new Scenes.WizardScene(
           type: "photo",
           media: photo.file_id,
         }));
-        if (media) {
-          media[0].caption = text;
-          media[0].parse_mode = "MarkdownV2";
-          media[0].caption_entities = context.message.caption_entities;
-        }
+        media[0].caption = text;
+        media[0].parse_mode = "MarkdownV2";
+        media[0].caption_entities = context.message.caption_entities;
       } else if ("video" in context.message) {
         text = context.message.caption;
         media = [
