@@ -1,4 +1,14 @@
-import { json, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import type { MessageEntity } from "telegraf/types";
+import type { MediaGroup } from "telegraf/typings/telegram-types";
+import {
+  boolean,
+  jsonb,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+} from "drizzle-orm/pg-core";
+
 import { users } from "./users";
 
 export type Button = {
@@ -10,10 +20,17 @@ export type Button = {
 export const messages = pgTable("messages", {
   id: uuid().defaultRandom().primaryKey(),
   text: text().notNull(),
+  media: jsonb().$type<MediaGroup>(),
   schedule: timestamp().notNull(),
-  user: text()
-    .references(() => users.id, { onDelete: "cascade" })
-    .notNull(),
-  buttons: json().array().$type<Button[] | Button[][]>(),
+  auto: boolean().default(true).notNull(),
+  buttons: jsonb().array().$type<Button[] | Button[][]>().notNull(),
+  user: text().references(() => users.id, { onDelete: "cascade" }),
   createdAt: timestamp().defaultNow().notNull(),
+  metadata: jsonb().$type<{ entities?: MessageEntity[] }>(),
+  stats: jsonb().$type<{
+    success: number;
+    failed: number;
+    seen: number;
+    messageIds: number[];
+  }>(),
 });
