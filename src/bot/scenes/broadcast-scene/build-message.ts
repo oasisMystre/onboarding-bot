@@ -20,17 +20,15 @@ export const buildBroadcastMessage = (
   ];
   const reply_markup = Markup.inlineKeyboard(buttons).reply_markup;
   const text = readFileSync("locale/en/tools/broadcast/detail.md", "utf-8")
-    .replace("%message%", cleanText(message.text))
+    .replace("%message%", message.text)
     .replace(
       "%schedule%",
-      moment(message.schedule).format("Do MM,YYYY h:mm A")
+      cleanText(moment(message.schedule).format("Do MM,YYYY h:mm A"))
     );
 
   if (message.media) {
     const [media] = message.media;
-    if (!media.caption && message.text.replace(/\s/g, ""))
-      media.caption = message.text;
-    if (!media.parse_mode) media.parse_mode = "MarkdownV2";
+    if (!media.caption && message.text.replace(/\s/g, "")) media.caption = text;
 
     const func = (() => {
       switch (media.type) {
@@ -48,13 +46,11 @@ export const buildBroadcastMessage = (
     return func.bind(context)(media.media, {
       reply_markup,
       caption: text,
-      parse_mode: media.parse_mode,
       caption_entities: media.caption_entities,
     });
   } else
-    return context.replyWithMarkdownV2(text, {
+    return context.reply(text, {
       reply_markup,
-      parse_mode: "MarkdownV2",
       entities: message.metadata?.entities,
     });
 };

@@ -75,13 +75,11 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
                   media.caption && media.caption.replace(/\s/g, "").length > 0
                     ? media.caption
                     : undefined,
-                parse_mode: media.parse_mode,
                 caption_entities: media.caption_entities,
               });
             } else
               return bot.telegram.sendMessage(user.id, message.text, {
                 reply_markup,
-                parse_mode: "MarkdownV2",
                 entities: message.metadata?.entities,
               });
           })

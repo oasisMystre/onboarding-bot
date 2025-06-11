@@ -1,4 +1,4 @@
+%message%
+
 Scheduled At
 %schedule%
-
-%message%

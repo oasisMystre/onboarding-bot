@@ -6,7 +6,6 @@ import type { MediaGroup } from "telegraf/typings/telegram-types";
 
 import { db } from "../../../instances";
 import { statsAction } from "./stats-action";
-import { cleanText } from "../../../utils/format";
 import { addButtonSceneId } from "../add-button-scene";
 import { buildBroadcastMessage } from "./build-message";
 import { sendMessageAction } from "./send-message-action";
@@ -74,11 +73,11 @@ export const broadcastScene = new Scenes.WizardScene(
       } else if ("text" in context.message) text = context.message.text;
 
       const [message] = await createMessages(db, {
-        text: text ? cleanText(text) : "",
         media,
         auto: false,
         buttons: [],
         schedule: new Date(),
+        text: text ? text : String(),
         metadata: {
           entities:
             "entities" in context.message
