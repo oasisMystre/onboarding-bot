@@ -12,25 +12,25 @@
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
     "drizzle-zod": "^0.7.1",
-    "fastify": "^5.3.2",
-    "firebase-admin": "^13.3.0",
+    "fastify": "^5.3.3",
+    "firebase-admin": "^13.4.0",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.48",
     "node-cron": "^3.0.3",
-    "pg": "^8.15.6",
+    "pg": "^8.16.0",
     "telegraf": "^4.16.3",
     "trevenis": ".",
-    "zod": "^3.25.7"
+    "zod": "^3.25.61"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.14",
+    "@types/bun": "^1.2.15",
     "@types/lodash": "^4.17.17",
     "@types/node-cron": "^3.0.11",
-    "@types/pg": "^8.15.1",
+    "@types/pg": "^8.15.4",
     "drizzle-kit": "^0.31.1",
-    "tsx": "^4.19.4",
+    "tsx": "^4.20.1",
     "typescript": "^5.8.3"
   }
 }
