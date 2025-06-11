@@ -60,7 +60,7 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     });
   });
 
-  cron.schedule("0 */8 * * *", () => {
+  cron.schedule("0 */12 * * *", () => {
     loopMessages(db, bot).catch((error) => {
       console.error(error);
     });
