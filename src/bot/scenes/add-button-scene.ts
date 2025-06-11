@@ -52,7 +52,7 @@ export const addButtonScene = new Scenes.WizardScene(
           const [name, link] = fmtButton.split(/-/);
           return [
             {
-              name: name.replace(/\s/g, ""),
+              name: name.trim(),
               data: link.replace(/\s/g, ""),
               type: "url" as const,
             },
