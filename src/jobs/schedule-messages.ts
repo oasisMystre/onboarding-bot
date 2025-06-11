@@ -69,7 +69,7 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
                 }
               })();
 
-              return func(user.id, media.media, {
+              return func.bind(bot.telegram)(user.id, media.media, {
                 reply_markup,
                 caption:
                   media.caption && media.caption.replace(/\s/g, "").length > 0
