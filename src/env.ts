@@ -2,26 +2,13 @@ import "dotenv/config";
 
 import { format } from "./utils/format";
 
-type Env =
-  | "CODE"
-  | "LIVE_LINK"
-  | "PROJECT_NAME"
-  | "PRODUCT_NAME"
-  | "ADMIN"
-  | "CHANNEL_ID"
-  | "CONTACT_SUPPORT"
-  | "DATABASE_URL"
-  | "CHANNEL_INVITE_LINK"
-  | "TELEGRAM_ACCESS_TOKEN"
-  | "GIFT_LINK"
-  | "BOT_LINK"
-  | "TRADE_ACCOUNT_LINK";
+type Env = "CODE"|"PRODUCT_NAME"|"PROJECT_NAME"|"BOT_LINK"|"ADMIN"|"CHANNEL_ID"|"GIFT_LINK"|"CONTACT_SUPPORT"|"CHANNEL_INVITE_LINK"|"LIVE_LINK"|"TELEGRAM_ACCESS_TOKEN"|"TRADE_ACCOUNT_LINK"|"DATABASE_URL";
 
 export const getEnv = <T extends object | number | string | null = string>(
   name: Env,
   refine?: <K extends unknown>(value: K) => T
 ) => {
-  const value = process.env["APP_" + name] || process.env[name];
+  const value = process.env["APP_" + name] || process.env[name] ;
   if (value)
     try {
       const parsed = JSON.parse(value) as T;

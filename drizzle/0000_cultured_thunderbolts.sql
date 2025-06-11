@@ -19,10 +19,14 @@ CREATE TABLE "users" (
 CREATE TABLE "messages" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"text" text NOT NULL,
+	"media" jsonb,
 	"schedule" timestamp NOT NULL,
-	"user" text NOT NULL,
-	"buttons" json[],
-	"createdAt" timestamp DEFAULT now() NOT NULL
+	"auto" boolean DEFAULT true NOT NULL,
+	"buttons" jsonb[] NOT NULL,
+	"user" text,
+	"createdAt" timestamp DEFAULT now() NOT NULL,
+	"metadata" jsonb,
+	"stats" jsonb
 );
 --> statement-breakpoint
 ALTER TABLE "webinar" ADD CONSTRAINT "webinar_user_users_id_fk" FOREIGN KEY ("user") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
