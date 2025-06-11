@@ -4,7 +4,6 @@ import { Markup, Scenes } from "telegraf";
 
 import { db } from "../../instances";
 import { updateMessageById } from "../../controllers/message.controller";
-import { getBroadcastControls } from "./broadcast-scene/broadcast-action";
 import { buildBroadcastMessage } from "./broadcast-scene/build-message";
 
 export const addButtonSceneId = "add-button-scene-id";
@@ -53,8 +52,8 @@ export const addButtonScene = new Scenes.WizardScene(
           const [name, link] = fmtButton.split(/-/);
           return [
             {
-              name,
-              data: link,
+              name: name.replace(/\s/g, ""),
+              data: link.replace(/\s/g, ""),
               type: "url" as const,
             },
           ];
@@ -65,7 +64,7 @@ export const addButtonScene = new Scenes.WizardScene(
         });
       }
 
-      return Promise.allSettled([
+      return Promise.all([
         context.scene.leave(),
         context.session.broadcast.messageId
           ? context

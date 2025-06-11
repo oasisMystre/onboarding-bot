@@ -104,7 +104,6 @@ broadcastScene.action(
       context.callbackQuery && "data" in context.callbackQuery
         ? context.callbackQuery.data
         : undefined;
-    console.log(data);
     if (data) {
       if (/sendMessage/.test(data)) return sendMessageAction(context);
       else if (/addButton/.test(data))

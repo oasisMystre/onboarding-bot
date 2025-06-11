@@ -25,6 +25,7 @@ export const buildBroadcastMessage = (
       "%schedule%",
       moment(message.schedule).format("Do MM,YYYY h:mm A")
     );
+    
   if (message.media) {
     const [media] = message.media;
     if (!media.caption) media.caption = message.text;
