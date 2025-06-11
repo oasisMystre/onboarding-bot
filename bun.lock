@@ -3,6 +3,7 @@
   "workspaces": {
     "": {
       "dependencies": {
+        "@telegraf/session": "^2.0.0-beta.7",
         "@tsconfig/recommended": "^1.0.8",
         "dotenv": "^16.5.0",
         "drizzle-orm": "^0.43.1",
@@ -15,6 +16,7 @@
         "moment-timezone": "^0.5.48",
         "node-cron": "^3.0.3",
         "pg": "^8.16.0",
+        "pg-connection-string": "^2.9.0",
         "telegraf": "^4.16.3",
         "trevenis": ".",
         "zod": "^3.25.61",
@@ -156,6 +158,8 @@
     "@protobufjs/pool": ["@protobufjs/pool@1.1.0", "", {}, "sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw=="],
 
     "@protobufjs/utf8": ["@protobufjs/utf8@1.1.0", "", {}, "sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw=="],
+
+    "@telegraf/session": ["@telegraf/session@2.0.0-beta.7", "", { "peerDependencies": { "@types/better-sqlite3": "^7.6.9", "@types/pg": "^8.11.0", "better-sqlite3": "^9.3.0", "kysely": "0.27.2 <1", "mongodb": "^6.3.0", "mysql2": "^3.9.0", "pg": "^8.11.3", "redis": "^4.6.12", "telegraf": ">=4.12.0" }, "optionalPeers": ["@types/better-sqlite3", "@types/pg", "better-sqlite3", "kysely", "mongodb", "mysql2", "pg", "redis"] }, "sha512-467OC/VLHDC9hRqTetvXp3pBOSdgxDzYjSuWFXY9v64m453HRxE4tYCnLLFVktOvLWDm+he7Hhv/+e+lmz8atQ=="],
 
     "@telegraf/types": ["@telegraf/types@7.1.0", "", {}, "sha512-kGevOIbpMcIlCDeorKGpwZmdH7kHbqlk/Yj6dEpJMKEQw5lk0KVQY0OLXaCswy8GqlIVLd5625OB+rAntP9xVw=="],
 

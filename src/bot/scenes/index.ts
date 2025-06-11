@@ -6,6 +6,9 @@ import { setScheduleScene } from "./set-schedule-scene";
 import { authenticateUser } from "../middlewares/authenticate-user";
 
 const scenes = [broadcastScene, setScheduleScene, addButtonScene];
+scenes.map((scene) =>
+  scene.command("cancel", (context) => context.scene.leave())
+);
 export const stage = new Scenes.Stage<any>(scenes);
 
 scenes.map((scene) => {
