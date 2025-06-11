@@ -35,10 +35,11 @@ export const broadcastScene = new Scenes.WizardScene(
           type: "photo",
           media: photo.file_id,
         }));
-
-        media[0].caption = text;
-        media[0].parse_mode = "MarkdownV2";
-        media[0].caption_entities = context.message.caption_entities;
+        if (media) {
+          media[0].caption = text;
+          media[0].parse_mode = "MarkdownV2";
+          media[0].caption_entities = context.message.caption_entities;
+        }
       } else if ("video" in context.message) {
         text = context.message.caption;
         media = [
