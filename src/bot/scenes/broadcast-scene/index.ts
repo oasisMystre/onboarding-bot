@@ -73,10 +73,8 @@ export const broadcastScene = new Scenes.WizardScene(
         ];
       } else if ("text" in context.message) text = context.message.text;
 
-      assert(text, "text is required");
-
       const [message] = await createMessages(db, {
-        text: cleanText(text),
+        text: text ? cleanText(text) : "",
         media,
         auto: false,
         buttons: [],

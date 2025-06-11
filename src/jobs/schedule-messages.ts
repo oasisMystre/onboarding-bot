@@ -2,8 +2,8 @@ import { and, eq, lte, sql } from "drizzle-orm";
 import { Markup, Telegraf } from "telegraf";
 
 import type { Database } from "../db";
-import { getButtons } from "../utils/format";
 import { messages } from "../db/schema";
+import { getButtons } from "../utils/format";
 import { updateMessageById } from "../controllers/message.controller";
 
 export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
@@ -31,7 +31,8 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
       if (message.user) {
         if (message.media) {
           if (!message.media[0].caption) {
-            message.media[0].caption = message.text;
+            if (message.text.replace(/\s/g, "").length > 0)
+              message.media[0].caption = message.text;
             message.media[0].parse_mode = "MarkdownV2";
           }
           await bot.telegram.sendMediaGroup(message.user.id, message.media);
@@ -51,7 +52,8 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
             if (message.media) {
               const [media] = message.media;
 
-              if (!media.caption) media.caption = message.text;
+              if (!media.caption && message.text.replace(/\s/g, "").length > 0)
+                media.caption = message.text;
               if (!media.parse_mode) media.parse_mode = "MarkdownV2";
 
               const func = (() => {
@@ -69,7 +71,10 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
 
               return func(user.id, media.media, {
                 reply_markup,
-                caption: media.caption,
+                caption:
+                  media.caption && media.caption.replace(/\s/g, "").length > 0
+                    ? media.caption
+                    : undefined,
                 parse_mode: media.parse_mode,
                 caption_entities: media.caption_entities,
               });

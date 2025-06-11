@@ -25,10 +25,11 @@ export const buildBroadcastMessage = (
       "%schedule%",
       moment(message.schedule).format("Do MM,YYYY h:mm A")
     );
-    
+
   if (message.media) {
     const [media] = message.media;
-    if (!media.caption) media.caption = message.text;
+    if (!media.caption && message.text.replace(/\s/g, ""))
+      media.caption = message.text;
     if (!media.parse_mode) media.parse_mode = "MarkdownV2";
 
     const func = (() => {
@@ -44,7 +45,7 @@ export const buildBroadcastMessage = (
       }
     })();
 
-    return func(media.media, {
+    return func.bind(context)(media.media, {
       reply_markup,
       caption: text,
       parse_mode: media.parse_mode,

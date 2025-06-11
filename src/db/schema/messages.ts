@@ -1,15 +1,15 @@
+import type { MessageEntity } from "telegraf/types";
 import type { MediaGroup } from "telegraf/typings/telegram-types";
 import {
   boolean,
-  json,
   jsonb,
   pgTable,
   text,
   timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
+
 import { users } from "./users";
-import { MessageEntity } from "telegraf/types";
 
 export type Button = {
   type: "callback" | "url";
