@@ -5,11 +5,11 @@ import { Telegraf } from "telegraf";
 import { getEnv } from "../../env";
 import { db } from "../../instances";
 import { cleanText } from "../../utils/format";
+import { updateWebinarById } from "../../controllers/webinar.controller";
 import {
   createMessages,
   deleteMessagesByUser,
 } from "../../controllers/message.controller";
-import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export default function setScheduleDateAction(bot: Telegraf) {
   bot.action(/^setScheduleDate_(.+)$/, async (context) => {
