@@ -4,7 +4,7 @@ import { Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
