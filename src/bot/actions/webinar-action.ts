@@ -13,6 +13,7 @@ export const webinarAction = (bot: Telegraf) => {
       deleteMessagesByUser(db, context.user.id),
       updateWebinarById(db, context.user.webinar.id, {
         state: "pre",
+        disablePreWebinarSequence: false,
         nextWebinarSequence: moment().add(24, "hours").toDate(),
         metadata: { postWebinarLoopIndex: 1, preWebinarLoopIndex: 1 },
       }),

@@ -1,7 +1,7 @@
 import moment from "moment";
 import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
-import { eq, isNotNull, lte, or, sql } from "drizzle-orm";
+import { and, eq, isNotNull, lte, or, sql } from "drizzle-orm";
 
 import { getEnv } from "../env";
 import { Database } from "../db";
@@ -64,9 +64,11 @@ const postWebinarButtons = [
 
 export const loopMessages = async (db: Database, bot: Telegraf) => {
   const webinars = await db.query.webinar.findMany({
-    where: or(
-      eq(webinar.disablePreWebinarSequence, false),
-      eq(webinar.disablePostWebinarSequence, false),
+    where: and(
+      or(
+        eq(webinar.disablePreWebinarSequence, false),
+        eq(webinar.disablePostWebinarSequence, false)
+      ),
       lte(webinar.nextWebinarSequence, sql`NOW()`),
       isNotNull(webinar.state)
     ),
@@ -79,8 +81,8 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
       id: true,
       state: true,
       metadata: true,
-      disablePostWebinarSequence: true,
       disablePreWebinarSequence: true,
+      disablePostWebinarSequence: true,
     },
   });
 
