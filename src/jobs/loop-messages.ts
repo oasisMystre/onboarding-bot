@@ -1,7 +1,7 @@
 import moment from "moment";
 import { readFileSync } from "fs";
-import { eq, lte, or, sql } from "drizzle-orm";
 import { Markup, Telegraf } from "telegraf";
+import { and, eq, isNotNull, lte, or, sql } from "drizzle-orm";
 
 import { getEnv } from "../env";
 import { Database } from "../db";
@@ -11,10 +11,13 @@ import { updateWebinarById } from "../controllers/webinar.controller";
 
 export const loopMessages = async (db: Database, bot: Telegraf) => {
   const webinars = await db.query.webinar.findMany({
-    where: or(
-      eq(webinar.disablePreWebinarSequence, false),
-      eq(webinar.disablePostWebinarSequence, false),
-      lte(webinar.nextWebinarSequence, sql`NOW()`)
+    where: and(
+      or(
+        eq(webinar.disablePreWebinarSequence, false),
+        eq(webinar.disablePostWebinarSequence, false)
+      ),
+      lte(webinar.nextWebinarSequence, sql`NOW()`),
+      isNotNull(webinar.state)
     ),
     with: {
       user: {
@@ -32,9 +35,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
 
   return Promise.allSettled(
     webinars.flatMap(async (webinar) => {
-      if (webinar.state) return;
-
-      {
+      if (webinar.state) {
         const loopIndex =
           webinar.state === "pre"
             ? webinar.metadata.preWebinarLoopIndex >= 20

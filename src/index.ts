@@ -7,7 +7,12 @@ import { getEnv } from "./env";
 import { db } from "./instances";
 import registerBot from "./bot";
 import { format } from "./utils/format";
-import { processScheduledMessages, loopMessages, checkJoined } from "./jobs";
+import {
+  processScheduledMessages,
+  loopMessages,
+  checkJoined,
+  checkActions,
+} from "./jobs";
 
 async function main(server: FastifyInstance, bot: Telegraf) {
   registerBot(bot);
@@ -35,17 +40,14 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     })
   );
 
-  process.once("SIGINT", () => bot.stop("SIGINT"));
-  process.once("SIGTERM", () => bot.stop("SIGTERM"));
-
   cron.schedule("*/2 * * * *", () => {
     processScheduledMessages(db, bot).catch((error) => {
       console.error(error);
     });
   });
 
-  cron.schedule("0 */8 * * *", () => {
-    loopMessages(db, bot).catch((error) => {
+  cron.schedule("0 */2 * * *", () => {
+    Promise.all([checkActions(db), loopMessages(db, bot)]).catch((error) => {
       console.error(error);
     });
   });
@@ -63,3 +65,13 @@ const bot = new Telegraf(getEnv("TELEGRAM_ACCESS_TOKEN"));
 const server = fastify({ logger: true, ignoreTrailingSlash: true });
 
 main(server, bot);
+
+const onPromiseError = (
+  reason: Error,
+  promise: NodeJS.UncaughtExceptionOrigin | Bun.UncaughtExceptionOrigin
+) => console.error("Unhandled Rejection at:", promise, "reason:", reason);
+
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
+process.on("unhandledRejection", onPromiseError);
+process.on("uncaughtException", onPromiseError);

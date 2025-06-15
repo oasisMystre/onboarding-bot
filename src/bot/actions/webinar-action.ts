@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import { deleteMessagesByUser } from "../../controllers/message.controller";
 
