@@ -6,7 +6,6 @@ import fastify, { FastifyRequest, type FastifyInstance } from "fastify";
 import { getEnv } from "./env";
 import { db } from "./instances";
 import registerBot from "./bot";
-import { format } from "./utils/format";
 import {
   processScheduledMessages,
   loopMessages,

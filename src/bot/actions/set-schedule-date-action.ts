@@ -4,7 +4,7 @@ import { Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
-import { cleanText } from "../../utils/format";
+import { cleanText, format } from "../../utils/format";
 import { createMessages } from "../../controllers/message.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
@@ -34,7 +34,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(24, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-9.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
           })
         );
@@ -47,7 +54,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(12, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-10.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%date%", cleanText(date.format("MMM Do YYYY, h:mm A"))),
           })
         );
@@ -60,7 +74,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(6, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-11.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -73,7 +94,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(2, "hours").toDate(),
             text: readFileSync("locale/en/webinar/flow-12.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -86,7 +114,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(15, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-13.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%time%", cleanText(date.format("h:mm A"))),
           })
         );
@@ -105,7 +140,14 @@ export default function setScheduleDateAction(bot: Telegraf) {
             user: context.user.id,
             schedule: date.clone().subtract(5, "minutes").toDate(),
             text: readFileSync("locale/en/webinar/flow-14.md", "utf-8")
-              .replace("%name%", cleanText(context.user.name))
+              .replace(
+                "%name%",
+                format(
+                  "[%](tg://user/?id=%)",
+                  context.user.name,
+                  context.user.id
+                )
+              )
               .replace("%link%", cleanText(getEnv("LIVE_LINK"))),
           })
         );
@@ -152,7 +194,10 @@ export default function setScheduleDateAction(bot: Telegraf) {
           user: context.user.id,
           schedule: date.toDate(),
           text: readFileSync("locale/en/webinar/flow-15.md", "utf-8")
-            .replace("%name%", cleanText(context.user.name))
+            .replace(
+              "%name%",
+              format("[%](tg://user/?id=%)", context.user.name, context.user.id)
+            )
             .replace("%link%", cleanText(getEnv("LIVE_LINK"))),
         }),
         createMessages(db, {
@@ -176,7 +221,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
           schedule: date.clone().add(1, "hours").toDate(),
           text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
             "%name%",
-            cleanText(context.user.name)
+            format("[%](tg://user/?id=%)", context.user.name, context.user.id)
           ),
         }),
       ]);

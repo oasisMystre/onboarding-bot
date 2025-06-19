@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { Markup, Telegraf } from "telegraf";
 
 import { db } from "../../instances";
-import { cleanText } from "../../utils/format";
+import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import { deleteMessagesByUser } from "../../controllers/message.controller";
 
@@ -19,7 +19,7 @@ export const webinarAction = (bot: Telegraf) => {
       context.replyWithMarkdownV2(
         readFileSync("locale/en/webinar/flow-1.md", "utf-8").replace(
           "%name%",
-          cleanText(context.user.name)
+          format("[%](tg://user/?id=%)", context.user.name, context.user.id)
         ),
         Markup.inlineKeyboard([
           [

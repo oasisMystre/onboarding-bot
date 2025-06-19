@@ -39,7 +39,10 @@ export default function setScheduleTimeAction(bot: Telegraf) {
         }),
         context.replyWithMarkdownV2(
           readFileSync("locale/en/webinar/flow-6.md", "utf-8")
-            .replace("%name%", cleanText(context.user.name))
+            .replace(
+              "%name%",
+              format("[%](tg://user/?id=%)", context.user.name, context.user.id)
+            )
             .replace("%date%", cleanText(date.format("MMM Do YYYY"))),
           Markup.inlineKeyboard([
             ...times

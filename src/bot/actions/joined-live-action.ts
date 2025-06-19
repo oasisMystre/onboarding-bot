@@ -4,7 +4,7 @@ import { Markup, Telegraf } from "telegraf";
 
 import { getEnv } from "../../env";
 import { db } from "../../instances";
-import { cleanText } from "../../utils/format";
+import { cleanText, format } from "../../utils/format";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 
 export const joinedLiveAction = (bot: Telegraf) => {
@@ -16,7 +16,10 @@ export const joinedLiveAction = (bot: Telegraf) => {
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/loop/postwebinar/flow-1.md", "utf-8")
-          .replace("%name%", cleanText(context.user.name))
+          .replace(
+            "%name%",
+            format("[%](tg://user/?id=%)", context.user.name, context.user.id)
+          )
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         {
           parse_mode: "MarkdownV2",

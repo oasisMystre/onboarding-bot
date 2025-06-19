@@ -56,9 +56,7 @@ export default function sendLinkAction(bot: Telegraf) {
         schedule: moment().add(1, "hours").toDate(),
         text: readFileSync("locale/en/webinar/flow-16.md", "utf-8").replace(
           "%name%",
-          cleanText(
-            format("%%", context.from.first_name, context.from.last_name)
-          )
+          format("[%](tg://user/?id=%)", context.user.name, context.user.id)
         ),
       }),
       context.replyWithMarkdownV2(

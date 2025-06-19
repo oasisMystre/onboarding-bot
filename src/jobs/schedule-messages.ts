@@ -3,7 +3,7 @@ import { Markup, Telegraf } from "telegraf";
 
 import type { Database } from "../db";
 import { messages } from "../db/schema";
-import { getButtons } from "../utils/format";
+import { format, getButtons } from "../utils/format";
 import { updateMessageById } from "../controllers/message.controller";
 
 export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
@@ -73,7 +73,10 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
                 reply_markup,
                 caption:
                   media.caption && media.caption.replace(/\s/g, "").length > 0
-                    ? media.caption
+                    ? media.caption.replace(
+                        "%name%",
+                        format("[%](tg://user/?id=%)", user.name, user.id)
+                      )
                     : undefined,
                 caption_entities: media.caption_entities,
               });
