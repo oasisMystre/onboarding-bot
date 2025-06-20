@@ -6,6 +6,7 @@ CREATE TABLE "webinar" (
 	"disablePreWebinarSequence" boolean DEFAULT false,
 	"metadata" jsonb NOT NULL,
 	"nextWebinarSequence" timestamp NOT NULL,
+	"updatedAt" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "webinar_user_unique" UNIQUE("user")
 );
 --> statement-breakpoint
