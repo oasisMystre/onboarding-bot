@@ -73,14 +73,17 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
                 reply_markup,
                 caption:
                   media.caption && media.caption.replace(/\s/g, "").length > 0
-                    ? media.caption.replace("%name%", user.name)
+                    ? media.caption.replace(
+                        "%name%",
+                        user.name.replace("\\", "")
+                      )
                     : undefined,
                 caption_entities: media.caption_entities,
               });
             } else
               return bot.telegram.sendMessage(
                 user.id,
-                message.text.replace("%name%", user.name),
+                message.text.replace("%name%", user.name.replace("\\", "")),
                 {
                   reply_markup,
                   entities: message.metadata?.entities,
