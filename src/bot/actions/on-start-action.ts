@@ -37,14 +37,7 @@ export default function onStartAction(bot: Telegraf) {
                     text: readFileSync(
                       "locale/en/webinar/flow-1.md",
                       "utf-8"
-                    ).replace(
-                      "%name%",
-                      format(
-                        "[%](tg://user/?id=%)",
-                        context.user.name,
-                        context.user.id
-                      )
-                    ),
+                    ).replace("%name%", context.user.name),
                     buttons: [
                       {
                         type: "callback",
@@ -62,14 +55,7 @@ export default function onStartAction(bot: Telegraf) {
                   }),
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")
-                      .replace(
-                        "%name%",
-                        format(
-                          "[%](tg://user/?id=%)",
-                          context.user.name,
-                          context.user.id
-                        )
-                      )
+                      .replace("%name%", context.user.name)
                       .replace(
                         "%link%",
                         cleanText(getEnv("TRADE_ACCOUNT_LINK"))

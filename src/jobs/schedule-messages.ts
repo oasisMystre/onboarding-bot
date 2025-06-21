@@ -3,7 +3,7 @@ import { Markup, Telegraf } from "telegraf";
 
 import type { Database } from "../db";
 import { messages } from "../db/schema";
-import { format, getButtons } from "../utils/format";
+import { getButtons } from "../utils/format";
 import { updateMessageById } from "../controllers/message.controller";
 
 export const processScheduledMessages = async (db: Database, bot: Telegraf) => {

@@ -16,10 +16,7 @@ export const joinedLiveAction = (bot: Telegraf) => {
       }),
       context.replyWithMarkdownV2(
         readFileSync("locale/en/loop/postwebinar/flow-1.md", "utf-8")
-          .replace(
-            "%name%",
-            format("[%](tg://user/?id=%)", context.user.name, context.user.id)
-          )
+          .replace("%name%", context.user.name)
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         {
           parse_mode: "MarkdownV2",

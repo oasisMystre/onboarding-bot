@@ -60,14 +60,7 @@ export const loopMessages = async (db: Database, bot: Telegraf) => {
               ),
               "utf-8"
             )
-              .replace(
-                "%name%",
-                format(
-                  "[%](tg://user/?id=%)",
-                  webinar.user.name,
-                  webinar.user.id
-                )
-              )
+              .replace("%name%", webinar.user.name)
               .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
             {
               parse_mode: "MarkdownV2",
