@@ -47,7 +47,7 @@ export default function onStartAction(bot: Telegraf) {
                       {
                         type: "callback",
                         name: "⏳ Reschedule Me",
-                        data: "reshedule",
+                        data: "reschedulee",
                       },
                     ],
                     user: context.user.id,
