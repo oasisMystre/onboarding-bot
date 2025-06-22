@@ -73,17 +73,22 @@ export const processScheduledMessages = async (db: Database, bot: Telegraf) => {
                 reply_markup,
                 caption:
                   media.caption && media.caption.replace(/\s/g, "").length > 0
-                    ? media.caption
+                    ? media.caption.replace(
+                        "%name%",
+                        user.name.replace("\\", "")
+                      )
                     : undefined,
-                parse_mode: media.parse_mode,
                 caption_entities: media.caption_entities,
               });
             } else
-              return bot.telegram.sendMessage(user.id, message.text, {
-                reply_markup,
-                parse_mode: "MarkdownV2",
-                entities: message.metadata?.entities,
-              });
+              return bot.telegram.sendMessage(
+                user.id,
+                message.text.replace("%name%", user.name.replace("\\", "")),
+                {
+                  reply_markup,
+                  entities: message.metadata?.entities,
+                }
+              );
           })
         );
 

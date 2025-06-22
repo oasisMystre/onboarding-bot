@@ -144,7 +144,7 @@ export default function setScheduleDateAction(bot: Telegraf) {
               {
                 type: "callback",
                 name: "🔁 I Missed It",
-                data: "reshedule",
+                data: "reschedule",
               },
             ],
           ],
