@@ -39,13 +39,13 @@ async function main(server: FastifyInstance, bot: Telegraf) {
     })
   );
 
-  cron.schedule("*/2 * * * *", () => {
+  cron.schedule("* * * * *", () => {
     processScheduledMessages(db, bot).catch((error) => {
       console.error(error);
     });
   });
 
-  cron.schedule("0 */2 * * *", () => {
+  cron.schedule("*/30 * * * *", () => {
     Promise.all([checkActions(db), loopMessages(db, bot)]).catch((error) => {
       console.error(error);
     });
