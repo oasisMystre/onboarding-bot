@@ -5,7 +5,7 @@ import { Markup, TelegramError, type Telegraf } from "telegraf";
 import { db } from "../../instances";
 import { getEnv } from "../../env";
 import { privateFunc } from "../utils/private-func";
-import { cleanText, format } from "../../utils/format";
+import { cleanText } from "../../utils/format";
 import { updateUserById } from "../../controllers/users.controller";
 import { updateWebinarById } from "../../controllers/webinar.controller";
 import {
