@@ -33,7 +33,7 @@ export default function sendLinkAction(bot: Telegraf) {
         text: readFileSync("locale/en/webinar/flow-3.md", "utf-8")
           .replace("%code%", cleanText(getEnv("CODE")))
           .replace("%admin%", cleanText(getEnv("ADMIN")))
-          .replace("%link%", cleanText(getEnv("TRADE_ACCOUNT_LINK"))),
+          .replace("%link%", getEnv("TRADE_ACCOUNT_LINK")),
       }),
       createMessages(db, {
         buttons: [
@@ -67,7 +67,7 @@ export default function sendLinkAction(bot: Telegraf) {
               format("%%", context.from.first_name, context.from.last_name)
             )
           )
-          .replace("%link%", cleanText(getEnv("LIVE_LINK")))
+          .replace("%link%", getEnv("LIVE_LINK"))
           .replace("%product_name%", cleanText(getEnv("PRODUCT_NAME"))),
         Markup.inlineKeyboard([
           Markup.button.url("🔴 Join Us Live Now", getEnv("LIVE_LINK")),

@@ -1,6 +1,6 @@
 *Awesome\! You\'re In\! Here\'s Your Exclusive Training Access*\:
 
-👉 %link%
+👉 [Click Here](%link%)
 
 This quick session is packed with value\. Here\'s what you\'ll get\:
 
