@@ -51,7 +51,7 @@ export default function onStartAction(bot: Telegraf) {
                       },
                     ],
                     user: context.user.id,
-                    schedule: moment().add(2, "minutes").toDate(),
+                    schedule: moment().add(30, "seconds").toDate(),
                   }),
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")
