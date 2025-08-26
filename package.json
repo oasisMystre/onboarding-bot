@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc",
     "codegen": "bun scripts/codegen",
-    "dev": "bun codegen && bun run src/index.ts --watch",
+    "dev": "bun codegen && bun run --watch src/index.ts --watch",
     "migrate": "drizzle-kit generate && drizzle-kit migrate"
   },
   "dependencies": {

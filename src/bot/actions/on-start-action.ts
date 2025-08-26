@@ -56,17 +56,22 @@ export default function onStartAction(bot: Telegraf) {
                   context.replyWithMarkdownV2(
                     readFileSync("locale/en/start-message.md", "utf-8")
                       .replace("%name%", context.user.name)
+                      .replace("%channel%", getEnv("CHANNEL_INVITE_LINK"))
+                      .replace("%admin%", getEnv("ADMIN"))
                       .replace("%link%", getEnv("TRADE_ACCOUNT_LINK"))
                       .replace(
-                        "%product_name%",
+                        /%productname%/g,
                         cleanText(getEnv("PRODUCT_NAME"))
                       ),
-                    Markup.inlineKeyboard([
-                      Markup.button.url(
-                        "✅ Create Trading Account",
-                        getEnv("TRADE_ACCOUNT_LINK")
-                      ),
-                    ])
+                    {
+                      link_preview_options: { is_disabled: true },
+                      reply_markup: Markup.inlineKeyboard([
+                        Markup.button.url(
+                          "✅ Create Trading Account",
+                          getEnv("TRADE_ACCOUNT_LINK")
+                        ),
+                      ]).reply_markup,
+                    }
                   ),
                 ]);
               return context.reply(getEnv("CHANNEL_INVITE_LINK"));
